@@ -1,0 +1,14 @@
+extends layout
+block link
+      link(rel="stylesheet", href="stylesheets/reg.css")
+block content
+  h1= title
+  div
+    form(method='post')
+      if user
+        p  welcome #{user}
+      -if(messages.info)
+        p  #{messages.info}
+      p
+        input(type="submit",value="登出")  
+      

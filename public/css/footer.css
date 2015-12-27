@@ -1,0 +1,27 @@
+footer{
+  border: 1px solid #EEE;
+  padding: 40px 0;
+}
+footer .row{
+  width: 950px;
+  margin: 0 auto;
+}
+footer ul h3{
+  font-weight: 700;
+  font-size: 14px;
+}
+footer ul li a{
+  font-size: 13px;
+  color: #888;
+  font-weight: normal;
+}
+footer ul li a:hover{
+  color: #888;
+  text-decoration: underline;
+}
+footer .copyRight p{
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin: 0;
+}

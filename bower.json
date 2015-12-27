@@ -1,0 +1,23 @@
+{
+  "name": "mico",
+  "description": "",
+  "main": "",
+  "authors": [
+    "byronvis <elvis07@163.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/assets",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "tinymce": "tinymce-dist#~4.3.2"
+  }
+}

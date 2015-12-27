@@ -1,0 +1,25 @@
+.container{
+  width: 1050px!important;
+}
+a{
+  font-weight: 700;
+}
+a:hover{
+  text-decoration: none;
+}
+a:link{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+.l{
+  float: left;
+}
+.r{
+  float: right;
+}
+#main{
+  margin-top: 25px;
+}

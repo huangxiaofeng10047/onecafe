@@ -1,0 +1,16 @@
+
+#main .center nav a{
+  width: 100px;
+  padding: 7px 15px;
+  display: inline-block;
+  text-align: center;
+  height: 37px;
+  line-height: 23px;
+  color: #333;
+  background-color: #ddd;
+  border: 1px solid #ddd;
+}
+#main .center nav .nav-active{
+  background-color: #fff;
+  border-bottom: transparent;
+}

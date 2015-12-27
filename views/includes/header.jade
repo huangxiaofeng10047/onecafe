@@ -1,0 +1,15 @@
+header
+  .container
+    .l
+      a.l(href="/",class="logo") MiCo
+      block search
+    
+    .r
+      if(!userInfo)
+        a(href="/reg") 注册
+        a(href="/login") 登录  
+      else
+        a 您好，#{userInfo.username}
+        if(!headeChange)
+          a(href="/article") 发布文章
+        a.logout-btn(href="javascript:void(0)") 退出 
