@@ -17,8 +17,7 @@ block main
             ul 
              each val in articleJSON
                 li 
-                  h3= val.title
-                  p!= val.content     
+                  a(href="a/#{val.id}")= val.title
       aside(class="col-xs-3")
 block scripts      
   script(src="js/index.js")

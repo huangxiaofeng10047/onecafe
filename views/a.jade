@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='../assets/bootstrap/dist/css/bootstrap.min.css')
+    link(rel="stylesheet", href="../css/style.css")
+    link(rel="stylesheet", href="../css/header.css")
+    link(rel="stylesheet", href="../css/footer.css")
+    block link
+  body
+    include ./includes/header.jade
+    #main
+      .container
+          if(articleJSON)
+            div!= articleJSON.content  
+    include ./includes/footer.jade
+  script(src="../assets/jquery/dist/jquery.min.js")
+
+      
+      

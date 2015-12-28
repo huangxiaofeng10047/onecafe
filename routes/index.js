@@ -5,6 +5,7 @@ var reg = require('./reg');
 var login = require('./login');
 var logout = require('./logout');
 var article = require('./article');
+var a = require('./a');
 
 router.get('/', function(req, res, next) {
 
@@ -17,12 +18,17 @@ router.get('/', function(req, res, next) {
     };
   }
 
+
   Article.find({}, function(err, docs) {
-    if(err){console.log(err);return;}
+    if (err) {
+      console.log(err);
+      return;
+    }
     res.render('index', {
       'title': 'MiCo首页',
       'userInfo': userInfo,
       'articleJSON': docs
+
     });
 
   });
@@ -33,6 +39,7 @@ router.use(reg);
 router.use(login);
 router.use(logout);
 router.use(article);
+router.use(a);
 
 
 
