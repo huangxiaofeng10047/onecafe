@@ -32,6 +32,19 @@ ArticleSchema.static('getLastId', function(callback) {
 
 });
 
+ArticleSchema.static('getArticleList', function(username,callback) {
+
+  return this.find({
+    author:username
+  }, function(err, docs) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    callback(docs);
+  });
+
+});
 
 var Article = db.model('Article', ArticleSchema);
 

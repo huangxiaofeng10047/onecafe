@@ -5,6 +5,7 @@ $(function(window, undefined) {
       url:'/a/'+$('.articleId').val(),
       method:'post',
       data:{
+        title:'评论：'+$('.articleTitle').val(),
         content:$('textarea').val()
       },
       dataType:'json',

@@ -5,6 +5,9 @@ var CommentSchema = mongoose.Schema({
   id: {
     type: Number
   },
+  title:{
+    type:String
+  },
   content: {
     type: String
   },
@@ -31,7 +34,19 @@ CommentSchema.static('getLastId', function(callback) {
   });
 
 });
+CommentSchema.static('getCommentList', function(username,callback) {
 
+  return this.find({
+    author:username
+  }, function(err, docs) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    callback(docs);
+  });
+
+});
 
 var Comment = db.model('Comment', CommentSchema);
 

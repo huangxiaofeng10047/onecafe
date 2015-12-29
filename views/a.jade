@@ -19,6 +19,7 @@ html
             p= val.content
         textarea
         input(type="hidden",class="articleId",value= articleJSON.id)
+        input(type="hidden",class="articleTitle",value= articleJSON.title)
         button(type="button") 评论
     include ./includes/footer.jade
   script(src="../assets/jquery/dist/jquery.min.js")

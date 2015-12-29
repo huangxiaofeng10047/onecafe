@@ -52,6 +52,7 @@ router.post('/a/:id', filter.authorizePOST, function(req, res, next) {
 
       var newComment = {
         id: lastId + 1,
+        title:req.body.title,
         content: req.body.content,
         article: req.params.id,
         author: req.session.user.username
