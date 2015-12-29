@@ -29,7 +29,6 @@ if (User.find(user, function(err, doc) {
     }
 
     // 添加到session
-    req.session.signed=true;
     req.session.user = user;
 
     res.json({

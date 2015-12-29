@@ -8,7 +8,6 @@ var flash = require('express-flash');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 
 // 带'install'参数启动则初始化MongoDB，完成后退出
@@ -40,7 +39,6 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users/:id', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,7 +5,7 @@ var User = require('../models/User');
 
 router.get('/reg', function(req, res, next) {
   //登陆状态下回到主页
-  if(req.session.signed){
+  if(req.session.user){
     res.redirect('/');
   }
 
@@ -16,10 +16,10 @@ router.get('/reg', function(req, res, next) {
 
 router.post('/reg', function(req, res, next) {
   //登陆状态下回到主页
-  if(req.session.signed){
+  if(req.session.user){
     res.redirect('/');
   }
-  
+
   var user = {
     username: req.body.username,
     password: req.body.password

@@ -11,7 +11,7 @@ router.get('/a/:id', filter.articleAuthorize, function(req, res, next) {
   var articleJSON = null;
   var commentJSON=null;
 
-  if (req.session.signed) {
+  if (req.session.user) {
     userInfo = {
       username: req.session.user.username
     };

@@ -6,7 +6,7 @@ var filter = require('../lib/filter');
 
 router.get('/u/:id',filter.userAuthorize, function(req, res, next) {
   var userInfo = null;
-  if (req.session.signed) {
+  if (req.session.user) {
     userInfo = {
       username: req.session.user.username
     };
@@ -17,16 +17,8 @@ router.get('/u/:id',filter.userAuthorize, function(req, res, next) {
    });
 });
 
-router.get('/u/:id/article',filter.userAuthorize, function(req, res, next) {
-   res.render('user/article',{
-     title:req.params.id
-   });
-});
-router.get('/u/:id/comment',filter.userAuthorize, function(req, res, next) {
-   res.render('user/comment',{
-     title:req.params.id
-   });
-});
+
+
 
 
 

@@ -7,13 +7,15 @@ var logout = require('./logout');
 var article = require('./article');
 var a = require('./a');
 var u = require('./u');
+var uarticle = require('./user/article');
+var ucomment = require('./user/comment');
 
 router.get('/', function(req, res, next) {
 
   var userInfo = null;
   var articleJSON = null;
 
-  if (req.session.signed) {
+  if (req.session.user) {
     userInfo = {
       username: req.session.user.username
     };
@@ -42,6 +44,8 @@ router.use(logout);
 router.use(article);
 router.use(a);
 router.use(u);
+router.use(uarticle);
+router.use(ucomment);
 
 
 
