@@ -6,6 +6,7 @@ var login = require('./login');
 var logout = require('./logout');
 var article = require('./article');
 var a = require('./a');
+var u = require('./u');
 
 router.get('/', function(req, res, next) {
 
@@ -40,6 +41,7 @@ router.use(login);
 router.use(logout);
 router.use(article);
 router.use(a);
+router.use(u);
 
 
 

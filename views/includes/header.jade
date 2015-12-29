@@ -9,6 +9,6 @@ header
         a(href="/reg") 注册
         a(href="/login") 登录  
       else
-        a 您好，#{userInfo.username}
+        a(href= "u/"+userInfo.username) 您好，#{userInfo.username}
         a(href="/article") 发布文章
         a.logout-btn(href="javascript:void(0)") 退出 
