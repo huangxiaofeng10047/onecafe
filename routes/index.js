@@ -46,46 +46,4 @@ router.use(a);
 
 
 
-/* GET article page. */
-router.get('/article', function(req, res, next) {
-
-  Article.find({}, function(err, doc) {
-
-    if (err) {
-      console.log(err);
-      return;
-    }
-
-
-    res.render('article', {
-      title: 'article',
-      articleJSON: doc
-    });
-  });
-
-});
-
-/* POST article page. */
-router.post('/article', function(req, res, next) {
-
-  if (!req.session.user) {
-    res.redirect('/article');
-  }
-
-  var article = {
-    author: req.session.user.username,
-    title: req.body.title,
-    content: req.body.content
-  };
-
-  Article.create(article, function(err, doc) {
-
-    res.redirect('/article');
-
-  });
-
-
-});
-
-
 module.exports = router;

@@ -1,0 +1,8 @@
+#main h2{
+  padding: 10px 0;
+  border-top: solid 2px #000;
+}
+#main textarea{
+  width: 400px;
+  height: 50px;
+}

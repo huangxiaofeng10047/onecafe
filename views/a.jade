@@ -6,15 +6,24 @@ html
     link(rel="stylesheet", href="../css/style.css")
     link(rel="stylesheet", href="../css/header.css")
     link(rel="stylesheet", href="../css/footer.css")
+    link(rel="stylesheet", href="../css/a.css")
     block link
   body
     include ./includes/header.jade
     #main
       .container
-          if(articleJSON)
-            div!= articleJSON.content  
+        div!= articleJSON.content  
+        h2  讨论区
+        div.comments
+          each val in commentJSON
+            p= val.content
+        textarea
+        input(type="hidden",class="articleId",value= articleJSON.id)
+        button(type="button") 评论
     include ./includes/footer.jade
   script(src="../assets/jquery/dist/jquery.min.js")
+  script(src="../js/a.js")
+  
 
       
       
