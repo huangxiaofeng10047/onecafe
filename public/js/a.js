@@ -21,8 +21,9 @@ $(function(window, undefined) {
   });
 
   $('.delComment').click(function () {
+    var $this=$(this);
     $.ajax({
-      url:'/a/'+$('.articleId').val()+'/'+$('.commentId').val(),
+      url:'/a/'+$('.articleId').val()+'/'+$this.next().val(),
       method:'delete',
       dataType:'json',
       success:function (data) {

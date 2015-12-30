@@ -95,7 +95,7 @@ router.delete('/a/:id', filter.authorizePOST, filter.articleAuthorize, function(
     },
     function(docs, callback) {
 
-      if (docs.length && docs[0].author===req.session.user.username) {
+      if (docs.length && docs[0].author === req.session.user.username) {
         article.delArticle(id, function() {
           res.json({
             success: 1
@@ -117,40 +117,42 @@ router.delete('/a/:id', filter.authorizePOST, filter.articleAuthorize, function(
 router.delete('/a/:id/:commentId', filter.authorizePOST, filter.articleAuthorize, function(req, res, next) {
 
   var id = req.params.commentId;
+  console.log(id);
 
 
-  // 用户删除权限判断
-    async.waterfall([
-      function(callback) {
+  async.waterfall([
+    function(callback) {
 
-        // 用户删除权限判断
-        Comment.find({
-          id: id
-        }, function(err, docs) {
-          callback(null, docs);
+      // 用户删除权限判断
+      Comment.find({
+        id: id
+      }, function(err, docs) {
+        if(err){
+          console.log(err);
+          return;
+        }
+        callback(null, docs);
+      });
+
+    },
+    function(docs, callback) {
+
+      if (docs.length && docs[0].author === req.session.user.username) {
+
+        comment.delComment(id, function() {
+          res.json({
+            success: 1
+          });
         });
 
-      },
-      function(docs, callback) {
-
-
-        if (docs.length && docs[0].author===req.session.user.username) {
-          console.log('aa');
-          
-          comment.delComment(id, function() {
-            res.json({
-              success: 1
-            });
-          });
-
-        } else {
-          res.json({
-            success: 0
-          });
-        }
-
+      } else {
+        res.json({
+          success: 0
+        });
       }
-    ]);
+
+    }
+  ]);
 
 
 
