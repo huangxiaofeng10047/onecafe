@@ -13,7 +13,8 @@ html
       .container
         ul 
           each val in articleList
-            li= val.title
+            li
+              a(href= "/a/"+val.id)= val.title
     include ../includes/footer.jade
   script(src="../../assets/jquery/dist/jquery.min.js")
   

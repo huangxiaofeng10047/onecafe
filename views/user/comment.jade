@@ -13,7 +13,8 @@ html
       .container
         ul 
           each val in commentList
-            h3= val.title
+           li
+             a(href= "/a/"+val.article)= val.title
     include ../includes/footer.jade
   script(src="../../assets/jquery/dist/jquery.min.js")
   
