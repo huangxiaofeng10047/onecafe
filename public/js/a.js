@@ -1,6 +1,42 @@
 $(function(window, undefined) {
+
   'use strict';
-  $('button').click(function () {
+
+  $('.delArticle').click(function () {
+
+    $.ajax({
+      url:'/a/'+$('.articleId').val(),
+      method:'delete',
+      dataType:'json',
+      success:function (data) {
+        if(data.success){
+          alert('删除成功');
+          window.location.href='/';
+        }else {
+          alert('删除失败');
+        }
+      }
+    });
+
+  });
+
+  $('.delComment').click(function () {
+    $.ajax({
+      url:'/a/'+$('.articleId').val()+'/'+$('.commentId').val(),
+      method:'delete',
+      dataType:'json',
+      success:function (data) {
+        if(data.success){
+          alert('删除成功');
+          window.location.href='/';
+        }else {
+          alert('删除失败');
+        }
+      }
+    });
+  });
+
+  $('.addComment').click(function () {
     $.ajax({
       url:'/a/'+$('.articleId').val(),
       method:'post',

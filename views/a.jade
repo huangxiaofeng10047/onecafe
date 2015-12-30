@@ -13,14 +13,17 @@ html
     #main
       .container
         div!= articleJSON.content  
+        button.delArticle(type="button") 删除文章
         h2  讨论区
         div.comments
           each val in commentJSON
             p= val.content
+            button.delComment(type="button") 删除
+            input.commentId(type="hidden",value= val.id)
         textarea
         input(type="hidden",class="articleId",value= articleJSON.id)
         input(type="hidden",class="articleTitle",value= articleJSON.title)
-        button(type="button") 评论
+        button.addComment(type="button") 评论
     include ./includes/footer.jade
   script(src="../assets/jquery/dist/jquery.min.js")
   script(src="../js/a.js")

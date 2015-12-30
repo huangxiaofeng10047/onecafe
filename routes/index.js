@@ -10,6 +10,22 @@ var u = require('./u');
 var uarticle = require('./user/article');
 var ucomment = require('./user/comment');
 
+
+/***********开发测试路由*****************/
+
+var User = require('../api/User');
+
+router.get('/test',function (req,res,next) {
+  var user=new User(req.session.user.username);
+  user.getArticleList(function (docs) {
+    console.log(docs);
+  });
+  res.render('test',{
+    title:'测试'
+  });
+});
+
+
 router.get('/', function(req, res, next) {
 
   var userInfo = null;

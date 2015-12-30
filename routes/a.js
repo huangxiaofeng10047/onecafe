@@ -4,12 +4,14 @@ var async = require('async');
 var Article = require('../models/Article');
 var filter = require('../lib/filter');
 var Comment = require('../models/Comment');
+var article = require('../api/article');
+var comment = require('../api/comment');
 
 router.get('/a/:id', filter.articleAuthorize, function(req, res, next) {
 
   var userInfo = null;
   var articleJSON = null;
-  var commentJSON=null;
+  var commentJSON = null;
 
   if (req.session.user) {
     userInfo = {
@@ -25,20 +27,23 @@ router.get('/a/:id', filter.articleAuthorize, function(req, res, next) {
       return;
     }
     Comment.find({
-      article:req.params.id
-    },function (err,commentDocs) {
-      if(err){console.log(err);return;}
+      article: req.params.id
+    }, function(err, commentDocs) {
+      if (err) {
+        console.log(err);
+        return;
+      }
       res.render('a', {
         'title': '文章',
         'userInfo': userInfo,
         'articleJSON': articleDocs[0],
-        'commentJSON':commentDocs
+        'commentJSON': commentDocs
       });
     });
   });
 });
 
-router.post('/a/:id', filter.authorizePOST, function(req, res, next) {
+router.post('/a/:id', filter.authorizePOST, filter.articleAuthorize, function(req, res, next) {
 
   async.waterfall([
     function(callback) {
@@ -52,7 +57,7 @@ router.post('/a/:id', filter.authorizePOST, function(req, res, next) {
 
       var newComment = {
         id: lastId + 1,
-        title:req.body.title,
+        title: req.body.title,
         content: req.body.content,
         article: req.params.id,
         author: req.session.user.username
@@ -72,5 +77,85 @@ router.post('/a/:id', filter.authorizePOST, function(req, res, next) {
   ]);
 
 });
+
+router.delete('/a/:id', filter.authorizePOST, filter.articleAuthorize, function(req, res, next) {
+
+  var id = req.params.id;
+
+  async.waterfall([
+    function(callback) {
+
+      // 用户删除权限判断
+      Article.find({
+        id: id
+      }, function(err, docs) {
+        callback(null, docs);
+      });
+
+    },
+    function(docs, callback) {
+
+      if (docs.length && docs[0].author===req.session.user.username) {
+        article.delArticle(id, function() {
+          res.json({
+            success: 1
+          });
+        });
+      } else {
+        res.json({
+          success: 0
+        });
+      }
+
+    }
+  ]);
+
+
+
+});
+
+router.delete('/a/:id/:commentId', filter.authorizePOST, filter.articleAuthorize, function(req, res, next) {
+
+  var id = req.params.commentId;
+
+
+  // 用户删除权限判断
+    async.waterfall([
+      function(callback) {
+
+        // 用户删除权限判断
+        Comment.find({
+          id: id
+        }, function(err, docs) {
+          callback(null, docs);
+        });
+
+      },
+      function(docs, callback) {
+
+
+        if (docs.length && docs[0].author===req.session.user.username) {
+          console.log('aa');
+          
+          comment.delComment(id, function() {
+            res.json({
+              success: 1
+            });
+          });
+
+        } else {
+          res.json({
+            success: 0
+          });
+        }
+
+      }
+    ]);
+
+
+
+});
+
+
 
 module.exports = router;

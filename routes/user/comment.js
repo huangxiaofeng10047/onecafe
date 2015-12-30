@@ -16,6 +16,7 @@ router.get('/u/:id/comment',filter.authorize,filter.userAuthorize, function(req,
         userInfo:userInfo,
         commentList:docs
       });
+      
     });
 
 });

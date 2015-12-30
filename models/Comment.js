@@ -48,6 +48,37 @@ CommentSchema.static('getCommentList', function(username,callback) {
 
 });
 
+// 删除评论
+CommentSchema.static('delComment', function(id,callback) {
+
+  return this.findOneAndRemove({
+    id:id
+  }, function(err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    callback();
+  });
+
+});
+
+// 删除所有评论
+CommentSchema.static('delComments', function(id,callback) {
+
+  return this.remove({
+    article:id
+  }, function(err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    callback();
+  });
+
+});
+
+
 var Comment = db.model('Comment', CommentSchema);
 
 module.exports = Comment;

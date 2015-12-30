@@ -16,6 +16,7 @@ var ArticleSchema = mongoose.Schema({
   }
 });
 
+//实现id自增
 ArticleSchema.static('getLastId', function(callback) {
 
   return this.find({}, function(err, docs) {
@@ -32,6 +33,7 @@ ArticleSchema.static('getLastId', function(callback) {
 
 });
 
+// 获取用户文章列表
 ArticleSchema.static('getArticleList', function(username,callback) {
 
   return this.find({
@@ -42,6 +44,21 @@ ArticleSchema.static('getArticleList', function(username,callback) {
       return;
     }
     callback(docs);
+  });
+
+});
+
+// 删除文章
+ArticleSchema.static('delArticle', function(id,callback) {
+
+  return this.findOneAndRemove({
+    id:id
+  }, function(err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    callback();
   });
 
 });
