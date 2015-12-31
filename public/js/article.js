@@ -6,12 +6,11 @@ $(function(window, undefined) {
     $.ajax({
       url: '/logout',
       method: 'get',
-      dataType: 'json',
-      success: function(data) {
-        if (data.success) {
-          alert('登出成功');
-          window.location.href = '/login';
-        }
+      dataType: 'json'
+    }).done(function(data) {
+      if (data.success) {
+        alert('登出成功');
+        window.location.href = '/login';
       }
     });
   });
@@ -39,14 +38,14 @@ $(function(window, undefined) {
       "url": '/article',
       "method": 'post',
       "data": {
-        title:$('#title').val(),
-        content:tinymce.EditorManager.get('editor').getContent()
+        title: $('#title').val(),
+        content: tinymce.EditorManager.get('editor').getContent()
       },
       "dataType": 'json',
       "success": function(data) {
         if (data.success) {
           alert('发布成功');
-          window.location.href='/';
+          window.location.href = '/';
         } else {
           alert('发布失败');
         }

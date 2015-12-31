@@ -3,7 +3,6 @@ var router = express.Router();
 var filter = require('../lib/filter');
 var Article = require('../models/Article');
 
-
 router.get('/article', filter.authorize, function(req, res, next) {
 
   var userInfo = {
@@ -17,7 +16,6 @@ router.get('/article', filter.authorize, function(req, res, next) {
 });
 
 router.post('/article', filter.authorize, function(req, res, next) {
-
 
   Article.getLastId(function(lastId) {
 
@@ -36,15 +34,6 @@ router.post('/article', filter.authorize, function(req, res, next) {
     });
 
   });
-
-
-
-
-
-
-
-
-
 
 });
 
