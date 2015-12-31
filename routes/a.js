@@ -45,36 +45,25 @@ router.get('/a/:id', filter.articleAuthorize, function(req, res, next) {
 
 router.post('/a/:id', filter.authorizePOST, filter.articleAuthorize, function(req, res, next) {
 
-  async.waterfall([
-    function(callback) {
+  Comment.getLastId(function(lastId) {
 
-      Comment.getLastId(function(lastId) {
-        callback(null, lastId);
+    var newComment = {
+      id: lastId + 1,
+      title: req.body.title,
+      content: req.body.content,
+      article: req.params.id,
+      author: req.session.user.username
+    };
+    Comment.create(newComment).then(function(doc) {
+      res.json({
+        success: 1
       });
+    }).catch(function(err) {
+      console.log('err:', err);
+    });
 
-    },
-    function(lastId, callback) {
+  });
 
-      var newComment = {
-        id: lastId + 1,
-        title: req.body.title,
-        content: req.body.content,
-        article: req.params.id,
-        author: req.session.user.username
-      };
-
-      Comment.create(newComment, function(err, doc) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        res.json({
-          success: 1
-        });
-      });
-    }
-
-  ]);
 
 });
 
@@ -82,34 +71,21 @@ router.delete('/a/:id', filter.authorizePOST, filter.articleAuthorize, function(
 
   var id = req.params.id;
 
-  async.waterfall([
-    function(callback) {
-
-      // 用户删除权限判断
-      Article.find({
-        id: id
-      }, function(err, docs) {
-        callback(null, docs);
-      });
-
-    },
-    function(docs, callback) {
-
-      if (docs.length && docs[0].author === req.session.user.username) {
-        article.delArticle(id, function() {
-          res.json({
-            success: 1
-          });
-        });
-      } else {
+  Article.find({
+    id: id
+  }).then(function(docs) {
+    if (docs.length && docs[0].author === req.session.user.username) {
+      article.delArticle(id, function() {
         res.json({
-          success: 0
+          success: 1
         });
-      }
-
+      });
+    } else {
+      res.json({
+        success: 0
+      });
     }
-  ]);
-
+  });
 
 
 });
@@ -117,43 +93,22 @@ router.delete('/a/:id', filter.authorizePOST, filter.articleAuthorize, function(
 router.delete('/a/:id/:commentId', filter.authorizePOST, filter.articleAuthorize, function(req, res, next) {
 
   var id = req.params.commentId;
-  console.log(id);
 
-
-  async.waterfall([
-    function(callback) {
-
-      // 用户删除权限判断
-      Comment.find({
-        id: id
-      }, function(err, docs) {
-        if(err){
-          console.log(err);
-          return;
-        }
-        callback(null, docs);
-      });
-
-    },
-    function(docs, callback) {
-
-      if (docs.length && docs[0].author === req.session.user.username) {
-
-        comment.delComment(id, function() {
-          res.json({
-            success: 1
-          });
-        });
-
-      } else {
+  Comment.find({
+    id: id
+  }).then(function(docs) {
+    if (docs.length && docs[0].author === req.session.user.username) {
+      comment.delComment(id, function() {
         res.json({
-          success: 0
+          success: 1
         });
-      }
-
+      });
+    } else {
+      res.json({
+        success: 0
+      });
     }
-  ]);
-
+  });
 
 
 });

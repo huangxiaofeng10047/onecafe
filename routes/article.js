@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var filter = require('../lib/filter');
 var Article = require('../models/Article');
-var async = require('async');
 
-router.get('/article',filter.authorize,function(req, res, next) {
+
+router.get('/article', filter.authorize, function(req, res, next) {
 
   var userInfo = {
     username: req.session.user.username
@@ -16,36 +16,31 @@ router.get('/article',filter.authorize,function(req, res, next) {
 
 });
 
-router.post('/article',filter.authorize,function(req, res, next) {
+router.post('/article', filter.authorize, function(req, res, next) {
 
-  async.waterfall([
-    function (callback) {
 
-      Article.getLastId(function (lastId) {
-        callback(null,lastId);
+  Article.getLastId(function(lastId) {
+
+    var newArticle = {
+      id: lastId + 1,
+      title: req.body.title,
+      content: req.body.content,
+      author: req.session.user.username
+    };
+    Article.create(newArticle).then(function(doc) {
+      res.json({
+        success: 1
       });
-      
-    },function (lastId,callback) {
+    }).catch(function(err) {
+      console.log('err:', err);
+    });
 
-      var newArticle = {
-        id:lastId+1,
-        title: req.body.title,
-        content: req.body.content,
-        author: req.session.user.username
-      };
+  });
 
-      Article.create(newArticle, function(err, doc) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        res.json({
-          success: 1
-        });
-      });
-    }
 
-  ]);
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.Promise=require('bluebird');
 var db = require('./db');
 
 var CommentSchema = mongoose.Schema({
