@@ -22,7 +22,8 @@ router.post('/reg', function(req, res, next) {
 
   var user = {
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    authority:'common'
   };
   // 添加新用户
   User.create(user, function(err, doc) {

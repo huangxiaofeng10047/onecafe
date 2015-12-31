@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title= title
+  body
+      a(href="/admin")  首页
+      if(userInfo)
+        a(href="javascript:void(0)")= '您好，'+userInfo.username
+        a.logout-btn(href="javascript:void(0)")  退出
+      h3  这是一个简单主页。
+  script(src="../assets/jquery/dist/jquery.min.js")
+  script(src="../js/admin/logout.js")

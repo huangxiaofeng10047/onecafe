@@ -16,7 +16,7 @@ var user = {
   password: req.body.password
 };
 
-// 添加新用户
+// 查找用户并赋予登录权限
 if (User.find(user, function(err, doc) {
     if (err) {
       console.log(err);

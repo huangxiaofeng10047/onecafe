@@ -7,6 +7,9 @@ var UserSchema = mongoose.Schema({
   },
   password: {
     type: String
+  },
+  authority:{
+    type:String
   }
 });
 

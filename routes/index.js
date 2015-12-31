@@ -9,6 +9,7 @@ var a = require('./a');
 var u = require('./u');
 var uarticle = require('./user/article');
 var ucomment = require('./user/comment');
+var admin = require('./admin');
 
 
 /***********开发测试路由*****************/
@@ -62,6 +63,7 @@ router.use(a);
 router.use(u);
 router.use(uarticle);
 router.use(ucomment);
+router.use(admin);
 
 
 
