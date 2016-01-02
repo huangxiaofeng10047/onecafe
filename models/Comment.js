@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.Promise=require('bluebird');
-var db = require('./db');
+var db = require('../lib/db');
 
 var CommentSchema = mongoose.Schema({
   id: {

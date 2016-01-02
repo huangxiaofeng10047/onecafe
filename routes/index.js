@@ -1,72 +1,47 @@
 var express = require('express');
 var router = express.Router();
-var Article = require('../models/Article');
-var reg = require('./reg');
-var login = require('./login');
-var logout = require('./logout');
-var article = require('./article');
-var a = require('./a');
-var u = require('./u');
-var uarticle = require('./user/article');
-var ucomment = require('./user/comment');
-var admin = require('./admin');
+
+var filter = require('./filter');
+var article = require('../api/article');
+var comment = require('../api/comment');
+var user = require('../api/user');
+var index = require('../api/index');
 
 
-/***********开发测试路由*****************/
+// 主页
+router.get('/', index.getIndex);
 
-var User = require('../api/User');
+// 普通用户
+router.get('/reg', user.getReg);
+router.post('/reg', user.postReg);
+router.get('/login', user.getLogin);
+router.post('/login', user.postLogin);
+router.get('/logout', user.getLogout);
 
-router.get('/test',function (req,res,next) {
-  var user=new User(req.session.user.username);
-  user.getArticleList(function (docs) {
-    console.log(docs);
-  });
-  res.render('test',{
-    title:'测试'
-  });
-});
+// 系统管理员
+router.get('/admin', user.getAdmin);
+router.get('/admin/login', user.getAdminLogin);
+router.post('/admin/login', user.postAdminLogin);
+router.get('/admin/logout', user.getAdminLogout);
 
+// 用户主页
+router.get('/u/:id', filter.userAuthorize, user.getUserHome);
 
-router.get('/', function(req, res, next) {
+// 文章列表页
+router.get('/u/:id/article',filter.authorize, filter.userAuthorize, article.getArticleList);
 
-  var userInfo = null;
-  var articleJSON = null;
+// 评论列表页
+router.get('/u/:id/comment', filter.authorize,filter.userAuthorize, comment.getCommentList);
 
-  if (req.session.user) {
-    userInfo = {
-      username: req.session.user.username
-    };
-  }
+// 文章发布页
+router.get('/article', filter.authorize, article.getCreateArticle);
+router.post('/article', filter.authorize, article.createArticle);
 
-
-  Article.find({}, function(err, docs) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    res.render('index', {
-      'title': 'MiCo首页',
-      'userInfo': userInfo,
-      'articleJSON': docs
-
-    });
-
-  });
-
-});
-
-router.use(reg);
-router.use(login);
-router.use(logout);
-router.use(article);
-router.use(a);
-router.use(u);
-router.use(uarticle);
-router.use(ucomment);
-router.use(admin);
-
-
-
+// 文章详情页
+router.get('/a/:id', filter.articleAuthorize, article.getArticle);
+router.post('/a/:id', filter.authorizePOST, filter.articleAuthorize, comment.createComment);
+router.delete('/a/:id', filter.authorizePOST, filter.articleAuthorize, article.delArticle);
+router.delete('/a/:id/:commentId', filter.authorizePOST, filter.articleAuthorize, comment.delComment);
 
 
 
