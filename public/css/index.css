@@ -1,4 +1,6 @@
-
+#main .center nav{
+  border-bottom: solid #ddd 1px;
+}
 #main .center nav a{
   width: 100px;
   padding: 7px 15px;
@@ -7,8 +9,10 @@
   height: 37px;
   line-height: 23px;
   color: #333;
-  background-color: #ddd;
+  background-color: #f3f3f3;
   border: 1px solid #ddd;
+  margin-bottom: -1px;
+  margin-right: -1px;
 }
 #main .center nav .nav-active{
   background-color: #fff;

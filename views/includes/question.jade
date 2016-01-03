@@ -1,0 +1,20 @@
+.question-lists 
+  each val in articleJSON
+    section 
+      .related
+        span.vote-btn 0
+          br
+          small 投票
+        span.answer-btn 0
+          br
+          small 回答
+        span.view-btn 0
+          br
+          small 浏览
+      .summary
+        span.author    
+          a(href="")  byronvis
+          small   5分钟前发表了问题
+        h3
+          a(href="a/#{val.id}")= val.title
+      

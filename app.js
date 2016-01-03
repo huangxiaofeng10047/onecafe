@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var session = require('express-session');
 var sessionstore = require('sessionstore');
-var flash = require('express-flash');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
@@ -35,7 +34,6 @@ app.use(session({
   resave:false,
   saveUninitialized:false
 }));
-app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

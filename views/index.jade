@@ -1,24 +1,17 @@
 extends layout
 block link
   link(rel="stylesheet", href="css/index.css")
-block search
-  form.l(action="/search")
-    span(class="glyphicon glyphicon-search")
-    input(type="text",placeholder="请输入关键字搜索")
+  link(rel="stylesheet", href="css/question.css")
 block main
   .container
     .row
       .center(class="col-xs-9")
         nav
             a.nav-active(href="") 最新的
-            a(href="") 热门的
-        .article-lists 
-          if(articleJSON)
-            ul 
-             each val in articleJSON
-                li 
-                  a(href="a/#{val.id}")= val.title
+            a(href="") 热门的      
+        include ./includes/question.jade
       aside(class="col-xs-3")
 block scripts      
+  script(src="js/header.js")
   script(src="js/index.js")
   

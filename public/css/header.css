@@ -10,8 +10,10 @@ header .logo {
   padding: 0 30px;
   text-align: center;
   font-size: 36px;
+  float: left;
 }
 header form {
+  float: left;
   height: 34px;
   margin: 10px 0;
   background-color: #3F4F49;
@@ -23,15 +25,41 @@ header form span {
   color: #7D938A;
 }
 header form input {
+  float: left;
   height: 34px;
+  width: 310px;
+  text-indent: 15px;
   border: none;
   background-color: transparent;
   color: #fff;
 }
-header .r a {
+header ul{
+  float: left;
+  padding-left: 10px;
+}
+header ul li{
+  float: left;
+}
+header ul li a{
+  color: #A4BFB4;
   height: 30px;
   line-height: 30px;
-  display: inline-block;
+  display: block;
+  margin: 12px 0;
+  font-size: 16px;
+  padding:0 10px;
+  border-radius: 3px;
+}
+header ul li a:hover{
+  color: #A4BFB4;
+  background-color: #3F4F49;
+}
+
+header .r > a {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  display: block;
   margin: 12px 0;
   font-size: 16px;
   color: #fff;
@@ -39,4 +67,47 @@ header .r a {
   margin-left: 5px;
   border-radius: 3px;
   background-color: #009a61;
+}
+header .r div{
+  float: left;
+}
+header .r div a{
+  color: #A4BFB4;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  margin-top: 12px;
+  font-size: 16px;
+  padding:0 10px;
+  border-radius: 3px;
+}
+header .r div:first-child a{
+background-color: #009a61;
+color: #fff;
+margin-right: 10px;
+}
+header .r div:first-child a:hover{
+  background-color: #009a61;
+  color: #fff;
+}
+header .r .dropdown a span {
+  top: 5px;
+  left: -50px;
+  font-size: 18px;
+}
+
+header .r .dropdown >a {
+  padding-left: 30px;
+  width: 120px;
+}
+header  .dropdown-menu{
+  min-width: 120px;
+  margin-top: 0;
+}
+header .r .dropdown-menu li{
+  float: none;
+}
+header .r .dropdown-menu li a {
+  color: #333;
+  padding-left: 15px;
 }

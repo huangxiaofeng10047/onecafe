@@ -20,6 +20,7 @@ var CommentSchema = mongoose.Schema({
   }
 });
 
+//实现自增
 CommentSchema.static('getLastId', function(callback) {
 
   return this.find({}, function(err, docs) {
@@ -35,6 +36,7 @@ CommentSchema.static('getLastId', function(callback) {
   });
 
 });
+// 获取评论列表
 CommentSchema.static('getCommentList', function(username,callback) {
 
   return this.find({
@@ -48,8 +50,7 @@ CommentSchema.static('getCommentList', function(username,callback) {
   });
 
 });
-
-// 删除评论
+// 删除单个评论
 CommentSchema.static('delComment', function(id,callback) {
 
   return this.findOneAndRemove({
@@ -63,8 +64,7 @@ CommentSchema.static('delComment', function(id,callback) {
   });
 
 });
-
-// 删除所有评论
+// 删除文章所有评论
 CommentSchema.static('delComments', function(id,callback) {
 
   return this.remove({

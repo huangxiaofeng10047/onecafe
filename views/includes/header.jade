@@ -1,14 +1,28 @@
 header
   .container
     .l
-      a.l(href="/",class="logo") MiCo
-      block search
-    
+      a(href="/",class="logo") MiCo
+      form(action="/search")
+        input(type="text",placeholder="请输入关键字搜索")
+        span(class="glyphicon glyphicon-search")
+      ul
+        li
+          a(href="")  问答  
+        li
+          a(href="")  文章
     .r
-      if(!userInfo)
+      if(!user)
         a(href="/reg") 注册
         a(href="/login") 登录  
       else
-        a(href= "/u/"+userInfo.username) 您好，#{userInfo.username}
-        a(href="/article") 发布文章
-        a.logout-btn(href="javascript:void(0)") 退出 
+        div
+          a(href="/article") 提问
+        .dropdown
+          a(class="dropdown-toggle",href="")= user.username
+            span(class="glyphicon glyphicon-user") 
+          ul.dropdown-menu
+            li
+              a(href= "/u/"+user.username) 我的主页
+            li
+              a.logout-btn(href="javascript:void(0)") 退出 
+            
