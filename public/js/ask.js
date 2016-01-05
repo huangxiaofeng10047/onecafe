@@ -9,7 +9,6 @@ $(function(window, undefined) {
       dataType: 'json'
     }).done(function(data) {
       if (data.success) {
-        alert('登出成功');
         window.location.href = '/login';
       }
     });
@@ -35,7 +34,7 @@ $(function(window, undefined) {
   $('.form-editor button').click(function() {
 
     $.ajax({
-      "url": '/question',
+      "url": '/ask',
       "method": 'post',
       "data": {
         title: $('#title').val(),
@@ -44,7 +43,6 @@ $(function(window, undefined) {
       "dataType": 'json',
       "success": function(data) {
         if (data.success) {
-          alert('发布成功');
           window.location.href = '/';
         } else {
           alert('发布失败');

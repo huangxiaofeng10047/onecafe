@@ -3,7 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='../assets/bootstrap/dist/css/bootstrap.min.css')
-    link(rel="stylesheet", href="../css/style.css")
+    link(rel="stylesheet", href="../css/base.css")
     link(rel="stylesheet", href="../css/header.css")
     link(rel="stylesheet", href="../css/footer.css")
     link(rel="stylesheet", href="../css/q.css")
@@ -25,8 +25,10 @@ html
         input(type="hidden",class="questionTitle",value= questionJSON.title)
         button.addComment(type="button") 评论
     include ./includes/footer.jade
-  script(src="../assets/jquery/dist/jquery.min.js")
-  script(src="../js/q.js")
+    script(src="../assets/jquery/dist/jquery.min.js")
+    script(src="../assets/bootstrap/dist/js/bootstrap.min.js")
+    script(src="../js/header.js")
+    script(src="js/q.js")
   
 
       

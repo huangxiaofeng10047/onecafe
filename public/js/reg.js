@@ -14,7 +14,6 @@ $(function(window, undefined) {
       dataType: 'json'
     }).done(function(data) {
       if (data.success) {
-        alert('注册成功');
         window.location.href = '/login';
       }
     });

@@ -34,8 +34,8 @@ router.get('/u/:id/question',filter.authorize, filter.userAuthorize, question.ge
 router.get('/u/:id/comment', filter.authorize,filter.userAuthorize, comment.getCommentList);
 
 // 文章发布页
-router.get('/question', filter.authorize, question.getCreateQuestion);
-router.post('/question', filter.authorize, question.createQuestion);
+router.get('/ask', filter.authorize, question.askQuestion);
+router.post('/ask', filter.authorize, question.createQuestion);
 
 // 文章详情页
 router.get('/q/:id', filter.QuestionAuthorize, question.getQuestion);

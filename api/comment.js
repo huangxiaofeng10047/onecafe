@@ -43,7 +43,7 @@ module.exports = {
     });
   },
   getCommentList: function(req, res, next) {
-    var userInfo = {
+    var user = {
       username: req.session.user.username
     };
 
@@ -51,7 +51,7 @@ module.exports = {
 
       res.render('user/comment', {
         title: req.params.id,
-        userInfo: userInfo,
+        user: user,
         commentList: docs
       });
 

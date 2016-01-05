@@ -10,7 +10,6 @@ $(function(window, undefined) {
       dataType: 'json'
     }).done(function(data) {
       if (data.success) {
-        alert('删除成功');
         window.location.href = '/';
       } else {
         alert('删除失败');
@@ -27,7 +26,6 @@ $(function(window, undefined) {
       dataType: 'json',
       success: function(data) {
         if (data.success) {
-          alert('删除成功');
           window.location.href = '/';
         } else {
           alert('删除失败');
@@ -47,7 +45,6 @@ $(function(window, undefined) {
       dataType: 'json',
       success: function(data) {
         if (data.success) {
-          alert('评论成功');
           var comment = $('<p>' + $('textarea').val() + '</p>');
           $('.comments').append(comment);
         } else {

@@ -128,12 +128,12 @@ module.exports = {
     });
   },
   getUserHome:function (req,res,next) {
-    var userInfo = {
+    var user = {
       username: req.session.user.username
     };
-    res.render('u', {
+    res.render('user/u', {
       title: req.params.id,
-      userInfo: userInfo
+      user: user
     });
   }
 

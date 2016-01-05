@@ -3,10 +3,9 @@ html
   head
     title= title
     link(rel='stylesheet', href='../../assets/bootstrap/dist/css/bootstrap.min.css')
-    link(rel="stylesheet", href="../../css/style.css")
+    link(rel="stylesheet", href="../../css/base.css")
     link(rel="stylesheet", href="../../css/header.css")
     link(rel="stylesheet", href="../../css/footer.css")
-    block link
   body
     include ../includes/header.jade
     #main
@@ -14,10 +13,11 @@ html
         ul 
           each val in commentList
            li
-             a(href= "/a/"+val.article)= val.title
+             a(href= "/q/"+val.question)= val.title
     include ../includes/footer.jade
-  script(src="../../assets/jquery/dist/jquery.min.js")
-  
+    script(src="../../assets/jquery/dist/jquery.min.js")
+    script(src="../../assets/bootstrap/dist/js/bootstrap.min.js")
+    script(src="../../js/header.js")
 
       
       

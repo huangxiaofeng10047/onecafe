@@ -3,11 +3,11 @@ var Comment = require('../models/Comment');
 
 module.exports = {
 
-  getCreateQuestion:function (req,res,next) {
+  askQuestion:function (req,res,next) {
     var user = {
       username: req.session.user.username
     };
-    res.render('question', {
+    res.render('ask', {
       'title': '发布文章',
       'user': user,
     });
@@ -33,12 +33,12 @@ module.exports = {
   },
   getQuestion: function(req, res, next) {
 
-    var userInfo = null;
+    var user = null;
     var questionJSON = null;
     var commentJSON = null;
 
     if (req.session.user) {
-      userInfo = {
+      user = {
         username: req.session.user.username
       };
     }
@@ -58,7 +58,7 @@ module.exports = {
         }
         res.render('q', {
           'title': '文章',
-          'userInfo': userInfo,
+          'user': user,
           'questionJSON': questionDocs[0],
           'commentJSON': commentDocs
         });
@@ -93,15 +93,15 @@ module.exports = {
   },
   getQuestionList:function (req,res,next) {
 
-    var userInfo={
+    var user={
       username:req.session.user.username
     };
 
-    Question.getQuestionList(userInfo.username,function (docs) {
+    Question.getQuestionList(user.username,function (docs) {
 
       res.render('user/question',{
         title:req.params.id,
-        userInfo:userInfo,
+        user:user,
         questionList:docs
       });
 
