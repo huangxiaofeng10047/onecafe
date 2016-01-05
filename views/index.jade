@@ -11,6 +11,12 @@ block main
             a(href="") 热门的      
         include ./includes/question.jade
       aside(class="col-xs-3")
+        if(user)
+          ul.side-navbar
+            li
+              a(href= "/u/"+user.username+"/question")  我的问题
+            li
+              a(href= "/u/"+user.username+"/comment")  我的评论 
 block scripts      
   script(src="js/header.js")
-  
+  script(src="js/includes/question.js")

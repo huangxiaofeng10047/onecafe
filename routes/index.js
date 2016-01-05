@@ -25,7 +25,7 @@ router.post('/admin/login', user.postAdminLogin);
 router.get('/admin/logout', user.getAdminLogout);
 
 // 用户主页
-router.get('/u/:id', filter.userAuthorize, user.getUserHome);
+router.get('/u/:id', user.getUserHome);
 
 // 文章列表页
 router.get('/u/:id/question',filter.authorize, filter.userAuthorize, question.getQuestionList);

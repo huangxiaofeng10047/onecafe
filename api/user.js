@@ -2,9 +2,9 @@ var User = require('../models/User');
 
 module.exports = {
 
-  getReg:function (req,res,next) {
+  getReg: function(req, res, next) {
     //登陆状态下回到主页
-    if(req.session.user){
+    if (req.session.user) {
       res.redirect('/');
     }
 
@@ -12,27 +12,27 @@ module.exports = {
       title: '用户注册'
     });
   },
-  postReg:function (req,res,next) {
+  postReg: function(req, res, next) {
     //登陆状态下回到主页
-    if(req.session.user){
+    if (req.session.user) {
       res.redirect('/');
     }
 
     var user = {
       username: req.body.username,
       password: req.body.password,
-      authority:'common'
+      authority: 'common'
     };
     // 添加新用户
     User.create(user, function(err, doc) {
       if (err) {
         console.log(err);
         res.json({
-          success:0
+          success: 0
         });
       }
       res.json({
-        success:1
+        success: 1
       });
     });
 
@@ -69,7 +69,7 @@ module.exports = {
 
       }));
   },
-  getLogout:function (req,res,next) {
+  getLogout: function(req, res, next) {
     req.session.destroy(function(err) {
       if (err) {
         console.log(err);
@@ -127,13 +127,14 @@ module.exports = {
       });
     });
   },
-  getUserHome:function (req,res,next) {
+  getUserHome: function(req, res, next) {
+
     var user = {
       username: req.session.user.username
     };
     res.render('user/u', {
       title: req.params.id,
-      user: user
+      user: req.params.id === user.username ? user : null
     });
   }
 

@@ -13,8 +13,8 @@
           small 浏览
       .summary
         span.author    
-          a(href="")  byronvis
-          small   5分钟前发表了问题
+          a(href= '/u/'+val.author)=  val.author 
+          small.time(data-created= val.postDate)   5分钟前发表了问题
         h3
           a(href="q/#{val.id}")= val.title
       

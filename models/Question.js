@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.Promise=require('bluebird');
+mongoose.Promise = require('bluebird');
 var db = require('../lib/db');
 
 var QuestionSchema = mongoose.Schema({
@@ -14,7 +14,11 @@ var QuestionSchema = mongoose.Schema({
   },
   author: {
     type: String
-  }
+  },
+  postDate: {
+    type: Date,
+    default: Date.now
+  },
 });
 
 //实现id自增
@@ -35,10 +39,10 @@ QuestionSchema.static('getLastId', function(callback) {
 });
 
 // 获取用户文章列表
-QuestionSchema.static('getQuestionList', function(username,callback) {
+QuestionSchema.static('getQuestionList', function(username, callback) {
 
   return this.find({
-    author:username
+    author: username
   }, function(err, docs) {
     if (err) {
       console.log(err);
@@ -50,10 +54,10 @@ QuestionSchema.static('getQuestionList', function(username,callback) {
 });
 
 // 删除文章
-QuestionSchema.static('delQuestion', function(id,callback) {
+QuestionSchema.static('delQuestion', function(id, callback) {
 
   return this.findOneAndRemove({
-    id:id
+    id: id
   }, function(err) {
     if (err) {
       console.log(err);

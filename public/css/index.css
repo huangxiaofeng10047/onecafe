@@ -18,3 +18,14 @@
   background-color: #fff;
   border-bottom: transparent;
 }
+
+aside .side-navbar  li a{
+  padding: 6px 10px;
+  display: block;
+  color: #666;
+  font-weight: normal;
+}
+aside .side-navbar  li a:hover{
+  color: #008E59;
+  background-color: #F6F6F6;
+}
