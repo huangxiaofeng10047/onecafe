@@ -35,7 +35,7 @@ $(function(window, undefined) {
   $('.form-editor button').click(function() {
 
     $.ajax({
-      "url": '/article',
+      "url": '/question',
       "method": 'post',
       "data": {
         title: $('#title').val(),

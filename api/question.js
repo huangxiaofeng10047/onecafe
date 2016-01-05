@@ -1,27 +1,27 @@
-var Article = require('../models/Article');
+var Question = require('../models/Question');
 var Comment = require('../models/Comment');
 
 module.exports = {
 
-  getCreateArticle:function (req,res,next) {
-    var userInfo = {
+  getCreateQuestion:function (req,res,next) {
+    var user = {
       username: req.session.user.username
     };
-    res.render('article', {
+    res.render('question', {
       'title': '发布文章',
-      'userInfo': userInfo,
+      'user': user,
     });
   },
-  createArticle:function (req,res,next) {
-    Article.getLastId(function(lastId) {
+  createQuestion:function (req,res,next) {
+    Question.getLastId(function(lastId) {
 
-      var newArticle = {
+      var newQuestion = {
         id: lastId + 1,
         title: req.body.title,
         content: req.body.content,
         author: req.session.user.username
       };
-      Article.create(newArticle).then(function(doc) {
+      Question.create(newQuestion).then(function(doc) {
         res.json({
           success: 1
         });
@@ -31,10 +31,10 @@ module.exports = {
 
     });
   },
-  getArticle: function(req, res, next) {
+  getQuestion: function(req, res, next) {
 
     var userInfo = null;
-    var articleJSON = null;
+    var questionJSON = null;
     var commentJSON = null;
 
     if (req.session.user) {
@@ -42,39 +42,39 @@ module.exports = {
         username: req.session.user.username
       };
     }
-    Article.find({
+    Question.find({
       id: req.params.id
-    }, function(err, articleDocs) {
+    }, function(err, questionDocs) {
       if (err) {
         console.log(err);
         return;
       }
       Comment.find({
-        article: req.params.id
+        question: req.params.id
       }, function(err, commentDocs) {
         if (err) {
           console.log(err);
           return;
         }
-        res.render('a', {
+        res.render('q', {
           'title': '文章',
           'userInfo': userInfo,
-          'articleJSON': articleDocs[0],
+          'questionJSON': questionDocs[0],
           'commentJSON': commentDocs
         });
       });
     });
   },
-  delArticle: function(req, res, next) {
+  delQuestion: function(req, res, next) {
 
     var id = req.params.id;
 
-    Article.find({
+    Question.find({
       id: id
     }).then(function(docs) {
       if (docs.length && docs[0].author === req.session.user.username) {
 
-        Article.delArticle(id, function() {
+        Question.delQuestion(id, function() {
           Comment.delComments(id, function() {
 
             res.json({
@@ -91,18 +91,18 @@ module.exports = {
       }
     });
   },
-  getArticleList:function (req,res,next) {
+  getQuestionList:function (req,res,next) {
 
     var userInfo={
       username:req.session.user.username
     };
 
-    Article.getArticleList(userInfo.username,function (docs) {
-      
-      res.render('user/article',{
+    Question.getQuestionList(userInfo.username,function (docs) {
+
+      res.render('user/question',{
         title:req.params.id,
         userInfo:userInfo,
-        articleList:docs
+        questionList:docs
       });
 
     });

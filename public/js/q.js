@@ -2,10 +2,10 @@ $(function(window, undefined) {
 
   'use strict';
 
-  $('.delArticle').click(function() {
+  $('.delQuestion').click(function() {
 
     $.ajax({
-      url: '/a/' + $('.articleId').val(),
+      url: '/q/' + $('.questionId').val(),
       method: 'delete',
       dataType: 'json'
     }).done(function(data) {
@@ -22,7 +22,7 @@ $(function(window, undefined) {
   $('.delComment').click(function() {
     var $this = $(this);
     $.ajax({
-      url: '/a/' + $('.articleId').val() + '/' + $this.next().val(),
+      url: '/q/' + $('.questionId').val() + '/' + $this.next().val(),
       method: 'delete',
       dataType: 'json',
       success: function(data) {
@@ -38,10 +38,10 @@ $(function(window, undefined) {
 
   $('.addComment').click(function() {
     $.ajax({
-      url: '/a/' + $('.articleId').val(),
+      url: '/q/' + $('.questionId').val(),
       method: 'post',
       data: {
-        title: '评论：' + $('.articleTitle').val(),
+        title: '评论：' + $('.questionTitle').val(),
         content: $('textarea').val()
       },
       dataType: 'json',

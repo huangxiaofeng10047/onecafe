@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.Promise=require('bluebird');
 var db = require('../lib/db');
 
-var ArticleSchema = mongoose.Schema({
+var QuestionSchema = mongoose.Schema({
   id: {
     type: Number
   },
@@ -18,7 +18,7 @@ var ArticleSchema = mongoose.Schema({
 });
 
 //实现id自增
-ArticleSchema.static('getLastId', function(callback) {
+QuestionSchema.static('getLastId', function(callback) {
 
   return this.find({}, function(err, docs) {
     if (err) {
@@ -35,7 +35,7 @@ ArticleSchema.static('getLastId', function(callback) {
 });
 
 // 获取用户文章列表
-ArticleSchema.static('getArticleList', function(username,callback) {
+QuestionSchema.static('getQuestionList', function(username,callback) {
 
   return this.find({
     author:username
@@ -50,7 +50,7 @@ ArticleSchema.static('getArticleList', function(username,callback) {
 });
 
 // 删除文章
-ArticleSchema.static('delArticle', function(id,callback) {
+QuestionSchema.static('delQuestion', function(id,callback) {
 
   return this.findOneAndRemove({
     id:id
@@ -64,6 +64,6 @@ ArticleSchema.static('delArticle', function(id,callback) {
 
 });
 
-var Article = db.model('Article', ArticleSchema);
+var Question = db.model('Question', QuestionSchema);
 
-module.exports = Article;
+module.exports = Question;

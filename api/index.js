@@ -1,11 +1,11 @@
-var Article = require('../models/Article');
+var Question = require('../models/Question');
 
 module.exports={
   getIndex:function (req,res,next) {
 
-    var articleJSON = null;
+    var questionJSON = null;
 
-    Article.find({},null,{
+    Question.find({},null,{
       sort:{
         '_id':-1
       }
@@ -17,7 +17,7 @@ module.exports={
       res.render('index', {
         'title': 'MiCo首页',
         'user': req.session.user,
-        'articleJSON': docs
+        'questionJSON': docs
       });
 
     });

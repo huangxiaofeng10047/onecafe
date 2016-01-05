@@ -12,9 +12,9 @@ html
     #main
       .container
         ul 
-          each val in articleList
+          each val in questionList
             li
-              a(href= "/a/"+val.id)= val.title
+              a(href= "/q/"+val.id)= val.title
     include ../includes/footer.jade
   script(src="../../assets/jquery/dist/jquery.min.js")
   

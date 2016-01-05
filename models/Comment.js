@@ -12,7 +12,7 @@ var CommentSchema = mongoose.Schema({
   content: {
     type: String
   },
-  article:{
+  question:{
     type:String
   },
   author: {

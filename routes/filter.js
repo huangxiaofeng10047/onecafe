@@ -1,4 +1,4 @@
-var Article = require('../models/Article');
+var Question = require('../models/Question');
 var User = require('../models/User');
 
 exports.authorize = function(req, res, next) {
@@ -17,11 +17,11 @@ exports.authorizePOST = function(req, res, next) {
     next();
   }
 };
-exports.articleAuthorize = function(req, res, next) {
+exports.QuestionAuthorize = function(req, res, next) {
 
-  var articleId=req.params.id;
-  Article.find({
-    id:articleId
+  var QuestionId=req.params.id;
+  Question.find({
+    id:QuestionId
   },function (err,doc) {
     if(doc.length){
       next();

@@ -1,5 +1,5 @@
 .question-lists 
-  each val in articleJSON
+  each val in questionJSON
     section 
       .related
         span.vote-btn 0
@@ -16,5 +16,5 @@
           a(href="")  byronvis
           small   5分钟前发表了问题
         h3
-          a(href="a/#{val.id}")= val.title
+          a(href="q/#{val.id}")= val.title
       

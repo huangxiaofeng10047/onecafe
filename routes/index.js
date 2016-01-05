@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var filter = require('./filter');
-var article = require('../api/article');
+var question = require('../api/question');
 var comment = require('../api/comment');
 var user = require('../api/user');
 var index = require('../api/index');
@@ -28,20 +28,20 @@ router.get('/admin/logout', user.getAdminLogout);
 router.get('/u/:id', filter.userAuthorize, user.getUserHome);
 
 // 文章列表页
-router.get('/u/:id/article',filter.authorize, filter.userAuthorize, article.getArticleList);
+router.get('/u/:id/question',filter.authorize, filter.userAuthorize, question.getQuestionList);
 
 // 评论列表页
 router.get('/u/:id/comment', filter.authorize,filter.userAuthorize, comment.getCommentList);
 
 // 文章发布页
-router.get('/article', filter.authorize, article.getCreateArticle);
-router.post('/article', filter.authorize, article.createArticle);
+router.get('/question', filter.authorize, question.getCreateQuestion);
+router.post('/question', filter.authorize, question.createQuestion);
 
 // 文章详情页
-router.get('/a/:id', filter.articleAuthorize, article.getArticle);
-router.post('/a/:id', filter.authorizePOST, filter.articleAuthorize, comment.createComment);
-router.delete('/a/:id', filter.authorizePOST, filter.articleAuthorize, article.delArticle);
-router.delete('/a/:id/:commentId', filter.authorizePOST, filter.articleAuthorize, comment.delComment);
+router.get('/q/:id', filter.QuestionAuthorize, question.getQuestion);
+router.post('/q/:id', filter.authorizePOST, filter.QuestionAuthorize, comment.createComment);
+router.delete('/q/:id', filter.authorizePOST, filter.QuestionAuthorize, question.delQuestion);
+router.delete('/q/:id/:commentId', filter.authorizePOST, filter.QuestionAuthorize, comment.delComment);
 
 
 

@@ -9,7 +9,7 @@ module.exports = {
         id: lastId + 1,
         title: req.body.title,
         content: req.body.content,
-        article: req.params.id,
+        question: req.params.id,
         author: req.session.user.username
       };
       Comment.create(newComment).then(function(doc) {
