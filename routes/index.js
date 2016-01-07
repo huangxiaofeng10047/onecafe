@@ -39,9 +39,9 @@ router.post('/ask', filter.authorize, question.createQuestion);
 
 // 文章详情页
 router.get('/q/:id', filter.QuestionAuthorize, question.getQuestion);
-router.post('/q/:id', filter.authorizePOST, filter.QuestionAuthorize, comment.createComment);
-router.delete('/q/:id', filter.authorizePOST, filter.QuestionAuthorize, question.delQuestion);
-router.delete('/q/:id/:commentId', filter.authorizePOST, filter.QuestionAuthorize, comment.delComment);
+router.post('/q/:id', filter.authorize, filter.QuestionAuthorize, comment.createComment);
+router.delete('/q/:id', filter.authorize, filter.QuestionAuthorize, question.delQuestion);
+router.delete('/q/:id/:commentId', filter.authorize, filter.QuestionAuthorize, comment.delComment);
 
 
 

@@ -3,31 +3,29 @@ var User = require('../models/User');
 
 exports.authorize = function(req, res, next) {
   if (!req.session.user) {
-    res.redirect('/login');
+    if (req.xhr) {
+      res.json({
+        success: 0
+      });
+    } else {
+      res.redirect('/login');
+    }
   } else {
     next();
   }
 };
-exports.authorizePOST = function(req, res, next) {
-  if (!req.session.user) {
-    res.json({
-      success:0
-    });
-  } else {
-    next();
-  }
-};
+
 exports.QuestionAuthorize = function(req, res, next) {
 
-  var QuestionId=req.params.id;
+  var QuestionId = req.params.id;
   Question.find({
-    id:QuestionId
-  },function (err,doc) {
-    if(doc.length){
+    id: QuestionId
+  }, function(err, doc) {
+    if (doc.length) {
       next();
-    }else{
-      res.render('404',{
-        title:'404'
+    } else {
+      res.render('404', {
+        title: '404'
       });
     }
   });
@@ -35,13 +33,13 @@ exports.QuestionAuthorize = function(req, res, next) {
 };
 exports.userAuthorize = function(req, res, next) {
 
-  var username=req.params.id;
+  var username = req.params.id;
 
-  if(username===req.session.user.username){
+  if (username === req.session.user.username) {
     next();
-  }else{
-    res.render('404',{
-      title:'404'
+  } else {
+    res.render('404', {
+      title: '404'
     });
   }
 
