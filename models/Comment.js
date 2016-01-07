@@ -68,7 +68,7 @@ CommentSchema.static('delComment', function(id,callback) {
 CommentSchema.static('delComments', function(id,callback) {
 
   return this.remove({
-    article:id
+    question:id
   }, function(err) {
     if (err) {
       console.log(err);

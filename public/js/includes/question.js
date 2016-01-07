@@ -2,7 +2,8 @@ $(function(window, undefined) {
 
   'use strict';
 
-  $('.time').data('created');
+    var postTime=$('.time').data('created');
+
 
 
 

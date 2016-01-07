@@ -76,11 +76,9 @@ module.exports = {
 
         Question.delQuestion(id, function() {
           Comment.delComments(id, function() {
-
             res.json({
               success: 1
             });
-
           });
         });
 

@@ -18,7 +18,12 @@
   background-color: #fff;
   border-bottom: transparent;
 }
-
+aside {
+  margin-left: -10px;
+}
+aside .side-navbar {
+  margin-top: 25px;
+}
 aside .side-navbar  li a{
   padding: 6px 10px;
   display: block;

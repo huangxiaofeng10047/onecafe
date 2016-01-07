@@ -3,8 +3,6 @@ var Question = require('../models/Question');
 module.exports={
   getIndex:function (req,res,next) {
 
-    var questionJSON = null;
-
     Question.find({},null,{
       sort:{
         '_id':-1
