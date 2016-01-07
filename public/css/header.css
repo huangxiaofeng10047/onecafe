@@ -90,10 +90,12 @@ header .r div:first-child a:hover{
   background-color: #009a61;
   color: #fff;
 }
-header .r .dropdown a span {
-  top: 5px;
-  left: -50px;
+header .r .dropdown  .avatar {
   font-size: 18px;
+  float: left;
+  left:5px;
+  top:18px;
+  color: #A4BFB4;
 }
 
 header .r .dropdown >a {

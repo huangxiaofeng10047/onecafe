@@ -18,8 +18,8 @@ header
         div
           a(href="/ask") 提问
         .dropdown
+          span.avatar(class="glyphicon glyphicon-user") 
           a(class="dropdown-toggle",href="")= user.username
-            span(class="glyphicon glyphicon-user") 
           ul.dropdown-menu
             li
               a(href= "/u/"+user.username) 我的主页
