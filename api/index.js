@@ -1,5 +1,6 @@
 var Question = require('../models/Question');
 
+
 module.exports={
   getIndex:function (req,res,next) {
 
@@ -12,6 +13,8 @@ module.exports={
         console.log(err);
         return;
       }
+
+
       res.render('index', {
         'title': 'MiCo首页',
         'user': req.session.user,

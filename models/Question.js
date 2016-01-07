@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var db = require('../lib/db');
+var moment = require('moment');
 
 var QuestionSchema = mongoose.Schema({
   id: {
@@ -19,6 +20,11 @@ var QuestionSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
+});
+
+//格式化时间
+QuestionSchema.virtual('createdDate').get(function () {
+  return moment(this.postDate).format('x');
 });
 
 //实现id自增

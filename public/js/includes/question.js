@@ -2,11 +2,12 @@ $(function(window, undefined) {
 
   'use strict';
 
-    var postTime=$('.time').data('created');
 
-
-
-
+ $('.question-lists .time').each(function () {
+   var createdDate=$(this).data('created');
+   var relativeDate=moment(createdDate).fromNow();
+   $(this).text(relativeDate+'发表了问题');
+ });
 
 
 }(window));
