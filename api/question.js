@@ -3,7 +3,7 @@ var Comment = require('../models/Comment');
 
 module.exports = {
 
-  askQuestion:function (req,res,next) {
+  askQuestion: function(req, res, next) {
     var user = {
       username: req.session.user.username
     };
@@ -12,7 +12,7 @@ module.exports = {
       'user': user,
     });
   },
-  createQuestion:function (req,res,next) {
+  createQuestion: function(req, res, next) {
     Question.getLastId(function(lastId) {
 
       var newQuestion = {
@@ -34,36 +34,36 @@ module.exports = {
   getQuestion: function(req, res, next) {
 
     var user = null;
-    var questionJSON = null;
-    var commentJSON = null;
-
     if (req.session.user) {
       user = {
         username: req.session.user.username
       };
     }
+
+    var questionJSON = null;
+    var commentJSON = [];
     Question.find({
       id: req.params.id
-    }, function(err, questionDocs) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      Comment.find({
+    }).then(function(docs) {
+      questionJSON = docs[0];
+      return Comment.find({
         question: req.params.id
-      }, function(err, commentDocs) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        res.render('q', {
-          'title': '文章',
-          'user': user,
-          'questionJSON': questionDocs[0],
-          'commentJSON': commentDocs
-        });
       });
+    }).then(function(docs) {
+      commentJSON = docs;
+      questionJSON.viewTimes++;
+      return questionJSON.save();
+    }).then(function() {
+      res.render('q', {
+        'title': '文章',
+        'user': user,
+        'questionJSON': questionJSON,
+        'commentJSON': commentJSON
+      });
+    }).catch(function(err) {
+      console.log('err:', err);
     });
+
   },
   delQuestion: function(req, res, next) {
 
@@ -89,18 +89,18 @@ module.exports = {
       }
     });
   },
-  getQuestionList:function (req,res,next) {
+  getQuestionList: function(req, res, next) {
 
-    var user={
-      username:req.session.user.username
+    var user = {
+      username: req.session.user.username
     };
 
-    Question.getQuestionList(user.username,function (docs) {
+    Question.getQuestionList(user.username, function(docs) {
 
-      res.render('user/question',{
-        title:req.params.id,
-        user:user,
-        questionList:docs
+      res.render('user/question', {
+        title: req.params.id,
+        user: user,
+        questionList: docs
       });
 
     });

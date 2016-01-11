@@ -20,6 +20,10 @@ var QuestionSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  viewTimes:{
+    type:Number,
+    default:0
+  }
 });
 
 //格式化时间
