@@ -17,6 +17,7 @@ exports.authorize = function(req, res, next) {
 
 exports.QuestionAuthorize = function(req, res, next) {
 
+
   var QuestionId = req.params.id;
   Question.find({
     id: QuestionId

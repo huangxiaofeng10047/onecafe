@@ -11,19 +11,55 @@ html
   body
     include ./includes/header.jade
     #main
-      .container
-        div!= questionJSON.content  
-        button.delQuestion(type="button") 删除提问
-        h2  讨论区
-        div.comments
-          each val in commentJSON
-            p= val.content
-            button.delComment(type="button") 删除
-            input.commentId(type="hidden",value= val.id)
-        textarea
-        input(type="hidden",class="questionId",value= questionJSON.id)
-        input(type="hidden",class="questionTitle",value= questionJSON.title)
-        button.addComment(type="button") 评论
+        .question-title
+          .container
+            .row
+              ul.navmenu 
+                li
+                  a.active(href="") 问答
+                li
+                  a  &nbsp > 问答详情
+              h3
+                a(href="")= questionJSON.title
+              .author
+                a(href="")= questionJSON.author
+                span 一小时前提问
+                span  36分钟前更新
+        .question-main
+          .container
+            .row
+              div.questionId(data-id= questionJSON.id)!= questionJSON.content 
+              ul.tooltips
+                li
+                  a(href="") 编辑
+                li
+                  a.comment-btn(href="javascript:void(0);") 评论
+                if(user.username===questionJSON.author)
+                  li 
+                    a.delQuestion(href="javascript:void(0);") 删除 
+              .comment-wiget
+                textarea
+                input(type="hidden",class="questionTitle",value= questionJSON.title)
+                button.addComment(type="button") 提交评论      
+            .row
+              h2  讨论区
+              div.comments
+                each val in commentJSON
+                  .comment-list
+                    .observer
+                      a(href="")= val.author
+                      span  1小时前回答
+                      span  1小时前更新
+                    div= val.content
+                    ul.tooltips
+                      li
+                        a(href="javascript:void(0);") 编辑
+                      li
+                        a(href="javascript:void(0);") 评论
+                      if(user.username===val.author)
+                        li 
+                          a(data-id= val.id,href="javascript:void(0);").delComment 删除
+        
     include ./includes/footer.jade
     script(src="../assets/jquery/dist/jquery.min.js")
     script(src="../assets/bootstrap/dist/js/bootstrap.min.js")
