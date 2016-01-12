@@ -2,6 +2,9 @@ $(function(window, undefined) {
 
   'use strict';
 
+  
+
+
   // 删除提问
   $('.delQuestion').click(function() {
     $.ajax({

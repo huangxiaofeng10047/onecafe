@@ -30,8 +30,9 @@ html
             .row
               div.questionId(data-id= questionJSON.id)!= questionJSON.content 
               ul.tooltips
-                li
-                  a(href="") 编辑
+                if(user.username===questionJSON.author)
+                  li
+                    a(href="/q/"+questionJSON.id+"/edit") 编辑
                 li
                   a.comment-btn(href="javascript:void(0);") 评论
                 if(user.username===questionJSON.author)
@@ -52,8 +53,9 @@ html
                       span  1小时前更新
                     div= val.content
                     ul.tooltips
-                      li
-                        a(href="javascript:void(0);") 编辑
+                      if(user.username===val.author)
+                        li
+                          a(href="javascript:void(0);") 编辑
                       li
                         a(href="javascript:void(0);") 评论
                       if(user.username===val.author)

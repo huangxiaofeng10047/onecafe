@@ -104,7 +104,26 @@ module.exports = {
       });
 
     });
-  }
+  },
+editQuestion:function (req,res,next) {
 
+  var user={
+    username:req.session.user.username
+  };
+  Question.find({
+    id:req.params.id
+  }).then(function (docs) {
+    if(docs.length){
+      
+      res.render('edit',{
+        title:'编辑',
+        user: user,
+        questionJSON:docs[0]
+      });
+
+    }
+  });
+
+}
 
 };
