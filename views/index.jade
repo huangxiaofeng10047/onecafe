@@ -1,7 +1,7 @@
 extends layout
 block link
-  link(rel="stylesheet", href="css/index.css")
-  link(rel="stylesheet", href="css/question.css")
+  link(rel="stylesheet", href="/css/index.css")
+  link(rel="stylesheet", href="/css/question.css")
 block main
   .container
     .row
@@ -9,7 +9,7 @@ block main
         nav
             a.nav-active(href="") 最新的
             a(href="") 热门的    
-        include ./includes/question.jade
+        include ./question/list.jade
       aside(class="col-xs-3")
         if(user)
           ul.side-navbar
@@ -18,8 +18,7 @@ block main
             li
               a(href= "/u/"+user.username+"/comment")  我的评论 
 block scripts      
-  script(src="assets/moment/min/moment.min.js")
-  script(src="assets/moment/locale/zh-cn.js")
-  script(src="js/header.js")
-  script(src="js/includes/question.js")
-  script(src="js/index.js")
+  script(src="/assets/moment/min/moment.min.js")
+  script(src="/assets/moment/locale/zh-cn.js")
+  script(src="/js/includes/question.js")
+  script(src="/js/index.js")

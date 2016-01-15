@@ -2,17 +2,18 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='assets/bootstrap/dist/css/bootstrap.min.css')
-    link(rel="stylesheet", href="css/base.css")
-    link(rel="stylesheet", href="css/header.css")
-    link(rel="stylesheet", href="css/footer.css")
+    link(rel='stylesheet', href='/assets/bootstrap/dist/css/bootstrap.min.css')
+    link(rel="stylesheet", href="/css/base.css")
+    link(rel="stylesheet", href="/css/header.css")
+    link(rel="stylesheet", href="/css/footer.css")
     block link
   body
     include ./includes/header.jade
     #main
       block main
     include ./includes/footer.jade
-  script(src="assets/jquery/dist/jquery.min.js")
-  script(src="assets/bootstrap/dist/js/bootstrap.min.js")
+  script(src="/assets/jquery/dist/jquery.min.js")
+  script(src="/assets/bootstrap/dist/js/bootstrap.min.js")
+  script(src="/js/header.js")
   block scripts  
     

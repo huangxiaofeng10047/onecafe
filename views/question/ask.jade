@@ -1,7 +1,6 @@
-extends layout
+extends ../layout
 block link
-      link(rel="stylesheet", href="css/reg.css")
-      link(rel="stylesheet", href="css/ask.css")
+      link(rel="stylesheet", href="/css/ask.css")
 block main
   .container
     form.form-editor(action="",method="post")
@@ -10,9 +9,8 @@ block main
       p
         button.btn-primary(class="btn",type="button") 发布
 block scripts
-  script(src="assets/tinymce/tinymce.jquery.min.js")
-  script(src="js/header.js")
-  script(src="js/ask.js")
+  script(src="/assets/tinymce/tinymce.jquery.min.js")
+  script(src="/js/ask.js")
 
       
       

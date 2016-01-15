@@ -7,9 +7,9 @@ module.exports = {
     var user = {
       username: req.session.user.username
     };
-    res.render('ask', {
+    res.render('question/ask', {
       'title': '发布文章',
-      'user': user,
+      'user': user
     });
   },
   createQuestion: function(req, res, next) {
@@ -54,7 +54,7 @@ module.exports = {
       questionJSON.viewTimes++;
       return questionJSON.save();
     }).then(function() {
-      res.render('q', {
+      res.render('question/index', {
         'title': '文章',
         'user': user,
         'questionJSON': questionJSON,
@@ -114,8 +114,8 @@ editQuestion:function (req,res,next) {
     id:req.params.id
   }).then(function (docs) {
     if(docs.length){
-      
-      res.render('edit',{
+
+      res.render('question/edit',{
         title:'编辑',
         user: user,
         questionJSON:docs[0]

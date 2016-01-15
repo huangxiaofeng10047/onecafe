@@ -38,12 +38,12 @@ router.get('/ask', filter.authorize, question.askQuestion);
 router.post('/ask', filter.authorize, question.createQuestion);
 
 // 文章详情页
-router.get('/q/:id', filter.QuestionAuthorize, question.getQuestion);
-router.post('/q/:id', filter.authorize, filter.QuestionAuthorize, comment.createComment);
-router.get('/q/:id/edit', filter.authorize, filter.QuestionAuthorize, question.editQuestion);
+router.get('/q/:id', filter.questionAuthorize, question.getQuestion);
+router.post('/q/:id', filter.authorize, filter.questionAuthorize, comment.createComment);
+router.get('/q/:id/edit', filter.authorize, filter.questionAuthorize, question.editQuestion);
 
-router.delete('/q/:id', filter.authorize, filter.QuestionAuthorize, question.delQuestion);
-router.delete('/q/:id/:commentId', filter.authorize, filter.QuestionAuthorize, comment.delComment);
+router.delete('/q/:id', filter.authorize, filter.questionAuthorize, question.delQuestion);
+router.delete('/q/:id/:commentId', filter.authorize, filter.questionAuthorize, comment.delComment);
 
 
 

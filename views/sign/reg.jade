@@ -1,6 +1,6 @@
-extends layout
+extends ../layout
 block link
-      link(rel="stylesheet", href="css/login.css")
+      link(rel="stylesheet", href="/css/reg.css")
 block main
   .container
     form(method='post')
@@ -11,7 +11,9 @@ block main
         label(for="password") 密码：
         input(type="password",id="password",class="form-control",name="password")
       p  
-        button(type="button",class="btn btn-default")  登录
+        button(type="button",class="btn btn-default")  注册
 block scripts
-  script(src="js/login.js")    
+  script(src="/assets/jquery/dist/jquery.min.js")
+  script(src="/js/reg.js")
+      
       

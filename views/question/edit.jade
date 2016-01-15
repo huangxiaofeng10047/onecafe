@@ -1,0 +1,17 @@
+extends ../layout
+block link
+      link(rel="stylesheet", href="/css/edit.css")
+block main
+  .container
+    form.form-editor(action="",method="post")
+      input(type="text",id="title",class="form-control",placeholder='请输入文章标题',value= questionJSON.title)   
+      textarea(id="editor")= questionJSON.content
+      p
+        button.btn-primary(class="btn",type="button") 发布
+block scripts  
+  script(src="/assets/tinymce/tinymce.jquery.min.js")
+  script(src="/js/edit.js")
+  
+
+      
+      

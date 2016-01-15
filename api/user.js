@@ -8,7 +8,7 @@ module.exports = {
       res.redirect('/');
     }
 
-    res.render('reg', {
+    res.render('sign/reg', {
       title: '用户注册'
     });
   },
@@ -38,7 +38,7 @@ module.exports = {
 
   },
   getLogin: function(req, res, next) {
-    res.render('login', {
+    res.render('sign/login', {
       title: '用户登陆'
     });
   },
