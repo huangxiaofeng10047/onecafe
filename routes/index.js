@@ -41,6 +41,7 @@ router.post('/ask', filter.authorize, question.createQuestion);
 router.get('/q/:id', filter.questionAuthorize, question.getQuestion);
 router.post('/q/:id', filter.authorize, filter.questionAuthorize, comment.createComment);
 router.get('/q/:id/edit', filter.authorize, filter.questionAuthorize, question.editQuestion);
+router.post('/q/:id/edit', filter.authorize, filter.questionAuthorize, question.updateQuestion);
 
 router.delete('/q/:id', filter.authorize, filter.questionAuthorize, question.delQuestion);
 router.delete('/q/:id/:commentId', filter.authorize, filter.questionAuthorize, comment.delComment);

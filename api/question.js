@@ -124,6 +124,28 @@ editQuestion:function (req,res,next) {
     }
   });
 
+},
+updateQuestion:function (req,res,next) {
+
+  var newQuestion = {
+    title: req.body.title,
+    content: req.body.content,
+    author: req.session.user.username
+  };
+
+  Question.findOneAndUpdate({
+    id:req.params.id
+  },newQuestion).then(function (doc) {
+
+    res.json({
+      success:1
+    });
+  }).catch(function (err) {
+    res.json({
+      success:0
+    });
+    return console.log('err:',err);
+  });
 }
 
 };

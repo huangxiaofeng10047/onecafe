@@ -22,7 +22,7 @@ $(function (window,undefined) {
   $('.form-editor button').click(function() {
 
     $.ajax({
-      "url": '/q/' + $('.questionId').data('id')+'/edit',
+      "url": '/q/' + $('.form-editor').data('id')+'/edit',
       "method": 'post',
       "data": {
         title: $('#title').val(),
