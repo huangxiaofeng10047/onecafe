@@ -47,7 +47,7 @@ module.exports = {
       username: req.body.username,
       password: req.body.password
     };
-
+    
     // 查找用户并赋予登录权限
     if (User.find(user, function(err, doc) {
         if (err) {
