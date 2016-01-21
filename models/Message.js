@@ -1,20 +1,21 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var db = require('../lib/db');
+var ObjectId=mongoose.Schema.Types.ObjectId;
 
 var MessageSchema = mongoose.Schema({
 
   author_id: {
-    type: String
+    type: ObjectId
   },
   master_id: {
-    type: String
+    type: ObjectId
   },
   question_id: {
-    type: String
+    type: ObjectId
   },
   comment_id: {
-    type: String
+    type: ObjectId
   },
   has_read: {
     type: Boolean,

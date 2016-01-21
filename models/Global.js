@@ -2,9 +2,7 @@ var mongoose = require('mongoose');
 var db = require('../lib/db');
 
 var GlobalSchema = mongoose.Schema({
-  _id: {
-    type: String
-  },
+  
   domain: {
     type: String
   },

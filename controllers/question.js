@@ -44,7 +44,7 @@ module.exports = {
     }).then(function(docs) {
       questionJSON = docs[0];
       return Comment.find({
-        question: req.params.id
+        question_id: req.params.id
       });
     }).then(function(docs) {
       commentJSON = docs;

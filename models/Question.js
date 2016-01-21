@@ -14,7 +14,7 @@ var QuestionSchema = mongoose.Schema({
   author: {
     type: String
   },
-  postDate: {
+  post_at: {
     type: Date,
     default: Date.now
   },
@@ -26,7 +26,7 @@ var QuestionSchema = mongoose.Schema({
 
 //格式化时间
 QuestionSchema.virtual('createdDate').get(function () {
-  return moment(this.postDate).format('x');
+  return moment(this.post_at).format('x');
 });
 
 

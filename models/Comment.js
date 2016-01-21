@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise=require('bluebird');
 var db = require('../lib/db');
+var ObjectId=mongoose.Schema.Types.ObjectId;
 
 var CommentSchema = mongoose.Schema({
 
@@ -10,8 +11,8 @@ var CommentSchema = mongoose.Schema({
   content: {
     type: String
   },
-  question:{
-    type:String
+  question_id:{
+    type:ObjectId
   },
   author: {
     type: String

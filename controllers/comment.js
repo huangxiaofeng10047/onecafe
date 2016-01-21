@@ -6,7 +6,7 @@ module.exports = {
       var newComment = {
         title: req.body.title,
         content: req.body.content,
-        question: req.params.id,
+        question_id: req.params.id,
         master: req.body.master,
         author: req.session.user.username
       };
