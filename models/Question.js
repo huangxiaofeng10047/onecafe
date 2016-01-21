@@ -4,9 +4,7 @@ var db = require('../lib/db');
 var moment = require('moment');
 
 var QuestionSchema = mongoose.Schema({
-  id: {
-    type: Number
-  },
+
   title: {
     type: String
   },
@@ -31,22 +29,7 @@ QuestionSchema.virtual('createdDate').get(function () {
   return moment(this.postDate).format('x');
 });
 
-//实现id自增
-QuestionSchema.static('getLastId', function(callback) {
 
-  return this.find({}, function(err, docs) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    if (!docs.length) {
-      callback(0);
-      return;
-    }
-    callback(docs[docs.length - 1].id);
-  });
-
-});
 
 // 获取用户文章列表
 QuestionSchema.static('getQuestionList', function(username, callback) {
@@ -67,7 +50,7 @@ QuestionSchema.static('getQuestionList', function(username, callback) {
 QuestionSchema.static('delQuestion', function(id, callback) {
 
   return this.findOneAndRemove({
-    id: id
+    _id: id
   }, function(err) {
     if (err) {
       console.log(err);

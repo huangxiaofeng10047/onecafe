@@ -1,33 +1,40 @@
 var Comment = require('../models/Comment');
+var Message = require('../models/Message');
 
 module.exports = {
   createComment: function(req, res, next) {
-
-    Comment.getLastId(function(lastId) {
-
       var newComment = {
-        id: lastId + 1,
         title: req.body.title,
         content: req.body.content,
         question: req.params.id,
+        master: req.body.master,
         author: req.session.user.username
       };
+
       Comment.create(newComment).then(function(doc) {
+        var newMsg = {
+          master: req.body.master,
+          author: req.session.user.username,
+          question_id: req.params.id,
+          comment_id: doc._id
+        };
+        return Message.create(newMsg);
+      }).then(function(doc) {
         res.json({
-          success: 1
+          success: 1,
+          message:'添加评论成功'
         });
       }).catch(function(err) {
-        console.log('err:', err);
+        return console.log('err:', err);
       });
 
-    });
   },
   delComment: function(req, res, next) {
 
     var commentId = req.params.commentId;
 
     Comment.find({
-      id: commentId
+      _id: commentId
     }).then(function(docs) {
       if (docs.length && docs[0].author === req.session.user.username) {
         Comment.delComment(commentId, function() {

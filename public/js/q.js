@@ -2,7 +2,7 @@ $(function(window, undefined) {
 
   'use strict';
 
-  
+
 
 
   // 删除提问
@@ -39,6 +39,7 @@ $(function(window, undefined) {
       url: '/q/' + $('.questionId').data('id'),
       method: 'post',
       data: {
+        master:$('.author a').html(),
         title: '评论：' + $('.questionTitle').val(),
         content: $('textarea').val()
       },
@@ -57,7 +58,6 @@ $(function(window, undefined) {
   // 删除评论
   $('.delComment').click(function() {
     var $this = $(this);
-    console.log($this.parent().data('id'));
     $.ajax({
       url: '/q/' + $('.questionId').data('id') + '/' + $this.data('id'),
       method: 'delete',

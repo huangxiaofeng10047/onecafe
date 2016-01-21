@@ -3,9 +3,7 @@ mongoose.Promise=require('bluebird');
 var db = require('../lib/db');
 
 var CommentSchema = mongoose.Schema({
-  id: {
-    type: Number
-  },
+
   title:{
     type:String
   },
@@ -17,25 +15,13 @@ var CommentSchema = mongoose.Schema({
   },
   author: {
     type: String
+  },
+  master:{
+    type:String
   }
 });
 
-//实现自增
-CommentSchema.static('getLastId', function(callback) {
 
-  return this.find({}, function(err, docs) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    if (!docs.length) {
-      callback(0);
-      return;
-    }
-    callback(docs[docs.length - 1].id);
-  });
-
-});
 // 获取评论列表
 CommentSchema.static('getCommentList', function(username,callback) {
 
@@ -54,7 +40,7 @@ CommentSchema.static('getCommentList', function(username,callback) {
 CommentSchema.static('delComment', function(id,callback) {
 
   return this.findOneAndRemove({
-    id:id
+    _id:id
   }, function(err) {
     if (err) {
       console.log(err);

@@ -15,7 +15,7 @@ $(function(window, undefined) {
       if (data.success) {
         window.location.href = '/';
       } else {
-        alert('该用户不存在');
+        alert(data.message);
       }
     });
   });

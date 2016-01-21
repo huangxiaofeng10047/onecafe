@@ -7,22 +7,34 @@ var base = 'http://localhost:3000';
 
 
 describe('reg', function() {
+  it('should return success:0', function(done) {
+    rest.post(base + '/reg', {
+      data: {
+        master:$('.author a').html(),
+        title: '评论：' + $('.questionTitle').val(),
+        content: $('textarea').val()
+      }
+    }).on('complete', function(data) {
+      data.success.should.equal(0);
+      done();
+    });
+  });
   it('should return success:1', function(done) {
     rest.post(base + '/reg', {
       data: {
-        'username': '1111a',
-        'password': '1111a'
+        'username': 'sdsdsdasdasdasdfffffsdfg',
+        'password': '111sdfsdf1a'
       }
     }).on('complete', function(data) {
       data.success.should.equal(1);
       done();
     });
   });
+
 });
 
 
-describe('sign', function() {
-
+describe('login', function() {
 
     it('should return success:0', function(done) {
       rest.post(base + '/login', {
@@ -72,8 +84,6 @@ describe('sign', function() {
         done();
       });
     });
-
-
 
 
 

@@ -15,6 +15,8 @@ $(function(window, undefined) {
     }).done(function(data) {
       if (data.success) {
         window.location.href = '/login';
+      }else{
+        alert(data.message);
       }
     });
   });

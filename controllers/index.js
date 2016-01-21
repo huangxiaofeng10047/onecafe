@@ -14,7 +14,6 @@ module.exports={
         return;
       }
 
-
       res.render('index', {
         'title': 'MiCo首页',
         'user': req.session.user,

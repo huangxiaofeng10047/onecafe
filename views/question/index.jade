@@ -23,7 +23,7 @@ block main
             ul.tooltips
               if(user && user.username===questionJSON.author)
                 li
-                  a(href="/q/"+questionJSON.id+"/edit") 编辑
+                  a(href="/q/"+questionJSON._id+"/edit") 编辑
               li
                 a.comment-btn(href="javascript:void(0);") 评论
               if(user && user.username===questionJSON.author)

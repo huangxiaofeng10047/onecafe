@@ -13,10 +13,8 @@ module.exports = {
     });
   },
   createQuestion: function(req, res, next) {
-    Question.getLastId(function(lastId) {
 
       var newQuestion = {
-        id: lastId + 1,
         title: req.body.title,
         content: req.body.content,
         author: req.session.user.username
@@ -29,7 +27,6 @@ module.exports = {
         console.log('err:', err);
       });
 
-    });
   },
   getQuestion: function(req, res, next) {
 
@@ -43,7 +40,7 @@ module.exports = {
     var questionJSON = null;
     var commentJSON = [];
     Question.find({
-      id: req.params.id
+      _id: req.params.id
     }).then(function(docs) {
       questionJSON = docs[0];
       return Comment.find({
@@ -70,7 +67,7 @@ module.exports = {
     var id = req.params.id;
 
     Question.find({
-      id: id
+      _id: id
     }).then(function(docs) {
       if (docs.length && docs[0].author === req.session.user.username) {
 
@@ -111,7 +108,7 @@ editQuestion:function (req,res,next) {
     username:req.session.user.username
   };
   Question.find({
-    id:req.params.id
+    _id:req.params.id
   }).then(function (docs) {
     if(docs.length){
 
@@ -134,7 +131,7 @@ updateQuestion:function (req,res,next) {
   };
 
   Question.findOneAndUpdate({
-    id:req.params.id
+    _id:req.params.id
   },newQuestion).then(function (doc) {
 
     res.json({

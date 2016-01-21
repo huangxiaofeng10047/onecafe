@@ -20,7 +20,7 @@ exports.questionAuthorize = function(req, res, next) {
 
   var questionId = req.params.id;
   Question.find({
-    id: questionId
+    _id: questionId
   }, function(err, doc) {
     if (doc.length) {
       next();

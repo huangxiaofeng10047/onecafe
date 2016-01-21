@@ -2,21 +2,22 @@ var express = require('express');
 var router = express.Router();
 
 var filter = require('./filter');
-var question = require('../api/question');
-var comment = require('../api/comment');
-var user = require('../api/user');
-var index = require('../api/index');
+var question = require('../controllers/question');
+var comment = require('../controllers/comment');
+var user = require('../controllers/user');
+var sign = require('../controllers/sign');
+var index = require('../controllers/index');
 
 
 // 主页
 router.get('/', index.getIndex);
 
 // 普通用户
-router.get('/reg', user.getReg);
-router.post('/reg', user.postReg);
-router.get('/login', user.getLogin);
-router.post('/login', user.postLogin);
-router.get('/logout', user.getLogout);
+router.get('/reg', sign.showReg);
+router.post('/reg', sign.reg);
+router.get('/login', sign.showLogin);
+router.post('/login', sign.login);
+router.get('/logout', sign.logout);
 
 // 系统管理员
 router.get('/admin', user.getAdmin);
