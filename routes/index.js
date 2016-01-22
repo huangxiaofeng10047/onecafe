@@ -6,20 +6,19 @@ var question = require('../controllers/question');
 var comment = require('../controllers/comment');
 var user = require('../controllers/user');
 var sign = require('../controllers/sign');
-var index = require('../controllers/index');
+var site = require('../controllers/site');
+
 
 // 聊天页
-router.get('/chat', filter.authorize, function (req,res) {
-
-
-  res.render('chat',{
-    title:'聊天',
-    username:req.session.username
+router.get('/chat', filter.authorize, function(req, res) {
+  res.render('chat', {
+    title: '聊天',
+    username: req.session.username
   });
 });
 
 // 主页
-router.get('/', index.getIndex);
+router.get('/', site.getIndex);
 
 // 普通用户
 router.get('/reg', sign.showReg);
@@ -38,10 +37,10 @@ router.get('/admin/logout', user.getAdminLogout);
 router.get('/u/:id', user.getUserHome);
 
 // 文章列表页
-router.get('/u/:id/question',filter.authorize, filter.userAuthorize, question.getQuestionList);
+router.get('/u/:id/question', filter.authorize, filter.userAuthorize, question.getQuestionList);
 
 // 评论列表页
-router.get('/u/:id/comment', filter.authorize,filter.userAuthorize, comment.getCommentList);
+router.get('/u/:id/comment', filter.authorize, filter.userAuthorize, comment.getCommentList);
 
 // 文章发布页
 router.get('/ask', filter.authorize, question.askQuestion);

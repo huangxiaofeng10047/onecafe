@@ -1,0 +1,25 @@
+var Question = require('../models/Question');
+
+
+module.exports={
+  getIndex:function (req,res,next) {
+
+    Question.find({},null,{
+      sort:{
+        '_id':-1
+      }
+    },function(err, docs) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      res.render('index', {
+        'title': 'MiCo首页',
+        'username': req.session.username,
+        'questionJSON': docs
+      });
+
+    });
+  }
+};

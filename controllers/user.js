@@ -50,7 +50,7 @@ module.exports = {
   },
   getUserHome: function(req, res, next) {
 
-    res.render('user/u', {
+    res.render('user/index', {
       title: req.params.id,
       username: req.session.username === req.params.id  ? req.session.username : null
     });

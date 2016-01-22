@@ -1,8 +1,42 @@
 var User = require('../models/User');
 var ep = require('eventproxy');
 var validator = require('validator');
+var _ = require('underscore');
 
 
+
+function formValidate(user) {
+
+  _.each(user, function(val, key) {
+    user[key] = validator.trim(val);
+  });
+
+  // 验证信息的正确性
+  if ([user.username, user.password].some(function(item) {
+      return item === '';
+    })) {
+    return {
+      success:0,
+      message:'信息不完整。'
+    };
+  }
+  if (user.username.length < 5) {
+    return {
+      success:0,
+      message:  '用户名至少需要5个字符。'
+    };
+  }
+  if (!(/^[a-zA-Z0-9\-_]+$/i).test(user.username)) {
+    return {
+      success:0,
+      message:'用户名不合法。'
+    };
+  }
+  return {
+    success:1
+  };
+
+}
 
 
 exports.showReg = function(req, res) {
@@ -10,12 +44,16 @@ exports.showReg = function(req, res) {
     title: '用户注册'
   });
 };
-exports.reg = function(req,res,next) {
+exports.reg = function(req, res, next) {
 
   var user = {
     username: req.body.username,
     password: req.body.password
   };
+
+  if(!formValidate(user).success){
+    return res.json(formValidate(user));
+  }
 
   User.findOne({ //查找用户名是否已存在
     username: req.body.username

@@ -7,7 +7,6 @@ module.exports = {
         title: req.body.title,
         content: req.body.content,
         question_id: req.params.id,
-        master: req.body.master,
         author: req.session.username
       };
 
@@ -54,7 +53,7 @@ module.exports = {
 
     Comment.getCommentList(username, function(docs) {
 
-      res.render('user/comment', {
+      res.render('user/comment-list', {
         title: req.params.id,
         username:username,
         commentList: docs

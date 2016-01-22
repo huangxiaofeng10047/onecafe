@@ -1,7 +1,12 @@
 extends layout
 block main
   .container
-    button  服务器发送请求
+    p.username(data-id= username)
+    if(username == 'bbb')
+      p.other(data-id='ccc')
+    else
+      p.other(data-id='bbb')
+          
     h3  这是一个聊天页。
     #demo
 block scripts

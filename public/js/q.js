@@ -3,8 +3,6 @@ $(function(window, undefined) {
   'use strict';
 
 
-
-
   // 删除提问
   $('.delQuestion').click(function() {
     $.ajax({
@@ -27,7 +25,6 @@ $(function(window, undefined) {
          $(".comment-wiget").show();
      }else{
          $(".comment-wiget").hide();
-
      }
 
   });
@@ -39,7 +36,6 @@ $(function(window, undefined) {
       url: '/q/' + $('.questionId').data('id'),
       method: 'post',
       data: {
-        master:$('.author a').html(),
         title: '评论：' + $('.questionTitle').val(),
         content: $('textarea').val()
       },

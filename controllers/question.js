@@ -88,7 +88,7 @@ module.exports = {
 
     Question.getQuestionList(username, function(docs) {
 
-      res.render('user/question', {
+      res.render('user/question-list', {
         title: req.params.id,
         username: username,
         questionList: docs
