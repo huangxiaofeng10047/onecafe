@@ -52,7 +52,7 @@ module.exports = {
 
     res.render('user/u', {
       title: req.params.id,
-      user: req.session.user && req.params.id === req.session.user.username ? req.session.user : null
+      username: req.session.username === req.params.id  ? req.session.username : null
     });
   }
 

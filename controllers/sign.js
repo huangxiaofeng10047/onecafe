@@ -1,4 +1,7 @@
 var User = require('../models/User');
+var ep = require('eventproxy');
+var validator = require('validator');
+
 
 
 
@@ -7,30 +10,30 @@ exports.showReg = function(req, res) {
     title: '用户注册'
   });
 };
-exports.reg = function(req, res) {
+exports.reg = function(req,res,next) {
+
   var user = {
     username: req.body.username,
-    password: req.body.password,
-    authority: 'common'
+    password: req.body.password
   };
 
-  User.findOne({//查找用户名是否已存在
+  User.findOne({ //查找用户名是否已存在
     username: req.body.username
   }).then(function(doc) {
-    if (doc) {//如果用户已存在
+    if (doc) { //如果用户已存在
       return res.json({
         success: 0,
         message: '该用户名已被注册'
       });
-    } else {//如果用户不存在
-       User.create(user).then(function (doc) {//创建新用户
-         res.json({
-           success: 1,
-           message: '注册成功'
-         });
-       }).catch(function (err) {
-         return console.log('err', err);
-       });
+    } else { //如果用户不存在
+      User.create(user).then(function(doc) { //创建新用户
+        res.json({
+          success: 1,
+          message: '注册成功'
+        });
+      }).catch(function(err) {
+        return console.log('err', err);
+      });
     }
   }).catch(function(err) {
     return console.log('err', err);
@@ -54,7 +57,7 @@ exports.login = function(req, res) {
   User.findOne(user).then(function(doc) {
     if (doc) {
       // 添加到session
-      req.session.user = user;
+      req.session.username = req.body.username;
       res.json({
         success: 1
       });

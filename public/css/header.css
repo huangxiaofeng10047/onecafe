@@ -36,6 +36,7 @@ header form input {
 header ul{
   float: left;
   padding-left: 10px;
+  margin-bottom: 0;
 }
 header ul li{
   float: left;

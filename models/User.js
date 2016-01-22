@@ -9,7 +9,8 @@ var UserSchema = mongoose.Schema({
     type: String
   },
   authority:{
-    type:String
+    type:String,
+    default:'common'
   }
 });
 

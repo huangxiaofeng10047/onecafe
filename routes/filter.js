@@ -2,7 +2,7 @@ var Question = require('../models/Question');
 var User = require('../models/User');
 
 exports.authorize = function(req, res, next) {
-  if (!req.session.user) {
+  if (!req.session.username) {
     if (req.xhr) {
       res.json({
         success: 0
@@ -36,7 +36,7 @@ exports.userAuthorize = function(req, res, next) {
 
   var username = req.params.id;
 
-  if (username === req.session.user.username) {
+  if (username === req.session.username) {
     next();
   } else {
     res.render('404', {

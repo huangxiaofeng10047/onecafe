@@ -8,6 +8,15 @@ var user = require('../controllers/user');
 var sign = require('../controllers/sign');
 var index = require('../controllers/index');
 
+// 聊天页
+router.get('/chat', filter.authorize, function (req,res) {
+
+
+  res.render('chat',{
+    title:'聊天',
+    username:req.session.username
+  });
+});
 
 // 主页
 router.get('/', index.getIndex);

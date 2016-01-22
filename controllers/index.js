@@ -16,7 +16,7 @@ module.exports={
 
       res.render('index', {
         'title': 'MiCo首页',
-        'user': req.session.user,
+        'username': req.session.username,
         'questionJSON': docs
       });
 

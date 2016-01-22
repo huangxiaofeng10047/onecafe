@@ -21,12 +21,12 @@ block main
           .row
             div.questionId(data-id= questionJSON.id)!= questionJSON.content 
             ul.tooltips
-              if(user && user.username===questionJSON.author)
+              if(username===questionJSON.author)
                 li
                   a(href="/q/"+questionJSON._id+"/edit") 编辑
               li
                 a.comment-btn(href="javascript:void(0);") 评论
-              if(user && user.username===questionJSON.author)
+              if(username===questionJSON.author)
                 li 
                   a.delQuestion(href="javascript:void(0);") 删除 
             .comment-wiget
@@ -44,12 +44,12 @@ block main
                     span  1小时前更新
                   div= val.content
                   ul.tooltips
-                    if(user && user.username===val.author)
+                    if(username===val.author)
                       li
                         a(href="javascript:void(0);") 编辑
                     li
                       a(href="javascript:void(0);") 评论
-                    if(user && user.username===val.author)
+                    if(username===val.author)
                       li 
                         a(data-id= val.id,href="javascript:void(0);").delComment 删除
 block scripts        

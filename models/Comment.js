@@ -27,7 +27,7 @@ var CommentSchema = mongoose.Schema({
 CommentSchema.static('getCommentList', function(username,callback) {
 
   return this.find({
-    author:username
+    master_id:username
   }, function(err, docs) {
     if (err) {
       console.log(err);

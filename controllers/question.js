@@ -4,37 +4,34 @@ var Comment = require('../models/Comment');
 module.exports = {
 
   askQuestion: function(req, res, next) {
-    var user = {
-      username: req.session.user.username
-    };
+
+    var username = req.session.username;
     res.render('question/ask', {
       'title': '发布文章',
-      'user': user
+      'username': username
     });
   },
   createQuestion: function(req, res, next) {
 
-      var newQuestion = {
-        title: req.body.title,
-        content: req.body.content,
-        author: req.session.user.username
-      };
-      Question.create(newQuestion).then(function(doc) {
-        res.json({
-          success: 1
-        });
-      }).catch(function(err) {
-        console.log('err:', err);
+    var newQuestion = {
+      title: req.body.title,
+      content: req.body.content,
+      author: req.session.username
+    };
+    Question.create(newQuestion).then(function(doc) {
+      res.json({
+        success: 1
       });
+    }).catch(function(err) {
+      console.log('err:', err);
+    });
 
   },
   getQuestion: function(req, res, next) {
 
-    var user = null;
-    if (req.session.user) {
-      user = {
-        username: req.session.user.username
-      };
+    var username = null;
+    if (req.session.username) {
+      username = req.session.username;
     }
 
     var questionJSON = null;
@@ -53,7 +50,7 @@ module.exports = {
     }).then(function() {
       res.render('question/index', {
         'title': '文章',
-        'user': user,
+        'username': username,
         'questionJSON': questionJSON,
         'commentJSON': commentJSON
       });
@@ -66,11 +63,10 @@ module.exports = {
 
     var id = req.params.id;
 
-    Question.find({
+    Question.findOne({
       _id: id
-    }).then(function(docs) {
-      if (docs.length && docs[0].author === req.session.user.username) {
-
+    }).then(function(doc) {
+      if (doc.author === req.session.username) {
         Question.delQuestion(id, function() {
           Comment.delComments(id, function() {
             res.json({
@@ -88,61 +84,56 @@ module.exports = {
   },
   getQuestionList: function(req, res, next) {
 
-    var user = {
-      username: req.session.user.username
-    };
+    var username = req.session.username;
 
-    Question.getQuestionList(user.username, function(docs) {
+    Question.getQuestionList(username, function(docs) {
 
       res.render('user/question', {
         title: req.params.id,
-        user: user,
+        username: username,
         questionList: docs
       });
 
     });
   },
-editQuestion:function (req,res,next) {
+  editQuestion: function(req, res, next) {
 
-  var user={
-    username:req.session.user.username
-  };
-  Question.find({
-    _id:req.params.id
-  }).then(function (docs) {
-    if(docs.length){
+      var username= req.session.username;
+    Question.find({
+      _id: req.params.id
+    }).then(function(docs) {
+      if (docs.length) {
 
-      res.render('question/edit',{
-        title:'编辑',
-        user: user,
-        questionJSON:docs[0]
+        res.render('question/edit', {
+          title: '编辑',
+          username: username,
+          questionJSON: docs[0]
+        });
+
+      }
+    });
+
+  },
+  updateQuestion: function(req, res, next) {
+
+    var newQuestion = {
+      title: req.body.title,
+      content: req.body.content
+    };
+
+    Question.findOneAndUpdate({
+      _id: req.params.id
+    }, newQuestion).then(function(doc) {
+
+      res.json({
+        success: 1
       });
-
-    }
-  });
-
-},
-updateQuestion:function (req,res,next) {
-
-  var newQuestion = {
-    title: req.body.title,
-    content: req.body.content,
-    author: req.session.user.username
-  };
-
-  Question.findOneAndUpdate({
-    _id:req.params.id
-  },newQuestion).then(function (doc) {
-
-    res.json({
-      success:1
+    }).catch(function(err) {
+      res.json({
+        success: 0
+      });
+      return console.log('err:', err);
     });
-  }).catch(function (err) {
-    res.json({
-      success:0
-    });
-    return console.log('err:',err);
-  });
-}
+  }
 
 };

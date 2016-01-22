@@ -8,13 +8,13 @@ module.exports = {
         content: req.body.content,
         question_id: req.params.id,
         master: req.body.master,
-        author: req.session.user.username
+        author: req.session.username
       };
 
       Comment.create(newComment).then(function(doc) {
         var newMsg = {
           master: req.body.master,
-          author: req.session.user.username,
+          author: req.session.username,
           question_id: req.params.id,
           comment_id: doc._id
         };
@@ -33,10 +33,10 @@ module.exports = {
 
     var commentId = req.params.commentId;
 
-    Comment.find({
+    Comment.findOne({
       _id: commentId
-    }).then(function(docs) {
-      if (docs.length && docs[0].author === req.session.user.username) {
+    }).then(function(doc) {
+      if (doc.author === req.session.username) {
         Comment.delComment(commentId, function() {
           res.json({
             success: 1
@@ -50,15 +50,13 @@ module.exports = {
     });
   },
   getCommentList: function(req, res, next) {
-    var user = {
-      username: req.session.user.username
-    };
+      var username=req.session.username;
 
-    Comment.getCommentList(req.session.user.username, function(docs) {
+    Comment.getCommentList(username, function(docs) {
 
       res.render('user/comment', {
         title: req.params.id,
-        user: user,
+        username:username,
         commentList: docs
       });
 
