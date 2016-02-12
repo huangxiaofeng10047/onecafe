@@ -1,5 +1,5 @@
 .question-lists 
-  each val in questionJSON
+  each val in questionColl
     section 
       .related
         span.vote-btn 0
@@ -8,7 +8,7 @@
         span.answer-btn 0
           br
           small 回答
-        span.view-btn= val.viewTimes
+        span.view-btn
           br
           small 浏览
       .summary

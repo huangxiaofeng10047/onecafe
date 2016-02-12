@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var db = require('../lib/db');
 var moment = require('moment');
+var ObjectId=mongoose.Schema.Types.ObjectId;
+
 
 var QuestionSchema = mongoose.Schema({
 
@@ -11,14 +13,18 @@ var QuestionSchema = mongoose.Schema({
   content: {
     type: String
   },
-  author: {
-    type: String
+  author_id: {
+    type: ObjectId
   },
-  post_at: {
+  create_at: {
     type: Date,
     default: Date.now
   },
-  viewTimes:{
+  update_at:{
+    type: Date,
+    default: Date.now
+  },
+  visit_count:{
     type:Number,
     default:0
   }
@@ -28,7 +34,6 @@ var QuestionSchema = mongoose.Schema({
 QuestionSchema.virtual('createdDate').get(function () {
   return moment(this.post_at).format('x');
 });
-
 
 
 // 获取用户文章列表
@@ -46,20 +51,7 @@ QuestionSchema.static('getQuestionList', function(username, callback) {
 
 });
 
-// 删除文章
-QuestionSchema.static('delQuestion', function(id, callback) {
 
-  return this.findOneAndRemove({
-    _id: id
-  }, function(err) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    callback();
-  });
-
-});
 
 var Question = db.model('Question', QuestionSchema);
 

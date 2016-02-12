@@ -13,7 +13,7 @@ $(function(window, undefined) {
       if (data.success) {
         window.location.href = '/';
       } else {
-        alert('删除失败');
+        alert(data.message);
       }
     });
   });
@@ -33,11 +33,12 @@ $(function(window, undefined) {
   $('.addComment').click(function() {
 
     $.ajax({
-      url: '/q/' + $('.questionId').data('id'),
+      url: '/comment/create',
       method: 'post',
       data: {
         title: '评论：' + $('.questionTitle').val(),
-        content: $('textarea').val()
+        content: $('textarea').val(),
+        question_id:$('.questionId').data('id')
       },
       dataType: 'json',
       success: function(data) {
@@ -55,20 +56,17 @@ $(function(window, undefined) {
   $('.delComment').click(function() {
     var $this = $(this);
     $.ajax({
-      url: '/q/' + $('.questionId').data('id') + '/' + $this.data('id'),
+      url: '/comment/' + $this.data('id'),
       method: 'delete',
-      dataType: 'json',
-      success: function(data) {
-        if (data.success) {
-          window.location.href = '/q/' + $('.questionId').data('id');
-        } else {
-          alert('删除失败');
-        }
+      dataType: 'json'
+    }).done(function (data) {
+      if (data.success) {
+        window.location.href ='/q/' + $('.questionId').data('id');
+      } else {
+        alert(data.message);
       }
     });
   });
-
-
 
 
 }(window));

@@ -5,17 +5,25 @@ var ObjectId=mongoose.Schema.Types.ObjectId;
 
 var CommentSchema = mongoose.Schema({
 
-  title:{
-    type:String
-  },
   content: {
     type: String
+  },
+  create_at:{
+    type:Date,
+    default: Date.now
+  },
+  update_at:{
+    type:Date,
+    default: Date.now
   },
   question_id:{
     type:ObjectId
   },
-  author: {
-    type: String
+  author_id: {
+    type: ObjectId
+  },
+  reply_to_id:{
+    type:ObjectId
   }
 });
 
@@ -34,20 +42,7 @@ CommentSchema.static('getCommentList', function(username,callback) {
   });
 
 });
-// 删除单个评论
-CommentSchema.static('delComment', function(id,callback) {
 
-  return this.findOneAndRemove({
-    _id:id
-  }, function(err) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    callback();
-  });
-
-});
 // 删除文章所有评论
 CommentSchema.static('delComments', function(id,callback) {
 

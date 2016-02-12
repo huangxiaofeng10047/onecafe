@@ -2,18 +2,6 @@ $(function(window, undefined) {
 
   'use strict';
 
-  $('.logout-btn').click(function() {
-    $.ajax({
-      url: '/logout',
-      method: 'get',
-      dataType: 'json'
-    }).done(function(data) {
-      if (data.success) {
-        window.location.href = '/login';
-      }
-    });
-  });
-
 
   tinymce.init({
     selector: '#editor',
@@ -28,13 +16,12 @@ $(function(window, undefined) {
     toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
     toolbar2: 'print preview media | forecolor backcolor emoticons',
     image_advtab: true
-
   });
 
   $('.form-editor button').click(function() {
 
     $.ajax({
-      "url": '/ask',
+      "url": '/create',
       "method": 'post',
       "data": {
         title: $('#title').val(),
@@ -51,8 +38,6 @@ $(function(window, undefined) {
     });
 
   });
-
-
 
 
 }(window));

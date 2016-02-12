@@ -1,64 +1,47 @@
 var Comment = require('../models/Comment');
-var Message = require('../models/Message');
 
-module.exports = {
-  createComment: function(req, res, next) {
-      var newComment = {
-        title: req.body.title,
-        content: req.body.content,
-        question_id: req.params.id,
-        author: req.session.username
-      };
 
-      Comment.create(newComment).then(function(doc) {
-        var newMsg = {
-          master: req.body.master,
-          author: req.session.username,
-          question_id: req.params.id,
-          comment_id: doc._id
-        };
-        return Message.create(newMsg);
-      }).then(function(doc) {
-        res.json({
-          success: 1,
-          message:'添加评论成功'
-        });
-      }).catch(function(err) {
-        return console.log('err:', err);
-      });
-
-  },
-  delComment: function(req, res, next) {
-
-    var commentId = req.params.commentId;
-
-    Comment.findOne({
-      _id: commentId
-    }).then(function(doc) {
-      if (doc.author === req.session.username) {
-        Comment.delComment(commentId, function() {
-          res.json({
-            success: 1
-          });
-        });
-      } else {
-        res.json({
-          success: 0
-        });
-      }
+exports.create = function(req, res) {
+  var newComment = {
+    title: req.body.title,
+    content: req.body.content,
+    question_id: req.body.question_id,
+    author_id: req.session.user._id
+  };
+  Comment.create(newComment).then(function(comment) {
+    res.json({
+      success: 1,
+      message: '添加评论成功'
     });
-  },
-  getCommentList: function(req, res, next) {
-      var username=req.session.username;
+  }).catch(function(err) {
+    return console.log('err:', err);
+  });
+};
 
-    Comment.getCommentList(username, function(docs) {
+exports.delete = function(req, res) {
+  Comment.findById(req.params.id).then(function(comment) {
 
-      res.render('user/comment-list', {
-        title: req.params.id,
-        username:username,
-        commentList: docs
+    if(!comment){return Promise.reject('评论不存在');}
+    if (comment.author_id.toString() === req.session.user._id.toString()) {
+      comment.remove();
+      res.json({
+        success:1,
+        message:'删除评论成功'
       });
-
+    } else {
+      res.json({
+        success: 0,
+        message:'没有删除权限'
+      });
+    }
+  }).catch(function (err) {
+    if(err instanceof Error){
+      console.log('err',err);
+      err='服务器出现异常错误';
+    }
+    res.json({
+      success:0,
+      message:err
     });
-  }
+  });
 };

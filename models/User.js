@@ -8,14 +8,17 @@ var UserSchema = mongoose.Schema({
   password: {
     type: String
   },
-  authority:{
-    type:String,
-    default:'common'
+  authority: {
+    type: String,
+    default: 'common'
   }
 });
 
 
+var User = db.model('User', UserSchema);
 
-var User = db.model('User',UserSchema);
+
+
+
 
 module.exports = User;

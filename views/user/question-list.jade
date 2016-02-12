@@ -3,7 +3,7 @@ block link
 block main
       .container
         ul 
-          each val in questionList
+          each val in questionCollViewModel
             li
               a(href= "/q/"+val._id)= val.title
   

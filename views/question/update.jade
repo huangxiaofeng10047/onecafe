@@ -3,9 +3,9 @@ block link
       link(rel="stylesheet", href="/css/edit.css")
 block main
   .container
-    form.form-editor(action="",method="post",data-id= questionJSON.id)
-      input(type="text",id="title",class="form-control",placeholder='请输入文章标题',value= questionJSON.title)   
-      textarea(id="editor")= questionJSON.content
+    form.form-editor(action="",method="post",data-id= question.id)
+      input(type="text",id="title",class="form-control",placeholder='请输入文章标题',value= question.title)   
+      textarea(id="editor")= question.content
       p
         button.btn-primary(class="btn",type="button") 发布
 block scripts  

@@ -1,16 +1,17 @@
 extends ../layout
 block link
-      link(rel="stylesheet", href="/css/ask.css")
+      link(rel="stylesheet", href="/css/edit.css")
 block main
   .container
     form.form-editor(action="",method="post")
-      input(type="text",id="title",class="form-control",placeholder='请输入文章标题') 
-      textarea(id="editor") Hello, World!
+      input(type="text",id="title",class="form-control",placeholder='请输入文章标题')   
+      textarea(id="editor")
       p
         button.btn-primary(class="btn",type="button") 发布
-block scripts
+block scripts  
   script(src="/assets/tinymce/tinymce.jquery.min.js")
-  script(src="/js/ask.js")
+  script(src="/js/create.js")
+  
 
       
       

@@ -11,18 +11,18 @@ header
         li
           a(href="")  文章
     .r
-      if(!username)
+      if(!user)
         a(href="/reg") 注册
         a(href="/login") 登录  
       else
         div
-          a(href="/ask") 提问
+          a(href="/create") 提问
         .dropdown
           span.avatar(class="glyphicon glyphicon-user") 
-          a(class="dropdown-toggle",href="")= username
+          a(class="dropdown-toggle",href="")= user.username
           ul.dropdown-menu
             li
-              a(href= "/u/"+username) 我的主页
+              a(href= "/u/"+user.username) 我的主页
             li
               a.logout-btn(href="javascript:void(0)") 退出 
             

@@ -22,7 +22,7 @@ $(function (window,undefined) {
   $('.form-editor button').click(function() {
 
     $.ajax({
-      "url": '/q/' + $('.form-editor').data('id')+'/edit',
+      "url": '/q/' + $('.form-editor').data('id')+'/update',
       "method": 'post',
       "data": {
         title: $('#title').val(),
@@ -33,7 +33,7 @@ $(function (window,undefined) {
         if (data.success) {
           window.location.href = '/';
         } else {
-          alert('发布失败');
+          alert(data.message);
         }
       }
     });

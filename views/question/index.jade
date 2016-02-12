@@ -11,32 +11,32 @@ block main
               li
                 a  &nbsp > 问答详情
             h3
-              a(href="")= questionJSON.title
+              a(href="")= question.title
             .author
-              a(href="")= questionJSON.author
+              a(href="")= question.author
               span 一小时前提问
               span  36分钟前更新
       .question-main
         .container
           .row
-            div.questionId(data-id= questionJSON.id)!= questionJSON.content 
+            div.questionId(data-id= question.id)!= question.content 
             ul.tooltips
-              if(username===questionJSON.author)
+              if(user._id.toString()===question.author_id.toString())
                 li
-                  a(href="/q/"+questionJSON._id+"/edit") 编辑
+                  a(href="/q/"+question._id+"/update") 编辑
               li
                 a.comment-btn(href="javascript:void(0);") 评论
-              if(username===questionJSON.author)
+              if(user._id.toString()===question.author_id.toString())
                 li 
                   a.delQuestion(href="javascript:void(0);") 删除 
             .comment-wiget
               textarea
-              input(type="hidden",class="questionTitle",value= questionJSON.title)
+              input(type="hidden",class="questionTitle",value= question.title)
               button.addComment(type="button") 提交评论      
           .row
             h2  讨论区
             div.comments
-              each val in commentJSON
+              each val in commentColl
                 .comment-list
                   .observer
                     a(href="")= val.author
@@ -53,7 +53,7 @@ block main
                       li 
                         a(data-id= val.id,href="javascript:void(0);").delComment 删除
 block scripts        
-      script(src="/js/q.js")
+      script(src="/js/question.js")
 
       
       

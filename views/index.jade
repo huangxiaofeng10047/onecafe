@@ -11,12 +11,10 @@ block main
             a(href="") 热门的    
         include ./question/list.jade
       aside(class="col-xs-3")
-        if(username)
+        if(user)
           ul.side-navbar
             li
-              a(href= "/u/"+username+"/question")  我的问题
-            li
-              a(href= "/u/"+username+"/comment")  我的评论 
+              a(href= "/myQuestion")  我的问题
 block scripts      
   script(src="/assets/moment/min/moment.min.js")
   script(src="/assets/moment/locale/zh-cn.js")
