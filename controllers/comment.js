@@ -1,5 +1,7 @@
 var Comment = require('../models/Comment');
-
+var Message = require('../models/Message');
+var Question = require('../models/Question');
+var Promise = require('bluebird');
 
 exports.create = function(req, res) {
   var newComment = {
@@ -8,7 +10,7 @@ exports.create = function(req, res) {
     question_id: req.body.question_id,
     author_id: req.session.user._id
   };
-  Comment.create(newComment).then(function(comment) {
+  Comment.create(newComment).then(function(message) {
     res.json({
       success: 1,
       message: '添加评论成功'
