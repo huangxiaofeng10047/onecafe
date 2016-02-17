@@ -7,22 +7,23 @@ header
         span(class="glyphicon glyphicon-search")
       ul
         li
-          a(href="")  问答  
+          a(href="")  问答
         li
           a(href="")  文章
     .r
       if(!user)
         a(href="/reg") 注册
-        a(href="/login") 登录  
+        a(href="/login") 登录
       else
         div
           a(href="/create") 提问
+          if(user.message.length)
+            a(href="/messages")= '您有'+user.message.length+'条消息未读'
         .dropdown
-          span.avatar(class="glyphicon glyphicon-user") 
+          span.avatar(class="glyphicon glyphicon-user")
           a(class="dropdown-toggle",href="")= user.username
           ul.dropdown-menu
             li
               a(href= "/u/"+user.username) 我的主页
             li
-              a.logout-btn(href="javascript:void(0)") 退出 
-            
+              a.logout-btn(href="javascript:void(0)") 退出

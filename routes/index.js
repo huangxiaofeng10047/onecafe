@@ -19,19 +19,12 @@ router.get('/login', sign.showLogin);
 router.post('/login', sign.login);
 router.get('/logout', sign.logout);
 
-// 系统管理员
-// router.get('/admin', user.getAdmin);
-// router.get('/admin/login', user.getAdminLogin);
-// router.post('/admin/login', user.postAdminLogin);
-// router.get('/admin/logout', user.getAdminLogout);
-
 /*
     用户
 */
 router.get('/u/:id',user.index);
 router.get('/myQuestion', filter.authorize, user.showQuestionColl);
-
-
+router.get('/messages',filter.authorize,user.showMessages);
 
 /*
     问题

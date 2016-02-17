@@ -21,5 +21,12 @@ exports.showQuestionColl=function (req,res) {
     });
   });
 
+};
 
+exports.showMessages=function (req,res) {
+  console.log(req.session.user.message[0].author);
+  res.render('user/messages',{
+    'title':'消息',
+    'user':req.session.user || null
+  })
 };

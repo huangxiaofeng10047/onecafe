@@ -86,6 +86,7 @@ header .r div:first-child a{
 background-color: #009a61;
 color: #fff;
 margin-right: 10px;
+display: inline-block;
 }
 header .r div:first-child a:hover{
   background-color: #009a61;

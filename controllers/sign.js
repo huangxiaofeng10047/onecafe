@@ -58,6 +58,7 @@ exports.login = function(req, res) {
         _id:user._id,
         username:req.body.username
       };
+      
       return res.json({
         success: 1,
         message:'登录成功'

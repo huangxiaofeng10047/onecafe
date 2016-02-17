@@ -1,0 +1,7 @@
+extends ../layout
+block link
+block main
+      .container
+        ul
+          each val in user.message
+            li= val.author 

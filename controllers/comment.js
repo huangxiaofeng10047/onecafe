@@ -10,7 +10,16 @@ exports.create = function(req, res) {
     question_id: req.body.question_id,
     author_id: req.session.user._id
   };
-  Comment.create(newComment).then(function(message) {
+  Comment.create(newComment).then(function(comment) {
+    return Question.findById(comment.question_id);
+  }).then(function (question) {
+    var newMessage={
+      question_id:question._id,
+      author_id:req.session.user._id,
+      repy_to_id:req.question_id.author_id
+    };
+    return Message.create(newMessage);
+  }).finally(function (message) {
     res.json({
       success: 1,
       message: '添加评论成功'
