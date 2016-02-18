@@ -9,11 +9,6 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 
-// 带'install'参数启动则初始化MongoDB，完成后退出
-if (process.argv.indexOf('install') > 0) {
-    require('./lib/install.js')();
-}
-
 var app = express();
 
 // view engine setup

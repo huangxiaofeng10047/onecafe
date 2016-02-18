@@ -7,12 +7,17 @@ var comment = require('../controllers/comment');
 var user = require('../controllers/user');
 var sign = require('../controllers/sign');
 var site = require('../controllers/site');
+var message = require('../controllers/message');
 
 
-// 主页
+/*
+    主页
+*/
 router.get('/', site.showIndex);
 
-// 普通用户
+/*
+    登录
+*/
 router.get('/reg', sign.showReg);
 router.post('/reg', sign.reg);
 router.get('/login', sign.showLogin);
@@ -20,11 +25,15 @@ router.post('/login', sign.login);
 router.get('/logout', sign.logout);
 
 /*
+    消息
+*/
+router.get('/messages',filter.authorize,message.index);
+
+/*
     用户
 */
 router.get('/u/:id',user.index);
 router.get('/myQuestion', filter.authorize, user.showQuestionColl);
-router.get('/messages',filter.authorize,user.showMessages);
 
 /*
     问题
@@ -42,8 +51,6 @@ router.delete('/q/:id', filter.authorize, question.delete);
 */
 router.post('/comment/create',filter.authorize,comment.create);
 router.delete('/comment/:id',filter.authorize,comment.delete);
-
-
 
 
 module.exports = router;

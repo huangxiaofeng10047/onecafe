@@ -4,4 +4,5 @@ block main
       .container
         ul
           each val in user.message
-            li= val.author 
+            li
+              a(href= '/q/'+val.question_id)= val.author+'评论了你的'+val.question

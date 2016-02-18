@@ -17,8 +17,10 @@ header
       else
         div
           a(href="/create") 提问
-          if(user.message.length)
-            a(href="/messages")= '您有'+user.message.length+'条消息未读'
+          if( user.message && user.message.length)
+            a(href="/messages")
+              strong= user.message.length+' '
+              未读消息
         .dropdown
           span.avatar(class="glyphicon glyphicon-user")
           a(class="dropdown-toggle",href="")= user.username

@@ -17,21 +17,30 @@ exports.showIndex = function(req, res) {
       return messageColl;
     }).map(function (message) {
       return User.findById(message.author_id).then(function (user) {
+        message=_.clone(message);
         message.author=user.username;
         return message;
       });
     }).map(function (message) {
-      console.log(message);
       return Question.findById(message.question_id).then(function (question) {
         message.question=question.title;
         return message;
       });
     }).then(function (messageColl) {
-      req.session.user.message=messageColl;
-      return Promise.resolve(messageColl);
+      var viewModel=_.map(messageColl,function (val) {
+          return {
+            author:val.author,
+            question:val.question,
+            question_id:val.question_id
+          };
+      });
+      req.session.user.message=viewModel;
+      return Promise.resolve(viewModel);
     });
   }else{
-    return Promise.resolve(null);
+      queryMessageColl=new Promise(function (resolve,reject) {
+          resolve();
+      });
   }
 
   var queryQuestionColl = Question.find({}, null, {
@@ -49,7 +58,6 @@ exports.showIndex = function(req, res) {
 
 
   Promise.resolve([queryQuestionColl,queryMessageColl]).spread(function(questionColl,messageColl) {
-
 
     res.render('index', {
       'title': 'MiCo首页',

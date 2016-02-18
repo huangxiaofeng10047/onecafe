@@ -2,6 +2,7 @@ var Promise = require('bluebird');
 var Question = require('../models/Question');
 var User = require('../models/User');
 var Comment = require('../models/Comment');
+var Message = require('../models/Message');
 
 
 exports.showCreate = function(req, res) {
@@ -23,6 +24,7 @@ exports.showCreate = function(req, res) {
 };
 
 exports.create = function(req, res) {
+
   var newQuestion = {
     title: req.body.title,
     content: req.body.content,
@@ -38,14 +40,9 @@ exports.create = function(req, res) {
 };
 
 exports.index = function(req, res) {
-  var user = null;
-  if (req.session.userId) {
-    user = {
-      userId: req.session.userId
-    };
-  }
-  var questionViewModel = null,
-    userViewModel = null;
+
+
+  var questionViewModel = null;
   Question.findById(req.params.id).then(function(question) {
     if (question) {
       questionViewModel = question;
@@ -54,7 +51,6 @@ exports.index = function(req, res) {
       return Promise.reject('此话题不存在');
     }
   }).then(function(user) {
-    userViewModel = user;
     questionViewModel.author = user.username;
     return Comment.find({
       question_id: req.params.id
@@ -67,7 +63,7 @@ exports.index = function(req, res) {
   }).then(function (commentCollViewModel) {
     res.render('question/index', {
       'title': '文章',
-      'user': userViewModel,
+      'user': req.session.user || null,
       'question': questionViewModel,
       'commentColl': commentCollViewModel
     });
@@ -157,18 +153,3 @@ exports.delete = function(req, res) {
   });
 
 };
-
-//   getQuestionList: function(req, res, next) {
-//
-//     var username = req.session.username;
-//
-//     Question.getQuestionList(username, function(docs) {
-//
-//       res.render('user/question-list', {
-//         title: req.params.id,
-//         username: username,
-//         questionList: docs
-//       });
-//
-//     });
-//   },

@@ -82,6 +82,10 @@ header .r div a{
   padding:0 10px;
   border-radius: 3px;
 }
+header strong{
+  color: #e6253c;
+  font-size: 16px;
+}
 header .r div:first-child a{
 background-color: #009a61;
 color: #fff;
