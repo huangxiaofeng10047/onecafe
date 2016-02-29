@@ -10,9 +10,10 @@ var site = require('../controllers/site');
 var message = require('../controllers/message');
 
 
-/*
-    主页
-*/
+/**
+ * 主页
+ */
+
 router.get('/', site.showIndex);
 
 /*
@@ -27,30 +28,30 @@ router.get('/logout', sign.logout);
 /*
     消息
 */
-router.get('/messages',filter.authorize,message.index);
+router.get('/messages', filter.authorize, message.index);
 
 /*
     用户
 */
-router.get('/u/:id',user.index);
+router.get('/u/:id', user.index);
 router.get('/myQuestion', filter.authorize, user.showQuestionColl);
 
 /*
     问题
 */
-router.get('/q/:id',question.index);
+router.get('/q/:id', question.index);
 
 router.get('/create', filter.authorize, question.showCreate);
 router.post('/create', filter.authorize, question.create);
-router.get('/q/:id/update',filter.authorize,question.showUpdate);
-router.post('/q/:id/update',filter.authorize,question.update);
+router.get('/q/:id/update', filter.authorize, question.showUpdate);
+router.post('/q/:id/update', filter.authorize, question.update);
 router.delete('/q/:id', filter.authorize, question.delete);
 
 /*
   评论
 */
-router.post('/comment/create',filter.authorize,comment.create);
-router.delete('/comment/:id',filter.authorize,comment.delete);
+router.post('/comment/create', filter.authorize, comment.create);
+router.delete('/comment/:id', filter.authorize, comment.delete);
 
 
 module.exports = router;

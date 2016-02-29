@@ -15,11 +15,11 @@ exports.create = function(req, res) {
   }).then(function (question) {
     var newMessage={
       question_id:question._id,
-      author_id:req.session.user._id,
-      repy_to_id:req.question_id.author_id
+      reply_to_id:question.author_id,
+      author_id:req.session.user._id
     };
     return Message.create(newMessage);
-  }).finally(function (message) {
+  }).finally(function () {
     res.json({
       success: 1,
       message: '添加评论成功'

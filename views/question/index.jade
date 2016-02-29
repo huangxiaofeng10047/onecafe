@@ -5,7 +5,7 @@ block main
       .question-title
         .container
           .row
-            ul.navmenu 
+            ul.navmenu
               li
                 a.active(href="") 问答
               li
@@ -19,20 +19,20 @@ block main
       .question-main
         .container
           .row
-            div.questionId(data-id= question.id)!= question.content 
+            div.questionId(data-id= question.id)!= question.content
             ul.tooltips
-              if(user._id.toString()===question.author_id.toString())
+              if(user && user._id.toString()===question.author_id.toString())
                 li
                   a(href="/q/"+question._id+"/update") 编辑
               li
                 a.comment-btn(href="javascript:void(0);") 评论
-              if(user._id.toString()===question.author_id.toString())
-                li 
-                  a.delQuestion(href="javascript:void(0);") 删除 
+              if(user && user._id.toString()===question.author_id.toString())
+                li
+                  a.delQuestion(href="javascript:void(0);") 删除
             .comment-wiget
               textarea
               input(type="hidden",class="questionTitle",value= question.title)
-              button.addComment(type="button") 提交评论      
+              button.addComment(type="button") 提交评论
           .row
             h2  讨论区
             div.comments
@@ -44,16 +44,13 @@ block main
                     span  1小时前更新
                   div= val.content
                   ul.tooltips
-                    if(username===val.author)
+                    if(user && user._id==val.author_id)
                       li
                         a(href="javascript:void(0);") 编辑
                     li
                       a(href="javascript:void(0);") 评论
-                    if(username===val.author)
-                      li 
+                    if(user && user._id==val.author_id)
+                      li
                         a(data-id= val.id,href="javascript:void(0);").delComment 删除
-block scripts        
+block scripts
       script(src="/js/question.js")
-
-      
-      
