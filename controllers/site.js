@@ -60,7 +60,7 @@ exports.showIndex = function(req, res) {
   Promise.resolve([queryQuestionColl,queryMessageColl]).spread(function(questionColl,messageColl) {
 
     res.render('index', {
-      'title': 'MiCo首页',
+      'title': 'OneCafe',
       'questionColl': questionColl,
       'user': req.session.user
     });
