@@ -1,31 +1,40 @@
 header
-  .container
-    .l
-      a(href="/",class="logo") MiCo
-      form(action="/search")
-        input(type="text",placeholder="请输入关键字搜索")
-        span(class="glyphicon glyphicon-search")
-      ul
-        li
-          a(href="")  问答
-        li
-          a(href="")  文章
-    .r
-      if(!user)
-        a(href="/reg") 注册
-        a(href="/login") 登录
-      else
-        div
-          a(href="/create") 提问
-          if( user.message && user.message.length)
-            a(href="/messages")
-              strong= user.message.length+' '
-              未读消息
-        .dropdown
-          span.avatar(class="glyphicon glyphicon-user")
-          a(class="dropdown-toggle",href="")= user.username
-          ul.dropdown-menu
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .logo.navbar-header
+          a.navbar-brand(href="/") MiCo
+        form.search.navbar-form.navbar-left(role="search")
+          .input-group
+            input.form-control(type="text" placeholder="输入关键字搜索")
+            span.input-group-btn
+              button.btn.btn-default(type="submit") 
+                i.glyphicon.glyphicon-search
+        ul.menu.nav.navbar-nav
+          li
+            a(href="") 首页
+          li
+            a(href="") 资讯
+          li 
+            a(href="") 关于我们
+        ul.profile.nav.navbar-nav.navbar-right
+          if(user)
             li
-              a(href= "/u/"+user.username) 我的主页
+              a.create_btn(href="/create") 提问
+            li.dropdown
+              a.dropdown-toggle.avatar(href="javascript:;" data-toggle="dropdown")
+                img(src="/img/avatar_default.png", alt="")
+                span.caret
+              ul.dropdown-menu
+                li 
+                  a(href="") 我的主页
+                li.divider(role="separator")
+                li
+                  a(href="") 设置
+                li
+                  a.logout_btn(href="javascript:;") 退出
+          else
             li
-              a.logout-btn(href="javascript:void(0)") 退出
+              a(href="/reg")  注册
+            li
+              a(href="/login") 登录
+              

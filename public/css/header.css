@@ -1,121 +1,40 @@
-header {
-  height: 54px;
-  background-color: #222E2A;
+header{
+  height: 45px;
 }
-header .logo {
-  color: #fff;
-  height: 54px;
-  line-height: 54px;
-  display: block;
-  padding: 0 30px;
-  text-align: center;
-  font-size: 36px;
-  float: left;
+header nav .logo .navbar-brand {
+  font-size: 35px;
 }
-header form {
-  float: left;
-  height: 34px;
-  margin: 10px 0;
-  background-color: #3F4F49;
-  border-radius: 5px;
+header nav form{
+  padding-left: 0!important;
+  padding-right: 0!important;
 }
-header form span {
-  padding: 10px 12px;
-  height: 34px;
-  color: #7D938A;
+header nav form .input-group{
+  width: 340px;
 }
-header form input {
-  float: left;
-  height: 34px;
-  width: 310px;
-  text-indent: 15px;
-  border: none;
-  background-color: transparent;
-  color: #fff;
+header nav form .input-group-btn{
+  width: 1%!important;
 }
-header ul{
-  float: left;
-  padding-left: 10px;
-  margin-bottom: 0;
+header nav .menu{
+  margin-left: 18px;
 }
-header ul li{
-  float: left;
-}
-header ul li a{
-  color: #A4BFB4;
-  height: 30px;
-  line-height: 30px;
-  display: block;
-  margin: 12px 0;
-  font-size: 16px;
-  padding:0 10px;
-  border-radius: 3px;
-}
-header ul li a:hover{
-  color: #A4BFB4;
-  background-color: #3F4F49;
+header nav .menu a{
+  padding: 15px 12px;
 }
 
-header .r > a {
-  float: left;
-  height: 30px;
-  line-height: 30px;
-  display: block;
-  margin: 12px 0;
-  font-size: 16px;
-  color: #fff;
-  padding:0 10px;
-  margin-left: 5px;
-  border-radius: 3px;
-  background-color: #009a61;
+header nav .profile .avatar{
+  padding: 10px 0;
 }
-header .r div{
-  float: left;
+header nav .profile .create_btn{
+  margin-right: 20px;
 }
-header .r div a{
-  color: #A4BFB4;
-  height: 30px;
-  line-height: 30px;
-  display: block;
-  margin-top: 12px;
-  font-size: 16px;
-  padding:0 10px;
-  border-radius: 3px;
-}
-header strong{
-  color: #e6253c;
-  font-size: 16px;
-}
-header .r div:first-child a{
-background-color: #009a61;
-color: #fff;
-margin-right: 10px;
-display: inline-block;
-}
-header .r div:first-child a:hover{
-  background-color: #009a61;
-  color: #fff;
-}
-header .r .dropdown  .avatar {
-  font-size: 18px;
-  float: left;
-  left:5px;
-  top:18px;
-  color: #A4BFB4;
+header nav .profile .open .avatar{
+  background-color: transparent!important;
 }
 
-header .r .dropdown >a {
-  padding-left: 30px;
-  width: 120px;
+header nav .profile .avatar img{
+  width: 30px;
+  border-radius: 50%;
 }
-header  .dropdown-menu{
-  min-width: 120px;
-  margin-top: 0;
-}
-header .r .dropdown-menu li{
-  float: none;
-}
-header .r .dropdown-menu li a {
-  color: #333;
-  padding-left: 15px;
+header nav .profile .dropdown-menu{
+  min-width: 130px;
 }

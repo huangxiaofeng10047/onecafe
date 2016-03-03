@@ -1,13 +1,18 @@
 $(function(window, undefined) {
   'use strict';
 
-  $('header .dropdown-toggle').dropdown().parent().hover(function() {
+  var timer;
+  $('.dropdown').hover(function() {
+    clearTimeout(timer);
     $(this).addClass('open');
-  },function () {
-    $(this).removeClass('open');
+  }, function() {
+    var _self=this;
+    timer = setTimeout(function() {
+      $(_self).removeClass('open');
+    }, 200);
   });
 
-  $('.logout-btn').click(function() {
+  $('.logout_btn').click(function() {
     $.ajax({
       url: '/logout',
       method: 'get',

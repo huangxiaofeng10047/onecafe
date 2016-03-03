@@ -1,23 +1,19 @@
-.container{
-  width: 1050px!important;
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
 }
-a{
+.container {
+  width: 980px!important;
+}
+a {
   font-weight: 700;
 }
-a:hover{
+a:hover {
   text-decoration: none;
 }
-a:link{
+a:link {
   text-decoration: none;
 }
-
-ul{
+ul {
   list-style: none;
   padding: 0
-}
-.l{
-  float: left;
-}
-.r{
-  float: right;
 }
