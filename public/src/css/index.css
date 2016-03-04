@@ -1,0 +1,36 @@
+#main .center nav{
+  border-bottom: solid #ddd 1px;
+}
+#main .center nav a{
+  width: 100px;
+  padding: 7px 15px;
+  display: inline-block;
+  text-align: center;
+  height: 37px;
+  line-height: 23px;
+  color: #333;
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+  margin-bottom: -1px;
+  margin-right: -1px;
+}
+#main .center nav .nav-active{
+  background-color: #fff;
+  border-bottom: transparent;
+}
+aside {
+  margin-left: -10px;
+}
+aside .side-navbar {
+  margin-top: 25px;
+}
+aside .side-navbar  li a{
+  padding: 6px 10px;
+  display: block;
+  color: #666;
+  font-weight: normal;
+}
+aside .side-navbar  li a:hover{
+  color: #008E59;
+  background-color: #F6F6F6;
+}

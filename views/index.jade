@@ -1,5 +1,6 @@
 extends layout
 block link
+  link(rel="stylesheet", href="/css/header.css")
   link(rel="stylesheet", href="/css/index.css")
   link(rel="stylesheet", href="/css/question.css")
 block main
@@ -16,7 +17,7 @@ block main
             li
               a(href= "/myQuestion")  我的问题
 block scripts
-  script(src="/assets/moment/min/moment.min.js")
-  script(src="/assets/moment/locale/zh-cn.js")
-  script(src="/js/includes/question.js")
+  //- script(src="/vendor/moment/min/moment.min.js")
+  //- script(src="/vendor/moment/locale/zh-cn.js")
   script(src="/js/index.js")
+  //- script(src="/js/includes/question.js")

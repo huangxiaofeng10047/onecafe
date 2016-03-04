@@ -2,15 +2,13 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/assets/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
     link(rel="stylesheet", href="/css/base.css")
-    link(rel="stylesheet", href="/css/header.css")
     block link
   body
     include ./includes/header.jade
     #main
       block main
-  script(src="/assets/jquery/dist/jquery.min.js")
-  script(src="/assets/bootstrap/dist/js/bootstrap.min.js")
-  script(src="/js/header.js")
+  script(src="/vendor/jquery/dist/jquery.min.js")
+  script(src="/vendor/bootstrap/dist/js/bootstrap.min.js")
   block scripts

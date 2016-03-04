@@ -1,5 +1,6 @@
 extends ../layout
 block link
+      link(rel="stylesheet", href="/css/header.css")
       link(rel="stylesheet", href="/css/edit.css")
 block main
   .container
@@ -9,7 +10,7 @@ block main
       p
         button.btn-primary(class="btn",type="button") 发布
 block scripts  
-  script(src="/assets/tinymce/tinymce.jquery.min.js")
+  script(src="/vendor/tinymce/tinymce.min.js")
   script(src="/js/create.js")
   
 
