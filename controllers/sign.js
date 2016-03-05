@@ -58,7 +58,7 @@ exports.login = function(req, res) {
         _id:user._id,
         username:req.body.username
       };
-      
+
       return res.json({
         success: 1,
         message:'登录成功'
@@ -83,10 +83,7 @@ exports.logout = function(req, res) {
     if (err) {
       return console.log('err', err);
     }
-    res.json({
-      success: 1,
-      message:'登出成功'
-    });
+    res.redirect('/');
   });
 };
 

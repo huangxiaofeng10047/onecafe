@@ -10,15 +10,4 @@ module.exports = function() {
     }, 200);
   });
 
-  $('.logout_btn').click(function() {
-    $.ajax({
-      url: '/logout',
-      method: 'get',
-      dataType: 'json'
-    }).done(function(data) {
-      if (data.success) {
-        window.location.href = '/login';
-      }
-    });
-  });
 };

@@ -1,5 +1,5 @@
 header{
-  height: 45px;
+  height: 50px;
 }
 header nav .logo .navbar-brand {
   font-size: 30px;
@@ -20,13 +20,19 @@ header nav .menu{
 header nav .menu a{
   padding: 15px 12px;
 }
-
+header nav .profile .create_btn{
+  padding: 15px 0;
+  margin-right:  15px;
+}
+header nav .profile .messages{
+  font-size: 16px;
+  padding: 15px 5px;
+  margin-right: 10px;
+}
 header nav .profile .avatar{
   padding: 10px 0;
 }
-header nav .profile .create_btn{
-  margin-right: 20px;
-}
+
 header nav .profile .open .avatar{
   background-color: transparent!important;
 }
@@ -38,3 +44,29 @@ header nav .profile .avatar img{
 header nav .profile .dropdown-menu{
   min-width: 130px;
 }
+
+/**
+ * 用户登录注册begin
+ */
+
+#signModal .modal-dialog{
+  width: 420px;
+}
+#signModal .modal-login{
+  padding: 25px 50px;
+}
+#signModal .modal-login h4{
+  margin: 15px 0
+}
+#signModal .modal-login .close{
+  position: absolute;
+  top: 8px;
+  right: 15px;
+}
+#signModal .tab_reg{
+  display: none;
+}
+
+/**
+ * 用户登录注册end
+ */

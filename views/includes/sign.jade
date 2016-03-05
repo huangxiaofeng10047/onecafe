@@ -1,0 +1,25 @@
+.modal.fade#signModal(role="dialog" )
+  .modal-dialog(role="document")
+    .modal-content.modal-login
+      button.close(type="button" data-dismiss="modal" aria-label="Close")
+        span(aria-hidden="true") &times;
+      .tab_login
+        h4 OneCafe帐号登录
+        form
+          .form-group
+            input#username_login.form-control(type="text" placeholder="用户名")
+          .form-group
+            input#password_login.form-control(type="password" placeholder="密码")
+          .form-group
+            button(type="button")#login_btn.btn.btn-primary.btn-block 登录
+      .tab_reg
+        h4 新用户注册
+        form
+          .form-group
+            input#username_reg.form-control(type="text" placeholder="用户名")
+          .form-group
+            input#password_reg.form-control(type="password" placeholder="密码")
+          .form-group
+            button(type="button")#reg_btn.btn.btn-primary.btn-block 注册
+      .footer.clearfix
+        a.toggle_btn.pull-right(href="javascript:;") 新用户注册      

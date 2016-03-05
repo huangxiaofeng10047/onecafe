@@ -10,6 +10,9 @@ a {
 a:hover {
   text-decoration: none;
 }
+a:focus{
+  outline: none;
+}
 a:link {
   text-decoration: none;
 }
