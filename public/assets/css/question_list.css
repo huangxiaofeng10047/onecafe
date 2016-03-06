@@ -1,0 +1,80 @@
+#main .center{
+  margin-top: 15px;
+}
+#main .center .nav li{
+  margin-right: 25px;
+}
+
+#main .center .nav .active a{
+  border-bottom: solid 2px #337ab7;
+}
+#main .center .nav  a{
+  border: none;
+  min-width: 92px;
+  text-align: center;
+  border-bottom: solid 2px transparent;
+}
+
+#main .center .nav a:hover{
+  color: #555;
+  border: none;
+  border-bottom: solid 2px #337ab7;
+  background-color: transparent;
+}
+#main .center section {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+#main .center section .head{
+  font-size: 16px;
+  float: left;
+  margin-right: 20px;
+}
+#main .center section .head i{
+float: left;
+font-style: normal;
+ width: 45px;
+  height: 45px;
+  text-align: center;
+}
+#main .center section .head i small{
+  display: block;
+}
+#main .center section .head .answer_count{
+  background-color: #337ab7;
+  color: #fff;
+  margin-left: 20px;
+
+
+}
+#main .center section .head .view_count{
+  color: #999;
+  margin-left: 10px;
+
+}
+
+
+
+#main .center section .author_avatar{
+  margin-left: 20px;
+float: left;
+ width: 45px;
+  height: 45px;
+}
+#main .center section .author_avatar img{
+  width: 100%;
+}
+
+#main .center section .body{
+  display: inline-block;
+}
+#main .center section .body h3{
+  margin: 0;
+  height: 45px;
+  line-height: 45px;
+}
+
+
+#main .center nav{
+  text-align: center;
+}

@@ -1,22 +1,20 @@
 extends layout
 block link
-  link(rel="stylesheet", href="/css/index.css")
-  link(rel="stylesheet", href="/css/question.css")
-block main
-  .container
-    .row
-      .center(class="col-xs-9")
-        nav
-            a.nav-active(href="") 最新的
-            a(href="") 热门的
-        include ./question/list.jade
-      aside(class="col-xs-3")
-        if(user)
-          ul.side-navbar
-            li
-              a(href= "/myQuestion")  我的问题
+  link(rel="stylesheet", href="/css/header.css")
+  link(rel="stylesheet", href="/css/question_list.css")
+block content
+  include ./includes/header.jade
+  include ./includes/sign.jade
+  #main
+    .container
+      .row
+        .center(class="col-xs-9")
+          include ./question/newest.jade
+        aside(class="col-xs-3")
+          if(user)
+            ul.side-navbar
+              li
+                a(href= "/myQuestion")  我的问题
 block scripts
-  script(src="/assets/moment/min/moment.min.js")
-  script(src="/assets/moment/locale/zh-cn.js")
-  script(src="/js/includes/question.js")
   script(src="/js/index.js")
+  //- script(src="/js/includes/question.js")

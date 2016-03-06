@@ -1,6 +1,8 @@
 extends ../layout
 block link
-      link(rel="stylesheet", href="/css/edit.css")
+      link(rel="stylesheet", href="/vendor/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.min.css")
+      link(rel="stylesheet", href="/css/header.css")
+      link(rel="stylesheet", href="/css/create.css")
 block main
   .container
     form.form-editor(action="",method="post")
@@ -9,7 +11,7 @@ block main
       p
         button.btn-primary(class="btn",type="button") 发布
 block scripts  
-  script(src="/assets/tinymce/tinymce.jquery.min.js")
+  script(src="/vendor/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js")
   script(src="/js/create.js")
   
 

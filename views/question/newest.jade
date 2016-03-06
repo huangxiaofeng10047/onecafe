@@ -1,0 +1,39 @@
+ul.nav.nav-tabs
+  li.active
+    a(href="/?question=newest") 最新的
+  li
+    a(href="/?question=hottest") 热门的
+  li
+    a(href="/?question=unanswered") 未回答的
+.question_list 
+  each val in questionColl
+    section
+      .row
+        .head
+          a.author_avatar
+            img(src="/img/avatar_default.png", alt="")
+          i.answer_count 2
+            small 回答
+          i.view_count  8
+            small 浏览
+        .body
+          h3
+            a(href="q/#{val.id}")= val.title
+nav
+  ul.pagination
+   li.disabled
+     a(href="" aria-label="Previous")
+       span(aria-hidden="true") 上一页
+    li.active
+      a(href="/?question=newest&page=1") 1
+    li
+      a(href="/?question=newest&page=2") 2             
+    li
+      a(href="/?question=newest&page=3") 3
+    li
+      a(href="/?question=newest&page=4") 4
+    li
+      a(href="/?question=newest&page=5") 5
+    li
+      a(href="" aria-label="Next")
+        span(aria-hidden="true") 下一页       

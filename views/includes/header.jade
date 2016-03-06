@@ -20,6 +20,9 @@ header
           if(user)
             li
               a.create_btn(href="/create") 提问
+            li
+              a.messages(href="/messages")
+                i.fa.fa-bell-o
             li.dropdown
               a.dropdown-toggle.avatar(href="javascript:;" data-toggle="dropdown")
                 img(src="/img/avatar_default.png", alt="")
@@ -31,10 +34,8 @@ header
                 li
                   a(href="") 设置
                 li
-                  a.logout_btn(href="javascript:;") 退出
+                  a.logout_btn(href="/logout") 退出
           else
             li
-              a(href="/reg")  注册
-            li
-              a(href="/login") 登录
+              a(href="javascript:;" data-toggle="modal" data-target="#signModal") 登录
               
