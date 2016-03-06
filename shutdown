@@ -1,0 +1,18 @@
+#!/bin/sh
+
+
+#关闭redis
+redisPid=`ps -ef | grep "redis-server" | grep -v "grep" | awk '{print $2}'`
+if [ -n "$redisPid" ]
+then
+  echo "关闭redis"
+  kill  $redisPid
+fi
+
+#关闭mongodb
+mongodbPid=`ps  -ef | grep "mongodb" | grep -v grep |  awk '{print $2}'`
+if [ -n "$mongodbPid" ]
+then
+  echo "关闭mongodb"
+  kill $mongodbPid
+fi
