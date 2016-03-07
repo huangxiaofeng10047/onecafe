@@ -18,8 +18,8 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.6",
-    "tinymce": "tinymce-dist#~4.3.2",
     "moment": "~2.11.0",
-    "font-awesome": "fontawesome#^4.5.0"
+    "font-awesome": "fontawesome#^4.5.0",
+    "summernote": "^0.8.1"
   }
 }

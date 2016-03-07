@@ -1,19 +1,22 @@
 extends ../layout
 block link
-      link(rel="stylesheet", href="/vendor/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.min.css")
-      link(rel="stylesheet", href="/css/header.css")
-      link(rel="stylesheet", href="/css/create.css")
-block main
-  .container
-    form.form-editor(action="",method="post")
-      input(type="text",id="title",class="form-control",placeholder='请输入文章标题')   
-      textarea(id="editor")
-      p
-        button.btn-primary(class="btn",type="button") 发布
+	link(rel="stylesheet", href="/vendor/summernote/dist/summernote.css")
+	link(rel="stylesheet", href="/css/header.css")
+	link(rel="stylesheet", href="/css/create.css")
+block content
+	include ../includes/header.jade
+	.container
+		.panel.panel-default.editor_box
+			.panel-heading 提问
+			.panel-body
+				form.form-editor(action="",method="post")
+					.form-group
+						input#title.form-control(type="text" placeholder="标题：请简洁描述问题")
+					.form-group
+						textarea#editor.form-control
+					p.create_box
+						button.btn.btn-primary(type="button")  发布
 block scripts  
-  script(src="/vendor/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js")
-  script(src="/js/create.js")
-  
-
-      
-      
+	script(src="/vendor/summernote/dist/summernote.min.js")
+	script(src="/vendor/summernote/lang/summernote-zh-CN.js")
+	script(src="/js/create.js")

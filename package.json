@@ -26,6 +26,7 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
     "gulp-mocha": "^2.2.0",
     "mocha": "^2.3.4",
     "restler": "^3.4.0"
