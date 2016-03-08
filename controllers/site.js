@@ -68,3 +68,10 @@ exports.showIndex = function(req, res) {
     return console.log('err:', err);
   });
 };
+
+exports.showAboutus=function (req,res) {
+  res.render('aboutus', {
+    'title': '关于我们',
+    'user': req.session.user
+  });
+};

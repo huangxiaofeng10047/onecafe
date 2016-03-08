@@ -15,6 +15,8 @@ var message = require('../controllers/message');
  */
 
 router.get('/', site.showIndex);
+router.get('/aboutus', site.showAboutus);
+
 
 /*
     登录
