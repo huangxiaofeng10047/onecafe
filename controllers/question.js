@@ -15,7 +15,7 @@ exports.showCreate = function(req, res) {
   });
   Promise.all([queryUser]).then(function(result) {
     res.render('question/create', {
-      'title': '发布文章',
+      'title': '提问',
       'user': result[0]
     });
   }).catch(function(err) {

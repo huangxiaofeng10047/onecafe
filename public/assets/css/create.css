@@ -1,6 +1,20 @@
-.editor_box{
+body {
+  background-color: #f8f8f8;
+}
+form {
+  margin-top: 30px;
+  padding-bottom: 40px;
+}
+.bottom_box {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #f8f8f8;
+  height: 54px;
+  box-shadow: 0 -2px 3px #ddd;
   margin-top: 20px;
 }
-.form-editor .create_box{
-  text-align: center;
+.create_box {
+  padding: 10px 0;
+  float: right;
 }

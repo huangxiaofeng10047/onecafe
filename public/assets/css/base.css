@@ -2,7 +2,8 @@ body {
   font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
 }
 .container {
-  width: 980px!important;
+  min-width: 980px;
+  max-width: 1140px;  
 }
 a {
   font-weight: 700;

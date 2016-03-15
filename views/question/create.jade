@@ -6,16 +6,15 @@ block link
 block content
 	include ../includes/header.jade
 	.container
-		.panel.panel-default.editor_box
-			.panel-heading 提问
-			.panel-body
-				form.form-editor(action="",method="post")
-					.form-group
-						input#title.form-control(type="text" placeholder="标题：请简洁描述问题")
-					.form-group
-						textarea#editor.form-control
-					p.create_box
-						button.btn.btn-primary(type="button")  发布
+		form.form-editor(action="",method="post")
+			.form-group
+				input#title.form-control(type="text" placeholder="标题：请简洁描述问题")
+			.form-group
+				textarea#editor.form-control
+	.bottom_box
+		.container
+			.create_box
+				button.btn.btn-primary(type="button")  发布问题
 block scripts  
 	script(src="/vendor/summernote/dist/summernote.min.js")
 	script(src="/vendor/summernote/lang/summernote-zh-CN.js")

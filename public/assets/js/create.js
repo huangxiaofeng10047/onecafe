@@ -46,6 +46,9 @@
 
 	__webpack_require__(1)();
 
+
+
+	var autoHeight=$(window).height()-165;
 	$('#editor').summernote({
 	  lang: 'zh-CN',
 	  toolbar: [
@@ -53,7 +56,7 @@
 	    ['para', ['ul', 'ol']],
 	    ['insert', ['link', 'picture']]
 	  ],
-	  minHeight:300,
+	  minHeight:autoHeight,
 	  disableDragAndDrop: true
 
 	});

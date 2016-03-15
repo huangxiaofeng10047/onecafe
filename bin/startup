@@ -1,9 +1,9 @@
 #!/bin/sh
 
 
+
 #检测开发模式还是生产模式启动
-if [ -n "$0" ] && [ "$1" = "dev" ]
-then
+if [ -n "$0" ] && [ "$1" = 'dev' ]; then
   echo "开发模式启动"
 else
   export NODE_ENV=production
@@ -14,8 +14,7 @@ fi
 
 #检测redis是否启动
 redisPid=`ps -ef | grep "redis-server" | grep -v grep |  awk "{print $2}"`
-if [ -z "$redisPid" ]
-then
+if [ -z "$redisPid" ]; then
   echo "请先启动redis"
   exit 1
 fi
@@ -23,8 +22,7 @@ fi
 
 #检测mongodb是否启动
 mongodbPid=`ps -ef | grep "mongodb" | grep -v grep |  awk "{print $2}"`
-if [ -z "$mongodbPid" ]
-then
+if [ -z "$mongodbPid" ]; then
   echo "先请启动mongodb"
   exit 1
 fi
