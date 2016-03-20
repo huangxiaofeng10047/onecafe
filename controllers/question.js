@@ -6,21 +6,10 @@ var Message = require('../models/Message');
 
 
 exports.showCreate = function(req, res) {
-  var queryUser = User.findById(req.session.user._id).then(function(user) {
-    var userViewModel = {
-      _id: user._id,
-      username: user.username
-    };
-    return Promise.resolve(userViewModel);
-  });
-  Promise.all([queryUser]).then(function(result) {
     res.render('question/create', {
       'title': '提问',
-      'user': result[0]
+      'user': req.session.user
     });
-  }).catch(function(err) {
-    return console.log('err:', err);
-  });
 };
 
 exports.create = function(req, res) {

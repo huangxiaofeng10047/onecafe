@@ -20,6 +20,9 @@ header nav .menu {
 header nav .menu a {
   padding: 15px 12px;
 }
+header nav .profile {
+  margin-right: 0;
+}
 header nav .profile .create_btn {
   padding: 15px 0;
   margin-right: 15px;

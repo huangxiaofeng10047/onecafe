@@ -7,9 +7,9 @@ block content
 	include ../includes/header.jade
 	.container
 		form.form-editor(action="",method="post")
-			.form-group
+			.form-group(data-toggle="tooltip")
 				input#title.form-control(type="text" placeholder="标题：请简洁描述问题")
-			.form-group
+			.form-group(data-toggle="tooltip")
 				textarea#editor.form-control
 	.bottom_box
 		.container
