@@ -21,18 +21,15 @@ exports.reg = function(req, res, next) {
     });
   }).then(function(user) { //用户名验证
     if (user) {
-      return Promise.reject('该用户名已被注册');
+      return Promise.reject('该用户名已被注册。');
     }
     return User.create(newUser);
   }).then(function(user) {
-    return res.json({
-      success: 1,
-      message: '注册成功'
-    });
+    next();
   }).catch(function(err) {
     if (err instanceof Error) {
       console.log('error:', err);
-      err = '服务器出现异常错误，请稍后再试';
+      err = '服务器出现异常错误，请稍后再试。';
     }
     return res.json({
       success: 0,
@@ -58,18 +55,17 @@ exports.login = function(req, res) {
         _id:user._id,
         username:req.body.username
       };
-
       return res.json({
         success: 1,
         message:'登录成功'
       });
     } else {
-      return Promise.reject('用户名或密码错误');
+      return Promise.reject('用户名或密码错误。');
     }
   }).catch(function(err) {
     if(err instanceof Error){
        console.log('err:', err);
-       err='服务器出现异常，请稍后再试';
+       err='服务器出现异常，请稍后再试。';
     }
     return res.json({
       success: 0,
@@ -95,16 +91,17 @@ function formValidate(user) {
   });
 
   // 验证信息的正确性
-  if ([user.username, user.password].some(function(item) {
-      return item === '';
-    })) {
-    return Promise.reject('信息不完整');
+  if (user.username==='') {
+    return Promise.reject('用户名不能为空。');
+  }
+  if (!(/^[a-zA-Z0-9\-_]+$/i).test(user.username)) {
+    return Promise.reject('用户名不合法。');
   }
   if (user.username.length < 5) {
     return Promise.reject('用户名至少需要5个字符。');
   }
-  if (!(/^[a-zA-Z0-9\-_]+$/i).test(user.username)) {
-    return Promise.reject('用户名不合法。');
+  if(user.password.length<8){
+    return Promise.reject('密码至少需要8个字符。');
   }
 
   return Promise.resolve(true);

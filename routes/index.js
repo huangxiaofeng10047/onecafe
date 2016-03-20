@@ -22,7 +22,7 @@ router.get('/aboutus', site.showAboutus);
     登录
 */
 router.get('/reg', sign.showReg);
-router.post('/reg', sign.reg);
+router.post('/reg', sign.reg,sign.login);
 router.get('/login', sign.showLogin);
 router.post('/login', sign.login);
 router.get('/logout', sign.logout);
