@@ -51,7 +51,7 @@ exports.index = function(req, res) {
     });
   }).then(function (commentCollViewModel) {
     res.render('question/index', {
-      'title': '文章',
+      'title': '问题',
       'user': req.session.user || null,
       'question': questionViewModel,
       'commentColl': commentCollViewModel

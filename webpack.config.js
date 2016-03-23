@@ -1,8 +1,10 @@
 var webpack = require('webpack');
+var _baseUrl=__dirname+'/public/src/js/';
 module.exports = {
   entry: {
-    index:__dirname+'/public/src/js/index.js',
-    create:__dirname+'/public/src/js/create.js'
+    index: _baseUrl+'index.js',
+    create:_baseUrl+'create.js',
+    question:_baseUrl+'question.js'
   },
   output: {
     path: __dirname+'/public/assets/js',

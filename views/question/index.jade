@@ -1,56 +1,60 @@
 extends ../layout
 block link
-      link(rel="stylesheet", href="/css/q.css")
-block main
-      .question-title
-        .container
-          .row
-            ul.navmenu
-              li
-                a.active(href="") 问答
-              li
-                a  &nbsp > 问答详情
-            h3
-              a(href="")= question.title
-            .author
-              a(href="")= question.author
-              span 一小时前提问
-              span  36分钟前更新
-      .question-main
-        .container
-          .row
-            div.questionId(data-id= question.id)!= question.content
-            ul.tooltips
-              if(user && user._id.toString()===question.author_id.toString())
-                li
-                  a(href="/q/"+question._id+"/update") 编辑
-              li
-                a.comment-btn(href="javascript:void(0);") 评论
-              if(user && user._id.toString()===question.author_id.toString())
-                li
-                  a.delQuestion(href="javascript:void(0);") 删除
-            .comment-wiget
-              textarea
-              input(type="hidden",class="questionTitle",value= question.title)
-              button.addComment(type="button") 提交评论
-          .row
-            h2  讨论区
-            div.comments
-              each val in commentColl
-                .comment-list
-                  .observer
-                    a(href="")= val.author
-                    span  1小时前回答
-                    span  1小时前更新
-                  div= val.content
-                  ul.tooltips
-                    if(user && user._id==val.author_id)
-                      li
-                        a(href="javascript:void(0);") 编辑
-                    li
-                      a(href="javascript:void(0);") 评论
-                    if(user && user._id==val.author_id)
-                      li
-                        a(data-id= val.id,href="javascript:void(0);").delComment 删除
+	link(rel="stylesheet", href="/vendor/summernote/dist/summernote.css")
+	link(rel="stylesheet", href="/css/header.css")
+	link(rel="stylesheet", href="/css/question.css")
+block content
+	include ../includes/header.jade
+	.container
+		.row
+			.col-xs-9.main
+				.question-info
+					.title
+						h3
+							a(href="")= question.title
+						.extra
+							span 作者
+								em 
+									a(href="")= question.author
+							span 发布于 
+								em 2015-03-04
+					.content!=	question.content
+				.question-main
+					h4 3个回答
+					.answers
+						.answer-list
+							.author  
+								a(href="") 逗猫的鱼
+								span.signature   ,我是一只什么鱼
+								.avatar.pull-right   dd
+							.comment  这是评论的内容
+							.toolbar
+								span 发布于 1天前
+								span 评论		
+						.answer-list
+							.author  
+								a(href="") 逗猫的鱼
+								span.signature   ,我是一只什么鱼
+								.avatar.pull-right   dd
+							.comment  这是评论的内容
+							.toolbar
+								span 发布于 1天前
+								span 评论							
+						.answer-list
+							.author  
+								a(href="") 逗猫的鱼
+								span.signature   ,我是一只什么鱼
+								.avatar.pull-right   dd
+							.comment  这是评论的内容
+							.toolbar
+								span 发布于 1天前
+								span 评论
+					.create-answer.clearfix
+						h4 撰写答案
+						textarea#editor
+						button.btn.btn-primary.pull-right 提交答案
+			.col-xs-3								
 block scripts
-      script(src="/js/question.js")
+	script(src="/vendor/summernote/dist/summernote.min.js")
+	script(src="/vendor/summernote/lang/summernote-zh-CN.js")
+	script(src="/js/question.js")
