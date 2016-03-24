@@ -1,6 +1,4 @@
 # OneCafe
-
-## 介绍   
 OneCafe是基于Node.js和MongoDB开发的问答社区系统。
 
 ## 安装和部署
@@ -18,5 +16,5 @@ OneCafe是基于Node.js和MongoDB开发的问答社区系统。
 2. 运行./bin/startup dev (可选参数dev,作为开发者模式启动,默认以生产模式启动)。
 
 ### 关闭
-1. 退出./bin/startup。  
+1. 退出./bin/startup。
 2. 运行./bin/shutdown (关闭redis,mongodb数据库)。
