@@ -1,0 +1,32 @@
+extends ../layout
+block link
+	link(rel="stylesheet", href="/css/header.css")
+	link(rel="stylesheet", href="/css/messages.css")
+block content
+	include ../includes/header.jade
+	.container
+		.row
+			.col-xs-9
+				.title
+					h4 消息通知
+				.message-list
+					h5 2016-03-11
+					p 
+						a(href="") sdf
+						span 回复了你的问题
+						a(href="") dd
+				.message-list
+					h5 2016-03-11
+					p 
+						a(href="") sdf
+						span 回复了你的问题
+						a(href="") dd
+				.message-list
+					h5 2016-03-11
+					p 
+						a(href="") sdf
+						span 回复了你的问题
+						a(href="") dd						
+			.col-xs-3
+block scripts  
+	script(src="/js/messages.js")

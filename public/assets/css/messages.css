@@ -1,0 +1,25 @@
+.title{
+  margin-top: 15px;
+  padding: 10px 0;
+  border-bottom: solid 1px #ddd;
+}
+.message-list {
+  margin: 18px 0;
+}
+.message-list h5{
+  margin: 0;
+  font-size: 16px;
+  padding: 5px 0;
+  border-bottom: solid 1px #eee;
+}
+.message-list p{
+  color: #222;
+  padding: 8px 25px;
+}
+.message-list p a{
+  color: #259;
+  font-weight: normal;
+}
+.message-list p span{
+  padding: 0 5px;
+}

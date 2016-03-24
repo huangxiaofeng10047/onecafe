@@ -21,7 +21,7 @@ header
             li
               a.create_btn(href="/q/create") 提问
             li
-              a.messages(href="/messages")  
+              a.messages(href="/u/messages")  
                 i.fa.fa-bell-o
             li.dropdown
               a.dropdown-toggle.avatar(href="javascript:;" data-toggle="dropdown")
@@ -29,7 +29,7 @@ header
                 span.caret
               ul.dropdown-menu
                 li 
-                  a(href="") 我的主页
+                  a(href= "/u/"+user.username) 我的主页
                 li.divider(role="separator")
                 li
                   a(href="") 设置

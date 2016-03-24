@@ -1,10 +1,49 @@
 extends ../layout
 block link
-block main
-      .container          
-        这是一个简单的用户信息展示页。
-
-  
-
-      
-      
+	link(rel="stylesheet", href="/css/user.css")
+block content
+	.container-fluid
+		.row
+				aside
+					a(href="/").home_btn
+						i.fa.fa-home
+					.basic-profile
+						.avatar
+						a(href="").username 逗猫的鱼
+						p.signature 生活，是一种生活。
+				.main
+					h4 我的提问
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题儿
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题儿
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+					.list
+						a(href="")   问题一
+block scripts  
+	script(src="/js/user.js")

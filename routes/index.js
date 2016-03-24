@@ -27,16 +27,16 @@ router.get('/login', sign.showLogin);
 router.post('/login', sign.login);
 router.get('/logout', sign.logout);
 
-/*
-    消息
-*/
-router.get('/messages', filter.authorize, message.index);
+
 
 /*
     用户
 */
+router.get('/u/messages', filter.authorize, message.index);
+
 router.get('/u/:id', user.index);
 router.get('/myQuestion', filter.authorize, user.showQuestionColl);
+
 
 /*
     问题

@@ -3,8 +3,7 @@ var gulp = require('gulp'),
 
 
 
-gulp.task('fresh', function () {    // 这里的watch，是自定义的，写成live或者别的也行
-
+gulp.task('fresh', function () {   
     livereload.listen();
     gulp.watch(['views/**/*.jade','public/**/*.css'],function (file) {
       livereload.changed(file.path);

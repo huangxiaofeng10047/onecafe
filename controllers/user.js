@@ -13,7 +13,7 @@ exports.showQuestionColl=function (req,res) {
   Question.find({
     author_id:req.session.user._id
   }).then(function (questionColl) {
-    res.render('user/question-list',{
+    res.render('user/index',{
       'title':'我的问题',
       'user':req.session.user || null,
       'questionCollViewModel':questionColl

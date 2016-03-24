@@ -1,0 +1,80 @@
+html,body,.container-fluid,.row{
+  height: 100%;
+}
+body{
+  background-color: #f8f8f8;
+}
+.home_btn{
+  position: absolute;
+  z-index: 1;
+  left: 1%;
+  top: 10px;
+  border-radius: 2px;
+  color: #555;
+  font-weight: normal;
+  font-size: 12px;
+  display: block;
+  height: 24px;
+  padding: 2px 9px;
+}
+.home_btn i{
+  font-size: 20px;
+}
+
+.home_btn:hover{
+  color: #777;
+}
+
+aside{
+  position: fixed;
+  width: 400px;
+  padding: 0 40px;
+}
+.basic-profile{
+  width: 100%;
+  text-align: center;
+}
+ .basic-profile .avatar{
+   width: 100px;
+   border-radius: 100%;
+   margin: 0 auto;
+   height: 100px;
+   background-color: red;
+   margin-top: 45%;
+   margin-bottom:  20px;
+ }
+ .basic-profile .username{
+   font-size: 18px;
+   color: #2c3e50;
+   font-weight: 400;
+ }
+ .basic-profile .signature{
+  margin-top: 10px;
+  color: #7F8C8D;
+ }
+
+ .main{
+   min-height: calc(100% - 10px);
+   min-height: -webkit-calc(100% - 10px);
+   min-height: -moz-calc(100% - 10px);
+   margin:5px 30px 5px 400px;
+   border-radius: 5px;
+   padding: 50px 40px 10px 40px;
+   background-color: #fff;
+ }
+ .main h4{
+   margin: 0;
+   padding-bottom: 15px;
+   border-bottom: solid 1px #ddd;
+ }
+ .main .list{
+   padding: 10px 0 10px 15px;
+   border-bottom: solid 1px #eee;
+ }
+ .main .list a{
+   color: #222;
+   font-weight: normal;
+ }
+ .main .list a:hover{
+   text-decoration: underline;
+}

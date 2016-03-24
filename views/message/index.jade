@@ -1,9 +1,0 @@
-extends ../layout
-block link
-  link(rel="stylesheet", href="/css/header.css")
-block main
-      .container
-        ul
-          each val in user.message
-            li
-              a(href= '/q/'+val.question_id)= val.author+'评论了你的'+val.question
