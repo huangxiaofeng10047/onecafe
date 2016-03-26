@@ -17,11 +17,12 @@ $editor.summernote({
   ],
   minHeight: autoHeight,
   disableDragAndDrop: true
-
 });
 
+
+
 /**
- * 创建问题
+ * 表单信息检测
  */
 var $title = $('#title');
 $('[data-toggle="tooltip"]').tooltip({
@@ -29,6 +30,7 @@ $('[data-toggle="tooltip"]').tooltip({
   title: '必填',
   placement: 'left'
 });
+
 
 $('.create_box button').click(function() {
   var  title = $title.val();
@@ -52,20 +54,51 @@ $('.create_box button').click(function() {
     return;
   }
 
-  $.ajax({
-    "url": '/q/create',
-    "method": 'post',
-    "data": {
-      title: title,
-      content: $editor.summernote('code')
-    },
-    "dataType": 'json'
-  }).done(function (data) {
-    if(data.success){
-      window.location.href="/";
-    }else {
-      alert(data.message);
-    }
+  submit({
+    title:title,
+    content:$editor.summernote('code')
   });
 
+
 });
+
+
+/**
+ * 表单提交
+ */
+
+  function submit(data) {
+
+    var _url=window.location.pathname;
+
+    if(_url.indexOf('update')!=='-1'){
+      data.update_at=new Date();
+      $.ajax({
+        "url": '/q/',
+        "method": 'post',
+        "dataType": 'json',
+        "data": data
+      }).done(function (data) {
+        if(data.success){
+          window.location.href="/";
+        }else {
+          alert(data.message);
+        }
+      });
+    }
+
+    if(_url.indexOf('/create')!=='-1'){
+      $.ajax({
+        "url": '/q/create',
+        "method": 'post',
+        "dataType": 'json',
+        "data": data
+      }).done(function (data) {
+        if(data.success){
+          window.location.href="/";
+        }else {
+          alert(data.message);
+        }
+      });
+    }
+  }

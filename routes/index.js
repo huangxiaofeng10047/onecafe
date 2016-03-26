@@ -46,8 +46,8 @@ router.get('/q/create', filter.authorize, question.showCreate);
 router.post('/q/create', filter.authorize, question.create);
 
 router.get('/q/:id', question.index);
-router.get('/q/:id/update', filter.authorize, question.showUpdate);
-router.post('/q/:id/update', filter.authorize, question.update);
+router.get('/q/:id/edit', filter.authorize, question.showEdit);
+router.post('/q/:id/edit', filter.authorize, question.edit);
 router.delete('/q/:id', filter.authorize, question.delete);
 
 /*

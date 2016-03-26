@@ -17,8 +17,16 @@ block content
 								em 
 									a(href="")= question.author
 							span 发布于 
-								em 2015-03-04
+								em.time(data-create= question.create_time) 
 					.content!=	question.content
+					if(user && user._id==question.author_id)
+						.tools
+							a.edit_btn(href= "/q/"+question._id+"/edit") 
+								i.fa.fa-edit
+								编辑
+							a.del_btn(href="javascript:;") 
+								i.fa.fa-trash-o
+								删除
 				.question-main
 					h4 3个回答
 					.answers
@@ -57,4 +65,5 @@ block content
 block scripts
 	script(src="/vendor/summernote/dist/summernote.min.js")
 	script(src="/vendor/summernote/lang/summernote-zh-CN.js")
+	script(src="/vendor/moment/min/moment.min.js")
 	script(src="/js/question.js")

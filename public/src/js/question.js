@@ -1,17 +1,13 @@
 require('./header.js')();
+require('./question/editor.js')();
+
+
+
 
 /**
- * 初始化编辑器
+ * 格式化时间
  */
-
-var  $editor = $('#editor');
-$editor.summernote({
-  lang: 'zh-CN',
-  toolbar: [
-    ['style', ['bold', 'italic', 'underline']],
-    ['para', ['ul', 'ol']],
-    ['insert', ['link', 'picture']]
-  ],
-  minHeight: 130,
-  disableDragAndDrop: true
+$('.time').each(function () {
+  var time=$(this).data('create');
+  $(this).text(moment(time).format("YYYY-MM-DD"));
 });

@@ -31,8 +31,8 @@ var QuestionSchema = mongoose.Schema({
 });
 
 //格式化时间
-QuestionSchema.virtual('createdDate').get(function () {
-  return moment(this.post_at).format('x');
+QuestionSchema.virtual('create_time').get(function () {
+  return moment(this.create_at).format('x');
 });
 
 

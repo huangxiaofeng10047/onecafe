@@ -45,12 +45,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1)();
-	__webpack_require__(2)();
 
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(2)();
 
 	module.exports = function() {
 	  var timer;

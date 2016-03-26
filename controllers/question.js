@@ -68,10 +68,10 @@ exports.index = function(req, res) {
   });
 };
 
-exports.showUpdate = function(req, res) {
+exports.showEdit = function(req, res) {
   Question.findById(req.params.id).then(function(question) {
     if (question) {
-      return res.render('question/update', {
+      return res.render('question/create', {
         'title': '编辑',
         'question': question,
         'user': req.session.user
@@ -89,7 +89,7 @@ exports.showUpdate = function(req, res) {
   });
 };
 
-exports.update = function(req, res) {
+exports.edit = function(req, res) {
   var newQuestion = {
     title: req.body.title,
     content: req.body.content,

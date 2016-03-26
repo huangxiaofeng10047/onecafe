@@ -26,13 +26,30 @@
 }
 .main .question-info .title .extra a:hover{
   text-decoration: underline;
+  color: #698ebf;
+
 }
 .main .question-info .content{
-  margin: 8px 0 15px 20px;
+  margin: 8px 0 15px 0;
   padding: 5px 15px;
   border-radius: 4px;
   background-color: #eee;
 }
+.main .question-info .tools a{
+  color: #999;
+  font-weight: normal;
+}
+.main .question-info .tools a:hover{
+  color: #698ebf;
+}
+.main .question-info .tools a{
+  margin-right: 10px;
+}
+
+.main .question-info .tools i{
+  margin-right: 3px;
+}
+
 .main .question-main{
   margin-top: 30px;
 }

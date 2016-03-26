@@ -1,3 +1,5 @@
+require('./sign.js')();
+
 module.exports = function() {
   var timer;
   $('.dropdown').hover(function() {
