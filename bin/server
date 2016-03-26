@@ -1,0 +1,15 @@
+#!/bin/sh
+
+
+#检测开发模式还是生产模式启动
+if [ -n "$0" ] && [ "$1" = 'dev' ]; then
+  echo "开发模式启动"
+else
+  export NODE_ENV=production
+  export PORT=80
+  echo "生产模式启动"
+fi
+
+#启动项目
+echo "启动项目"
+node bin/www
