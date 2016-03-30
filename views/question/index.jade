@@ -21,10 +21,10 @@ block content
 					.content!=	question.content
 					if(user && user._id==question.author_id)
 						.tools
-							a.edit_btn(href= "/q/"+question._id+"/edit") 
+							a.edit_btn(href= "/q/"+question.id+"/edit") 
 								i.fa.fa-edit
 								编辑
-							a.del_btn(href="javascript:;") 
+							a.del_btn(href="javascript:;" data-question= question.id) 
 								i.fa.fa-trash-o
 								删除
 				.question-main
