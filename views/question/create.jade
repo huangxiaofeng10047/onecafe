@@ -9,7 +9,7 @@ block content
 		form.form-editor(action="",method="post")
 			if(question)
 				.form-group(data-toggle="tooltip")
-					input#title.form-control(type="text" placeholder="标题：请简洁描述问题" value= question.title)
+					input#title.form-control(type="text" data-question= question.id placeholder="标题：请简洁描述问题" value= question.title)
 				.form-group(data-toggle="tooltip")
 					textarea#editor.form-control= question.content
 			else

@@ -116,11 +116,9 @@
 	  function submit(data) {
 
 	    var _url=window.location.pathname;
-
-	    if(_url.indexOf('update')!=='-1'){
-	      data.update_at=new Date();
+	    if(_url.indexOf('edit')!='-1'){
 	      $.ajax({
-	        "url": '/q/',
+	        "url": '/q/'+$('#title').data('question')+'/edit',
 	        "method": 'post',
 	        "dataType": 'json',
 	        "data": data
@@ -133,7 +131,9 @@
 	      });
 	    }
 
-	    if(_url.indexOf('/create')!=='-1'){
+
+	    if(_url.indexOf('create')!='-1'){
+
 	      $.ajax({
 	        "url": '/q/create',
 	        "method": 'post',
@@ -146,6 +146,7 @@
 	          alert(data.message);
 	        }
 	      });
+
 	    }
 	  }
 

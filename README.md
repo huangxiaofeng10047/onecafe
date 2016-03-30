@@ -2,7 +2,7 @@
 OneCafe是基于Node.js和MongoDB开发的问答社区系统。
 
 ## 安装和部署
-    1. wget https://github.com/Byronvis/onecafe.git
+    1. git clone https://github.com/Byronvis/onecafe.git
     2. cd onecafe/
     3. bower install ;  npm install
     4. ./bin/startup
