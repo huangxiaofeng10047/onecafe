@@ -12,7 +12,9 @@ exports.create = function(req, res) {
     author_id: req.session.user._id
   };
 
+  var commentJson={};
   Comment.create(newComment).then(function(comment) {
+    commentJson=comment;
     return Question.findById(comment.question_id);
   }).then(function (question) {
     var newMessage={
@@ -25,7 +27,7 @@ exports.create = function(req, res) {
     res.json({
       success: 1,
       message: '添加评论成功',
-      comment:newComment
+      comment:commentJson
     });
   }).catch(function(err) {
     return console.log('err:', err);

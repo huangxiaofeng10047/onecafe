@@ -39,7 +39,9 @@ block content
 								.comment!=  val.content
 								.toolbar
 									span 发布于 1天前
-									span 评论		
+									a(href="javascript:;") 评论	
+									if(val.authorid===user._id)
+										a.del_comment_btn(href="javascript:;" data-comment=val.id) 删除	
 					.create-answer.clearfix
 						h4 撰写答案
 						textarea#editor

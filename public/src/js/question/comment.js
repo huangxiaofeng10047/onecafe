@@ -37,7 +37,8 @@ $('.submit_btn').click(function() {
                 '<div class="comment">' + data.comment.content + '</div>' +
                 '<div class="toolbar">' +
                   '<span>发布于 1天前</span>' +
-                  '<span>评论</span>' +
+                  '<a href="javascript:;">评论</a>' +
+                  '<a href="javascript:;"  class="del_comment_btn" data-comment="'+data.comment._id+'"'+'>删除</a>' +
                 '</div>'+
               '</div>';
             $('.answers').append(commentString);
@@ -45,5 +46,22 @@ $('.submit_btn').click(function() {
           alert('评论失败');
         }
     });
+});
 
+
+/**
+ * 删除回复
+ */
+$('.del_comment_btn').click(function () {
+  $.ajax({
+    "url": '/comment/'+$(this).data('comment'),
+    "method": 'delete',
+    "dataType": 'json',
+  }).done(function (data) {
+    if(data.success){
+      window.location.href="/";
+    }else{
+      alert('删除失败');
+    }
+  });
 });

@@ -65,9 +65,18 @@
   margin-top: 30px;
   color: #999;
 }
-.main .question-main .answer-list .toolbar span {
+.main .question-main .answer-list .toolbar span,a {
   margin-right: 8px;
 }
+.main .question-main .answer-list .toolbar a {
+  color: #999;
+  font-weight: normal;
+}
+.main .question-main .answer-list .toolbar a:hover {
+  text-decoration: underline;
+}
+
+
 .main .question-main .create-answer {
   position: relative;
   padding: 10px 0 20px 20px;
