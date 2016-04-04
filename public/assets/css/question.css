@@ -1,81 +1,83 @@
-
-.main .question-info .title h3{
+.main .question-info .title h3 {
   padding-left: 7px;
 }
-.main .question-info .title h3 a{
+.main .question-info .title h3 a {
   color: #333;
 }
-
-
-.main .question-info .title .extra span{
+.main .question-info .title .extra span {
   color: #999;
   margin-right: 12px;
 }
-.main .question-info .title .extra span em{
+.main .question-info .title .extra span em {
   font-style: normal;
   margin-left: 3px;
 }
-
-.main .question-info .title .extra span::before{
+.main .question-info .title .extra span::before {
   content: "• ";
 }
-
-.main .question-info .title .extra a{
+.main .question-info .title .extra a {
   color: #999;
   font-weight: normal;
 }
-.main .question-info .title .extra a:hover{
+.main .question-info .title .extra a:hover {
   text-decoration: underline;
   color: #698ebf;
-
 }
-.main .question-info .content{
+.main .question-info .content {
   margin: 8px 0 15px 0;
   padding: 5px 15px;
   border-radius: 4px;
   background-color: #eee;
 }
-.main .question-info .tools a{
+.main .question-info .tools a {
   color: #999;
   font-weight: normal;
 }
-.main .question-info .tools a:hover{
+.main .question-info .tools a:hover {
   color: #698ebf;
 }
-.main .question-info .tools a{
+.main .question-info .tools a {
   margin-right: 10px;
 }
-
-.main .question-info .tools i{
+.main .question-info .tools i {
   margin-right: 3px;
 }
-
-.main .question-main{
+.main .question-main {
   margin-top: 30px;
 }
-.main .question-main .answer-list{
+.main .question-main .answer-list {
   border-bottom: solid 1px #ddd;
   padding: 10px 20px;
 }
-.main .question-main .answer-list:first-of-type{
+.main .question-main .answer-list:first-of-type {
   border-top: solid 1px #ddd;
 }
-.main .question-main .answer-list .author .avatar{
+.main .question-main .answer-list .author .avatar {
   width: 25px;
   height: 25px;
   background-color: red;
 }
-.main .question-main .answer-list  .comment{
+.main .question-main .answer-list .comment {
   margin-top: 5px;
   padding-right: 25px;
 }
-.main .question-main .answer-list  .toolbar{
+.main .question-main .answer-list .toolbar {
   margin-top: 30px;
   color: #999;
 }
-.main .question-main .answer-list  .toolbar span{
+.main .question-main .answer-list .toolbar span {
   margin-right: 8px;
 }
-.main .question-main .create-answer{
+.main .question-main .create-answer {
+  position: relative;
   padding: 10px 0 20px 20px;
+}
+.main .question-main .create-answer .tooltips {
+  position: absolute;
+  display: none;
+  color: #a42625;
+  background-color: #f2dede;
+  padding: 2px;
+  font-size: 12px;
+  bottom: 53px;
 }

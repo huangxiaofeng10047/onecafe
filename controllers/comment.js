@@ -4,12 +4,14 @@ var Question = require('../models/Question');
 var Promise = require('bluebird');
 
 exports.create = function(req, res) {
+
   var newComment = {
-    title: req.body.title,
     content: req.body.content,
     question_id: req.body.question_id,
+    reply_to_id:req.body.reply_to_id,
     author_id: req.session.user._id
   };
+
   Comment.create(newComment).then(function(comment) {
     return Question.findById(comment.question_id);
   }).then(function (question) {
@@ -22,7 +24,8 @@ exports.create = function(req, res) {
   }).finally(function () {
     res.json({
       success: 1,
-      message: '添加评论成功'
+      message: '添加评论成功',
+      comment:newComment
     });
   }).catch(function(err) {
     return console.log('err:', err);

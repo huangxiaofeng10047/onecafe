@@ -10,8 +10,8 @@ block content
 			.col-xs-9.main
 				.question-info
 					.title
-						h3
-							a(href="")= question.title
+						h3(data-question= question.id data-author= question.authorid)
+							a(href="" data-author= question.authorid)= question.title
 						.extra
 							span 作者
 								em 
@@ -28,39 +28,23 @@ block content
 								i.fa.fa-trash-o
 								删除
 				.question-main
-					h4 3个回答
+					h4= commentColl.length+'个回答'
 					.answers
-						.answer-list
-							.author  
-								a(href="") 逗猫的鱼
-								span.signature   ,我是一只什么鱼
-								.avatar.pull-right   dd
-							.comment  这是评论的内容
-							.toolbar
-								span 发布于 1天前
-								span 评论		
-						.answer-list
-							.author  
-								a(href="") 逗猫的鱼
-								span.signature   ,我是一只什么鱼
-								.avatar.pull-right   dd
-							.comment  这是评论的内容
-							.toolbar
-								span 发布于 1天前
-								span 评论							
-						.answer-list
-							.author  
-								a(href="") 逗猫的鱼
-								span.signature   ,我是一只什么鱼
-								.avatar.pull-right   dd
-							.comment  这是评论的内容
-							.toolbar
-								span 发布于 1天前
-								span 评论
+						each val in commentColl
+							.answer-list
+								.author  
+									a(href="/u/"+val.authorid) hahah
+									span.signature   ,我是一只什么鱼
+									.avatar.pull-right   dd
+								.comment!=  val.content
+								.toolbar
+									span 发布于 1天前
+									span 评论		
 					.create-answer.clearfix
 						h4 撰写答案
 						textarea#editor
-						button.btn.btn-primary.pull-right 提交答案
+						button.submit_btn.btn.btn-primary.pull-right 提交答案
+						span.tooltips
 			.col-xs-3								
 block scripts
 	script(src="/vendor/summernote/dist/summernote.min.js")

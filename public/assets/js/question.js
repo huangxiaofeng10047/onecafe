@@ -45,8 +45,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1)();
-	__webpack_require__(3)();
-
+	__webpack_require__(3);
+	__webpack_require__(4);
+	__webpack_require__(5);
 
 
 
@@ -56,24 +57,6 @@
 	$('.time').each(function () {
 	  var time=$(this).data('create');
 	  $(this).text(moment(time).format("YYYY-MM-DD"));
-	});
-
-	/**
-	 * 删除问题
-	 */
-
-	$('.del_btn').click(function () {
-	  $.ajax({
-	    "url": '/q/'+$(this).data('question'),
-	    "method": 'delete',
-	    "dataType": 'json'
-	  }).done(function (data) {
-	    if(data.success){
-	      window.location.href='/';
-	    }else {
-	      alert(data.message);
-	    }
-	  });
 	});
 
 
@@ -252,21 +235,97 @@
 	 * 初始化编辑器
 	 */
 
-	module.exports=function () {
+	 var  $editor = $('#editor');
+	 $editor.summernote({
+	   lang: 'zh-CN',
+	   toolbar: [
+	     ['style', ['bold', 'italic', 'underline']],
+	     ['para', ['ul', 'ol']],
+	     ['insert', ['link', 'picture']]
+	   ],
+	   minHeight: 130,
+	   disableDragAndDrop: true
+	 });
 
-	  var  $editor = $('#editor');
-	  $editor.summernote({
-	    lang: 'zh-CN',
-	    toolbar: [
-	      ['style', ['bold', 'italic', 'underline']],
-	      ['para', ['ul', 'ol']],
-	      ['insert', ['link', 'picture']]
-	    ],
-	    minHeight: 130,
-	    disableDragAndDrop: true
+	module.exports=$editor;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	
+	/**
+	 * 删除问题
+	 */
+	$('.del_btn').click(function () {
+	  $.ajax({
+	    "url": '/q/'+$(this).data('question'),
+	    "method": 'delete',
+	    "dataType": 'json'
+	  }).done(function (data) {
+	    if(data.success){
+	      window.location.href='/';
+	    }else {
+	      alert(data.message);
+	    }
 	  });
-	  
-	};
+	});
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $editor = __webpack_require__(3);
+
+
+	/**
+	 * 回复话题
+	 */
+	$('.submit_btn').click(function() {
+	    //有效性检查
+	    if ($editor.summernote('isEmpty')) {
+	        $('.note-editor').css({
+	            "border-color": "#bb3636"
+	        });
+	        $('.tooltips').text('必须填写内容').show();
+	        return;
+	    }
+
+	    var data = {
+	        content: $editor.summernote('code'),
+	        question_id: $('.title h3').data('question'),
+	        reply_to_id: $('.title h3').data('author')
+	    };
+
+	    $.ajax({
+	        "url": '/comment/create',
+	        "method": 'post',
+	        "dataType": 'json',
+	        "data": data
+	    }).done(function(data) {
+	        if (data.success) {
+	            var commentString =
+	              '<div class="answer-list">'+
+	                '<div class="author">' +
+	                  '<a href="'+/u/+data.comment.author_id+'"'+'>zxczxc</a>'+
+	                  '<span class="signature">我是一只什么鱼</span>' +
+	                  '<div class="avatar pull-right">dd</div>' +
+	                '</div>' +
+	                '<div class="comment">' + data.comment.content + '</div>' +
+	                '<div class="toolbar">' +
+	                  '<span>发布于 1天前</span>' +
+	                  '<span>评论</span>' +
+	                '</div>'+
+	              '</div>';
+	            $('.answers').append(commentString);
+	        } else {
+	          alert('评论失败');
+	        }
+	    });
+
+	});
 
 
 /***/ }

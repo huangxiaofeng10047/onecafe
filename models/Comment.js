@@ -43,6 +43,11 @@ CommentSchema.static('getCommentList', function(username,callback) {
 
 });
 
+//格式化ID
+CommentSchema.virtual('authorid').get(function () {
+  return this.author_id.toString();
+});
+
 // 删除文章所有评论
 CommentSchema.static('delComments', function(id,callback) {
 

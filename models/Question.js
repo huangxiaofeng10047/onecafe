@@ -35,6 +35,10 @@ QuestionSchema.virtual('create_time').get(function () {
   return moment(this.create_at).format('x');
 });
 
+//格式化ID
+QuestionSchema.virtual('authorid').get(function () {
+  return this.author_id.toString();
+});
 
 // 获取用户文章列表
 QuestionSchema.static('getQuestionList', function(username, callback) {
