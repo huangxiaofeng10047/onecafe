@@ -1,4 +1,3 @@
-var webpack = require('webpack');
 var _baseUrl=__dirname+'/public/src/js/';
 module.exports = {
   entry: {

@@ -40,7 +40,7 @@ block content
 								.toolbar
 									span 发布于 1天前
 									a(href="javascript:;") 评论	
-									if(val.authorid===user._id)
+									if(user && val.authorid===user._id)
 										a.del_comment_btn(href="javascript:;" data-comment=val.id) 删除	
 					.create-answer.clearfix
 						h4 撰写答案

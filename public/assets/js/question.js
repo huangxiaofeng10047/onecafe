@@ -322,7 +322,7 @@
 	              '</div>';
 	            $('.answers').append(commentString);
 	        } else {
-	          alert('评论失败');
+	          alert(data.message);
 	        }
 	    });
 	});

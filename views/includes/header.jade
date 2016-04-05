@@ -21,8 +21,10 @@ header
             li
               a.create_btn(href="/q/create") 提问
             li
-              a.messages(href="/u/messages")  
+              a.messages(href="/u/messages")
                 i.fa.fa-bell-o
+                if(user.message.length)
+                  span.message-count= user.message.length
             li.dropdown
               a.dropdown-toggle.avatar(href="javascript:;" data-toggle="dropdown")
                 img(src="/img/avatar_default.png", alt="")
