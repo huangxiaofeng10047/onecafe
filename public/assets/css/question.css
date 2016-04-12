@@ -1,87 +1,87 @@
-.main .question-info .title h3 {
+.title h3 {
   padding-left: 7px;
 }
-.main .question-info .title h3 a {
+.title a {
   color: #333;
 }
-.main .question-info .title .extra span {
+.title .extra span {
   color: #999;
   margin-right: 12px;
 }
-.main .question-info .title .extra span em {
+.title .extra span em {
   font-style: normal;
   margin-left: 3px;
 }
-.main .question-info .title .extra span::before {
+.title .extra span::before {
   content: "• ";
 }
-.main .question-info .title .extra a {
+.title .extra a {
   color: #999;
   font-weight: normal;
 }
-.main .question-info .title .extra a:hover {
+.title .extra a:hover {
   text-decoration: underline;
   color: #698ebf;
 }
-.main .question-info .content {
+.content {
   margin: 8px 0 15px 0;
   padding: 5px 15px;
   border-radius: 4px;
   background-color: #eee;
 }
-.main .question-info .tools a {
+.tools a {
   color: #999;
   font-weight: normal;
 }
-.main .question-info .tools a:hover {
+.tools a:hover {
   color: #698ebf;
 }
-.main .question-info .tools a {
+.tools a {
   margin-right: 10px;
 }
-.main .question-info .tools i {
+.tools i {
   margin-right: 3px;
 }
-.main .question-main {
+.question-main {
   margin-top: 30px;
 }
-.main .question-main .answer-list {
+.answer-list {
   border-bottom: solid 1px #ddd;
   padding: 10px 20px;
 }
-.main .question-main .answer-list:first-of-type {
+.answer-list:first-of-type {
   border-top: solid 1px #ddd;
 }
-.main .question-main .answer-list .author .avatar {
+.answer-list .avatar {
   width: 25px;
   height: 25px;
   background-color: red;
 }
-.main .question-main .answer-list .comment {
+.comment {
   margin-top: 5px;
   padding-right: 25px;
 }
-.main .question-main .answer-list .toolbar {
+.toolbar {
   margin-top: 30px;
   color: #999;
 }
-.main .question-main .answer-list .toolbar span,a {
+.toolbar span,a {
   margin-right: 8px;
 }
-.main .question-main .answer-list .toolbar a {
+.toolbar a {
   color: #999;
   font-weight: normal;
 }
-.main .question-main .answer-list .toolbar a:hover {
+.toolbar a:hover {
   text-decoration: underline;
 }
 
 
-.main .question-main .create-answer {
+.create-answer {
   position: relative;
   padding: 10px 0 20px 20px;
 }
-.main .question-main .create-answer .tooltips {
+.tooltips {
   position: absolute;
   display: none;
   color: #a42625;

@@ -1,51 +1,51 @@
 header {
     height: 50px;
 }
-header nav .logo .navbar-brand {
+.navbar-brand {
     font-size: 30px;
 }
-header nav form {
+header  form {
     padding-left: 0!important;
     padding-right: 0!important;
 }
-header nav form .input-group {
+form .input-group {
     width: 340px;
 }
-header nav form .input-group-btn {
+form .input-group-btn {
     width: 1%!important;
 }
-header nav .menu {
+.menu {
     margin-left: 18px;
 }
-header nav .menu a {
+.menu a {
     padding: 15px 12px;
 }
-header nav .profile {
+.profile {
     margin-right: 0;
 }
-header nav .profile .create_btn {
+.profile .create_btn {
     padding: 15px 0;
     margin-right: 15px;
 }
-header nav .profile .messages {
+.profile .messages {
     font-size: 16px;
     padding: 15px 5px;
     margin-right: 10px;
 }
-header nav .profile .avatar {
+.profile .avatar {
     padding: 10px 0;
 }
-header nav .profile .open .avatar {
+.profile .open .avatar {
     background-color: transparent!important;
 }
-header nav .profile .avatar img {
+.profile .avatar img {
     width: 30px;
     border-radius: 50%;
 }
-header nav .profile .dropdown-menu {
+.profile .dropdown-menu {
     min-width: 130px;
 }
-header .message-count {
+.message-count {
     position: absolute;
     top:  9px;
     right: -2px;
