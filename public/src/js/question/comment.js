@@ -52,14 +52,14 @@ $('.submit_btn').click(function() {
 /**
  * 删除回复
  */
-$('.del_comment_btn').click(function () {
+$('.answers').on('click','.del_comment_btn',function () {
   $.ajax({
     "url": '/comment/'+$(this).data('comment'),
     "method": 'delete',
     "dataType": 'json',
   }).done(function (data) {
     if(data.success){
-      window.location.href="/";
+      window.location.href=window.location.pathname;
     }else{
       alert('删除失败');
     }

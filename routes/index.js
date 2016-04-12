@@ -13,9 +13,7 @@ var message = require('../controllers/message');
 /**
  * 主页
  */
-
 router.get('/', site.showIndex);
-router.get('/aboutus', site.showAboutus);
 
 
 /*
@@ -41,7 +39,6 @@ router.get('/myQuestion', filter.authorize, user.showQuestionColl);
 /*
     问题
 */
-
 router.get('/q/create', filter.authorize, question.showCreate);
 router.post('/q/create', filter.authorize, question.create);
 
