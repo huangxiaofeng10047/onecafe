@@ -13,37 +13,9 @@ block content
 						p.signature 生活，是一种生活。
 				.main
 					h4 我的提问
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题儿
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题儿
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
-					.list
-						a(href="")   问题一
+					each val,index in questionCollViewModel
+						.list
+							a(href= "/q/"+val.id)= ++index+','+val.title
+				
 block scripts  
 	script(src="/js/user.js")

@@ -45,13 +45,16 @@
 .question-main {
   margin-top: 30px;
 }
+.question-main h4{
+  margin: 0;
+  padding: 15px 0;
+  border-bottom: solid 1px #ddd;
+}
 .answer-list {
   border-bottom: solid 1px #ddd;
   padding: 10px 20px;
 }
-.answer-list:first-of-type {
-  border-top: solid 1px #ddd;
-}
+
 .answer-list .avatar {
   width: 25px;
   height: 25px;

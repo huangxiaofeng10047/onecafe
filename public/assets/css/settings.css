@@ -1,0 +1,33 @@
+.basic-info{
+  margin-top: 20px;
+}
+form{
+  margin: 70px 0 25px 0;
+}
+.submit{
+  text-align: center;
+}
+.submit button{
+  margin-left: 50px;
+}
+.avatar{
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: block;
+}
+.changeAvatar{
+  margin-top: 20px;
+  text-align: center;
+}
+.wchangeAvatar p{
+  text-align: left;
+  margin-top: 10px;
+}
+input[readonly]{
+  cursor: not-allowed;
+}
+.hidden{
+  display: none
+}

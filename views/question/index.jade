@@ -28,7 +28,10 @@ block content
 								i.fa.fa-trash-o
 								删除
 				.question-main
-					h4= commentColl.length+'个回答'
+					if(commentColl.length)
+						h4= commentColl.length+'个回答'
+					else
+						h4 没有回答
 					.answers
 						each val in commentColl
 							.answer-list

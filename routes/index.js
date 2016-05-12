@@ -31,9 +31,9 @@ router.get('/logout', sign.logout);
     用户
 */
 router.get('/u/messages', filter.authorize, message.index);
+router.get('/u/settings', user.showSettings);
 
 router.get('/u/:id', user.index);
-router.get('/myQuestion', filter.authorize, user.showQuestionColl);
 
 
 /*
