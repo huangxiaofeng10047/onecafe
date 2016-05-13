@@ -2,9 +2,9 @@ var User = require('../models/User');
 var Question = require('../models/Question');
 
 exports.index = function(req, res) {
-  var userInfo;
+    var userInfo;
     User.findOne({
-        username: req.params.id
+        username: req.params.username
     }).then(function(user) {
         userInfo=user;
         return Question.find({
@@ -39,9 +39,6 @@ exports.updateSettings=function (req,res) {
   };
 
   User.findByIdAndUpdate(req.session.user._id,info).then(function (user) {
-    req.session.user.email=req.body.email;
-    req.session.user.website=req.body.website;
-    req.session.user.signature=req.body.signature;
     res.redirect('/u/settings');
   });
 

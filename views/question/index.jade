@@ -5,7 +5,10 @@ block link
 	link(rel="stylesheet", href="/css/question.css")
 block content
 	include ../includes/header.jade
-	input.userInfo(type="hidden" data-avatar= user.avatarUrl data-signature= user.signature)
+	if(user)
+		input.hiddenInfo(type="hidden" data-author= user.username  data-avatar= question.avatarUrl data-signature= question.signature )
+	else
+		input.hiddenInfo(type="hidden"  data-avatar= question.avatarUrl data-signature= question.signature )
 	.container
 		.row
 			.col-xs-9.main
@@ -16,7 +19,7 @@ block content
 						.extra
 							span 作者
 								em 
-									a(href="")= question.author
+									a(href=question.author_id)= question.author
 							span 发布于 
 								em.time(data-create= question.create_time) 
 					.content!=	question.content
@@ -37,7 +40,7 @@ block content
 						each val in commentColl
 							.answer-list
 								.author  
-									a(href="/u/"+val.authorid) hahah
+									a(href="/u/"+val.author)= val.author
 									span.signature= val.signature   
 									img.avatar.pull-right(src= val.avatarUrl)    
 								.comment!=  val.content

@@ -85,7 +85,7 @@ exports.showIndex = function(req, res) {
             'title': 'OneCafe',
             'type':type,
             'questionColl': questionColl,
-            'user': req.session.user
+            'user': req.session.user || null
         });
     }).catch(function(err) {
         return console.log('err:', err);
@@ -96,7 +96,6 @@ exports.upload = function(req, res) {
     var filename = '/uploads/' + req.file.filename;
     User.findById(req.session.user._id).then(function(user) {
         user.avatarUrl = filename;
-        req.session.user.avatarUrl = filename;
         return user.save();
     }).then(function(user) {
         res.json({

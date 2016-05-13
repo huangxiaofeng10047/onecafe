@@ -49,7 +49,7 @@ router.get('/u/settings', filter.authorize,user.showSettings);
 router.post('/u/settings',filter.authorize,user.updateSettings);
 
 
-router.get('/u/:id', user.index);
+router.get('/u/:username', user.index);
 
 
 /*

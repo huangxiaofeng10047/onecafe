@@ -43,6 +43,8 @@ exports.index = function(req, res) {
     }
   }).then(function(user) {
     questionViewModel.author = user.username;
+    questionViewModel.avatarUrl=user.avatarUrl;
+    questionViewModel.signature=user.signature;
     return Comment.find({
       question_id: req.params.id
     });
