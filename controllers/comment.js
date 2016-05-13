@@ -23,6 +23,11 @@ exports.create = function(req, res) {
       author_id:req.session.user._id
     };
     return Message.create(newMessage);
+  }).then(function (message) {
+    return Question.findById(message.question_id);
+  }).then(function (question) {
+    question.answer_count++;
+    return question.save();
   }).finally(function () {
     res.json({
       success: 1,

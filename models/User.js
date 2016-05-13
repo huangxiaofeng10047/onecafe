@@ -15,7 +15,18 @@ var UserSchema = mongoose.Schema({
   avatarUrl:{
     type:String,
     default:'/img/avatar-256.png'
+  },
+  signature:{
+    type:String,
+    default:'我很懒，没有签名。'
+  },
+  email:{
+    type:String
+  },
+  website:{
+    type:String
   }
+
 });
 
 

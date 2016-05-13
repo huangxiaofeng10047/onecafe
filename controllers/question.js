@@ -34,6 +34,8 @@ exports.index = function(req, res) {
   var questionViewModel = null;
   Question.findById(req.params.id).then(function(question) {
     if (question) {
+      question.visit_count++;
+      question.save();
       questionViewModel = question;
       return User.findById(question.author_id);
     } else {
@@ -48,6 +50,7 @@ exports.index = function(req, res) {
     return User.findById(comment.author_id).then(function (user) {
       comment.author=user.username;
       comment.avatarUrl=user.avatarUrl;
+      comment.signature=user.signature;
       return comment;
     });
   }).then(function (commentCollViewModel) {

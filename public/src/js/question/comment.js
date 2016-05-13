@@ -20,7 +20,8 @@ $('.submit_btn').click(function() {
         reply_to_id: $('.title h3').data('author')
     };
 
-    var avatarUrl=$('.title h3').data('avatar');
+    var avatarUrl=$('.userInfo').data('avatar'),
+        signature=$('.userInfo').data('signature');
 
     $.ajax({
         "url": '/comment/create',
@@ -33,7 +34,7 @@ $('.submit_btn').click(function() {
               '<div class="answer-list">'+
                 '<div class="author">' +
                   '<a href="'+/u/+data.comment.author_id+'"'+'>zxczxc</a>'+
-                  '<span class="signature">我是一只什么鱼</span>' +
+                  '<span class="signature">'+signature+'</span>' +
                   '<img class="avatar pull-right" src='+avatarUrl+' />' +
                 '</div>' +
                 '<div class="comment">' + data.comment.content + '</div>' +

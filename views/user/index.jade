@@ -9,13 +9,11 @@ block content
 						i.fa.fa-home
 					.basic-profile
 						.avatar
-						a(href="").username 逗猫的鱼
-						p.signature 生活，是一种生活。
+						a(href="").username=  user.username
+						p.signature= user.signature
 				.main
 					h4 我的提问
 					each val,index in questionCollViewModel
 						.list
 							a(href= "/q/"+val.id)= ++index+','+val.title
-				
 block scripts  
-	script(src="/js/user.js")

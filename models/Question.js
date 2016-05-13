@@ -27,6 +27,10 @@ var QuestionSchema = mongoose.Schema({
   visit_count:{
     type:Number,
     default:0
+  },
+  answer_count:{
+    type:Number,
+    default:0
   }
 });
 

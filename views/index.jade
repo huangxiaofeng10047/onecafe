@@ -8,7 +8,12 @@ block content
     .container
       .row
         .center(class="col-xs-9")
-          include ./question/newest.jade
+          if(type=='hottest')
+            include ./question/hottest.jade
+          else if(type=="unanswered")
+            include ./question/unanswered.jade
+          else
+            include ./question/newest.jade
         aside(class="col-xs-3")
 block scripts
   script(src="/js/index.js")

@@ -18,6 +18,7 @@ var comment = require('../controllers/comment');
 var user = require('../controllers/user');
 var sign = require('../controllers/sign');
 var site = require('../controllers/site');
+var search = require('../controllers/search');
 var message = require('../controllers/message');
 
 
@@ -26,6 +27,7 @@ var message = require('../controllers/message');
  */
 router.get('/', site.showIndex);
 router.post('/upload',filter.authorize,upload.single('avatar'),site.upload);
+router.get('/search',search.index);
 
 
 /*
@@ -43,7 +45,9 @@ router.get('/logout', sign.logout);
     用户
 */
 router.get('/u/messages', filter.authorize, message.index);
-router.get('/u/settings', user.showSettings);
+router.get('/u/settings', filter.authorize,user.showSettings);
+router.post('/u/settings',filter.authorize,user.updateSettings);
+
 
 router.get('/u/:id', user.index);
 

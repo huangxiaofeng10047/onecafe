@@ -5,12 +5,13 @@ block link
 	link(rel="stylesheet", href="/css/question.css")
 block content
 	include ../includes/header.jade
+	input.userInfo(type="hidden" data-avatar= user.avatarUrl data-signature= user.signature)
 	.container
 		.row
 			.col-xs-9.main
 				.question-info
 					.title
-						h3(data-question= question.id data-author= question.authorid data-avatar= user.avatarUrl)
+						h3(data-question= question.id data-author= question.authorid )
 							a(href="" data-author= question.authorid)= question.title
 						.extra
 							span 作者
@@ -37,8 +38,8 @@ block content
 							.answer-list
 								.author  
 									a(href="/u/"+val.authorid) hahah
-									span.signature   ,我是一只什么鱼
-									img.avatar.pull-right(src= val.avatarThumUrl)    
+									span.signature= val.signature   
+									img.avatar.pull-right(src= val.avatarUrl)    
 								.comment!=  val.content
 								.toolbar
 									span 发布于 1天前

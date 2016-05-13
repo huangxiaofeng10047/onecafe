@@ -2,16 +2,18 @@ var User = require('../models/User');
 var Question = require('../models/Question');
 
 exports.index = function(req, res) {
+  var userInfo;
     User.findOne({
         username: req.params.id
     }).then(function(user) {
+        userInfo=user;
         return Question.find({
             author_id: user.id
         });
     }).then(function(questionColl) {
         res.render('user/index', {
             'title': '我的问题',
-            'user': req.session.user || null,
+            'user': userInfo || null,
             'questionCollViewModel': questionColl
         });
     }).catch(function(err) {
@@ -20,8 +22,28 @@ exports.index = function(req, res) {
 };
 
 exports.showSettings=function (req,res) {
+  console.log(req.session.user);
   res.render('user/settings',{
     'title': '设置',
     'user':req.session.user || null
   });
+};
+
+
+exports.updateSettings=function (req,res) {
+
+  var info={
+    email:req.body.email,
+    website:req.body.website,
+    signature:req.body.signature
+  };
+
+  User.findByIdAndUpdate(req.session.user._id,info).then(function (user) {
+    req.session.user.email=req.body.email;
+    req.session.user.website=req.body.website;
+    req.session.user.signature=req.body.signature;
+    res.redirect('/u/settings');
+  });
+
+
 };

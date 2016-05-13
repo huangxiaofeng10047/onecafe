@@ -9,24 +9,14 @@ block content
 			.col-xs-9
 				.title
 					h4 消息通知
-				.message-list
-					h5 2016-03-11
-					p 
-						a(href="") sdf
-						span 回复了你的问题
-						a(href="") dd
-				.message-list
-					h5 2016-03-11
-					p 
-						a(href="") sdf
-						span 回复了你的问题
-						a(href="") dd
-				.message-list
-					h5 2016-03-11
-					p 
-						a(href="") sdf
-						span 回复了你的问题
-						a(href="") dd						
+				for val in message
+					.message-list
+						h5 2016-03-11
+						p 
+							a(href="")= val.author
+							span 评论了你的问题
+							a(href="")= val.question
+						
 			.col-xs-3
 block scripts  
 	script(src="/js/messages.js")
