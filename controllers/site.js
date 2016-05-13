@@ -52,6 +52,7 @@ exports.showIndex = function(req, res) {
   }).map(function(question) {
     return User.findById(question.author_id).then(function(user) {
       question.author = user.username;
+      question.avatarUrl=user.avatarUrl;
       return question;
     });
   });
@@ -67,4 +68,19 @@ exports.showIndex = function(req, res) {
   }).catch(function(err) {
     return console.log('err:', err);
   });
+};
+
+exports.upload=function (req,res) {
+var filename='/uploads/'+req.file.filename;
+User.findById(req.session.user._id).then(function (user) {
+  user.avatarUrl=filename;
+  req.session.user.avatarUrl=filename;
+  return user.save();
+}).then(function (user) {
+  res.json({
+    success:true,
+    path:user.avatarUrl
+  });
+});
+
 };

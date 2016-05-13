@@ -1,7 +1,7 @@
 .basic-info{
   margin-top: 20px;
 }
-form{
+.basic-info form{
   margin: 70px 0 25px 0;
 }
 .submit{
@@ -10,7 +10,7 @@ form{
 .submit button{
   margin-left: 50px;
 }
-.avatar{
+#avatar{
   width: 128px;
   height: 128px;
   margin: 0 auto;

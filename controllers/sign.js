@@ -53,7 +53,8 @@ exports.login = function(req, res) {
     if (user) {
       req.session.user = {
         _id:user._id,
-        username:req.body.username
+        username:req.body.username,
+        avatarUrl:user.avatarUrl
       };
       return res.json({
         success: 1,

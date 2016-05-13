@@ -47,6 +47,7 @@ exports.index = function(req, res) {
   }).map(function(comment) {
     return User.findById(comment.author_id).then(function (user) {
       comment.author=user.username;
+      comment.avatarUrl=user.avatarUrl;
       return comment;
     });
   }).then(function (commentCollViewModel) {

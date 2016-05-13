@@ -10,7 +10,7 @@ block content
 			.col-xs-9.main
 				.question-info
 					.title
-						h3(data-question= question.id data-author= question.authorid)
+						h3(data-question= question.id data-author= question.authorid data-avatar= user.avatarUrl)
 							a(href="" data-author= question.authorid)= question.title
 						.extra
 							span 作者
@@ -38,7 +38,7 @@ block content
 								.author  
 									a(href="/u/"+val.authorid) hahah
 									span.signature   ,我是一只什么鱼
-									.avatar.pull-right   dd
+									img.avatar.pull-right(src= val.avatarThumUrl)    
 								.comment!=  val.content
 								.toolbar
 									span 发布于 1天前

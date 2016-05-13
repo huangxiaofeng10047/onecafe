@@ -21,6 +21,7 @@ exports.index = function(req, res) {
 
 exports.showSettings=function (req,res) {
   res.render('user/settings',{
-    'title': '设置'
+    'title': '设置',
+    'user':req.session.user || null
   });
 };

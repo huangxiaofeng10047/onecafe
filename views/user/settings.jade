@@ -34,11 +34,12 @@ block content
 										p.submit
 											button.btn.btn-primary(type="submit") 提交
 			.col-xs-3
-				img.avatar(src="", alt="")
+				img#avatar(src=user.avatarUrl, alt="")
 				.changeAvatar
-					input.hidden(type="file" id="avatarFile")
+					input.hidden(type="file" id="avatarFile" name="avatar")
 					button.btn.btn-default#changeAvatarBtn 修改头像
 					p 从电脑中选择图片上传, 图像大小不要超过 2 MB，长宽不要超过 3000 px
-					
+
 block scripts  
+	script(src="/vendor/AjaxFileUpload/ajaxfileupload.js")
 	script(src="/js/settings.js")

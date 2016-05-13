@@ -1,3 +1,4 @@
 /node_modules
 /public/assets/vendor
+/public/assets/uploads
 *.log

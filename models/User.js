@@ -11,6 +11,10 @@ var UserSchema = mongoose.Schema({
   authority: {
     type: String,
     default: 'common'
+  },
+  avatarUrl:{
+    type:String,
+    default:'/img/avatar-256.png'
   }
 });
 

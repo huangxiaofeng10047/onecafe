@@ -1,5 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/assets/uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now()+file.originalname);
+  }
+});
+
+var upload = multer({ storage: storage });
 
 var filter = require('./filter');
 var question = require('../controllers/question');
@@ -14,6 +25,7 @@ var message = require('../controllers/message');
  * 主页
  */
 router.get('/', site.showIndex);
+router.post('/upload',filter.authorize,upload.single('avatar'),site.upload);
 
 
 /*
