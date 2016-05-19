@@ -38,8 +38,8 @@ aside{
    width: 100px;
    border-radius: 100%;
    margin: 0 auto;
+   display: block;
    height: 100px;
-   background-color: red;
    margin-top: 45%;
    margin-bottom:  20px;
  }

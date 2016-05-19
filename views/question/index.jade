@@ -19,23 +19,21 @@ block content
 						.extra
 							span 作者
 								em 
-									a(href=question.author_id)= question.author
+									a(href= '/u/'+question.author)= question.author
 							span 发布于 
 								em.time(data-create= question.create_time) 
 					.content!=	question.content
 					if(user && user._id==question.author_id)
 						.tools
 							a.edit_btn(href= "/q/"+question.id+"/edit") 
-								i.fa.fa-edit
-								编辑
+								i.fa.fa-edit 编辑
 							a.del_btn(href="javascript:;" data-question= question.id) 
-								i.fa.fa-trash-o
-								删除
+								i.fa.fa-trash-o 删除
 				.question-main
 					if(commentColl.length)
-						h4= commentColl.length+'个回答'
+						h4.answer-count= commentColl.length+'个回答'
 					else
-						h4 没有回答
+						h4.answer-count 没有回答
 					.answers
 						each val in commentColl
 							.answer-list
@@ -54,7 +52,6 @@ block content
 						textarea#editor
 						button.submit_btn.btn.btn-primary.pull-right 提交答案
 						span.tooltips
-			.col-xs-3								
 block scripts
 	script(src="/vendor/summernote/dist/summernote.min.js")
 	script(src="/vendor/summernote/lang/summernote-zh-CN.js")

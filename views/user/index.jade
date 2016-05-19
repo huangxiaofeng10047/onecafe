@@ -8,11 +8,11 @@ block content
 					a(href="/").home_btn
 						i.fa.fa-home
 					.basic-profile
-						.avatar
+						img(src=user.avatarUrl, alt="").avatar
 						a(href="").username=  user.username
 						p.signature= user.signature
 				.main
-					h4 我的提问
+					h4 提问
 					each val,index in questionCollViewModel
 						.list
 							a(href= "/q/"+val.id)= ++index+','+val.title

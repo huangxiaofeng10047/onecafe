@@ -40,21 +40,24 @@ exports.create = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-  Comment.findById(req.params.id).then(function(comment) {
 
+  Comment.findById(req.params.id).then(function(comment) {
     if(!comment){return Promise.reject('评论不存在');}
     if (comment.author_id.toString() === req.session.user._id.toString()) {
-      comment.remove();
-      res.json({
-        success:1,
-        message:'删除评论成功'
-      });
+        return comment.remove();
     } else {
-      res.json({
-        success: 0,
-        message:'没有删除权限'
-      });
+      return Promise.reject('没有删除权限');
     }
+  }).then(function (comment) {
+    return  Question.findByIdAndUpdate(comment.question_id);
+  }).then(function (question) {
+    question.answer_count=question.answer_count-1;
+    return question.save();
+  }).then(function (question) {
+    res.json({
+      success:1,
+      message:'删除评论成功'
+    });
   }).catch(function (err) {
     if(err instanceof Error){
       console.log('err',err);

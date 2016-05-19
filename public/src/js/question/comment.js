@@ -47,6 +47,9 @@ $('.submit_btn').click(function() {
                 '</div>' +
                 '</div>';
             $('.answers').append(commentString);
+            $editor.summernote('reset');
+            var count=isNaN(parseInt($('.answer-count').text(),10)) ? 1 : parseInt($('.answer-count').text(),10)+1 ;
+            $('.answer-count').text(count+'个回答');
         } else {
             alert(data.message);
         }

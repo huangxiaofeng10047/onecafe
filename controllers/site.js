@@ -49,24 +49,30 @@ exports.showIndex = function(req, res) {
     var query={};
         sort=null;
     if (type == 'hottest') {
-      sort={
+      sortQuery={
+        sort:{
         'visit_count':-1,
           '_id': -1
+        }
       };
     } else if (type == 'unanswered') {
       query={
         answer_count:0
       };
-      sort={
+      sortQuery={
+        sort:{
           '_id': -1
+        }
       };
     } else {
-      sort={
+      sortQuery={
+        sort:{
           '_id': -1
+        }
       };
     }
 
-  var  queryQuestionColl = Question.find(query, null,sort).then(function(questionColl) {
+  var  queryQuestionColl = Question.find(query,null,sortQuery).then(function(questionColl) {
         return questionColl;
     }).map(function(question) {
         return User.findById(question.author_id).then(function(user) {
@@ -75,9 +81,6 @@ exports.showIndex = function(req, res) {
             return question;
         });
     });
-
-
-
 
     Promise.resolve([queryQuestionColl, queryMessageColl]).spread(function(questionColl, messageColl) {
 
@@ -98,6 +101,7 @@ exports.upload = function(req, res) {
         user.avatarUrl = filename;
         return user.save();
     }).then(function(user) {
+        req.session.user.avatarUrl=user.avatarUrl;
         res.json({
             success: true,
             path: user.avatarUrl
