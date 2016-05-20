@@ -43,7 +43,7 @@ block content
 									img.avatar.pull-right(src= val.avatarUrl)    
 								.comment!=  val.content
 								.toolbar
-									span 发布于 1天前
+									span(data-time=val.create_time)
 									a(href="javascript:;") 评论	
 									if(user && val.authorid===user._id)
 										a.del_comment_btn(href="javascript:;" data-comment=val.id) 删除	
@@ -56,4 +56,5 @@ block scripts
 	script(src="/vendor/summernote/dist/summernote.min.js")
 	script(src="/vendor/summernote/lang/summernote-zh-CN.js")
 	script(src="/vendor/moment/min/moment.min.js")
+	script(src="/vendor/moment/locale/zh-cn.js")
 	script(src="/js/question.js")

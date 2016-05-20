@@ -44,20 +44,6 @@ QuestionSchema.virtual('authorid').get(function () {
   return this.author_id.toString();
 });
 
-// 获取用户文章列表
-QuestionSchema.static('getQuestionList', function(username, callback) {
-
-  return this.find({
-    author: username
-  }, function(err, docs) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    callback(docs);
-  });
-
-});
 
 
 

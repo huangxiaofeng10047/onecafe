@@ -20,10 +20,7 @@ $('.submit_btn').click(function() {
         reply_to_id: $('.title h3').data('author')
     };
 
-    var
-        author = $('.hiddenInfo').data('author'),
-        avatarUrl = $('.hiddenInfo').data('avatar'),
-        signature = $('.hiddenInfo').data('signature');
+    var      author = $('.hiddenInfo').data('author');
 
     $.ajax({
         "url": '/comment/create',
@@ -32,16 +29,18 @@ $('.submit_btn').click(function() {
         "data": data
     }).done(function(data) {
         if (data.success) {
+          console.log(data);
+            var time=moment(data.comment.create_time).fromNow();
             var commentString =
                 '<div class="answer-list">' +
                 '<div class="author">' +
                 '<a href="' + /u/ + author + '"' + '>'+author+'</a>' +
-                '<span class="signature">' + signature + '</span>' +
-                '<img class="avatar pull-right" src=' + avatarUrl + ' />' +
+                '<span class="signature">' + data.signature + '</span>' +
+                '<img class="avatar pull-right" src=' + data.avatarUrl + ' />' +
                 '</div>' +
                 '<div class="comment">' + data.comment.content + '</div>' +
                 '<div class="toolbar">' +
-                '<span>发布于 1天前</span>' +
+                '<span>发布于&nbsp;&nbsp;'+time+'</span>' +
                 '<a href="javascript:;">评论</a>' +
                 '<a href="javascript:;"  class="del_comment_btn" data-comment="' + data.comment._id + '"' + '>删除</a>' +
                 '</div>' +

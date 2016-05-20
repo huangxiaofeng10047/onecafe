@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise=require('bluebird');
 var db = require('../lib/db');
+var moment = require('moment');
 var ObjectId=mongoose.Schema.Types.ObjectId;
 
 var CommentSchema = mongoose.Schema({
@@ -28,19 +29,9 @@ var CommentSchema = mongoose.Schema({
 });
 
 
-// 获取评论列表
-CommentSchema.static('getCommentList', function(username,callback) {
-
-  return this.find({
-    author:username
-  }, function(err, docs) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    callback(docs);
-  });
-
+//格式化时间
+CommentSchema.virtual('create_time').get(function () {
+  return moment(this.create_at).format('x');
 });
 
 //格式化ID
@@ -48,20 +39,6 @@ CommentSchema.virtual('authorid').get(function () {
   return this.author_id.toString();
 });
 
-// 删除文章所有评论
-CommentSchema.static('delComments', function(id,callback) {
-
-  return this.remove({
-    question:id
-  }, function(err) {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    callback();
-  });
-
-});
 
 
 var Comment = db.model('Comment', CommentSchema);

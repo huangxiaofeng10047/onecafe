@@ -12,3 +12,8 @@ $('.time').each(function () {
   var time=$(this).data('create');
   $(this).text(moment(time).format("YYYY-MM-DD"));
 });
+
+$('.toolbar span').each(function () {
+  var time=$(this).data('time');
+  $(this).html('发布于&nbsp;&nbsp;'+moment(time).fromNow());
+});
