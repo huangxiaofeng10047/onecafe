@@ -98,7 +98,7 @@ function formValidate(user) {
     if (user.username === '') {
         return Promise.reject('用户名不能为空。');
     }
-    if (!(/^[a-zA-Z0-9\-_]+$/i).test(user.username)) {
+    if (!(/^[a-zA-Z0-9\-me_]+$/i).test(user.username)) {
         return Promise.reject('用户名不合法。');
     }
     if (user.username.length < 5) {
